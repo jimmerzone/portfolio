@@ -99,24 +99,5 @@
     slides[currentIndex].classList.add('active');
   }, 5000);
 </script>
-<!-- Navbar move Script -->
-<script>
-  let lastScrollTop = 0;
-  const navbar = document.querySelector('.navbar');
-
-  window.addEventListener('scroll', () => {
-    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
-    if (scrollTop > lastScrollTop) {
-      // Scrolling down - hide navbar
-      navbar.classList.add('hide');
-    } else {
-      // Scrolling up - show navbar
-      navbar.classList.remove('hide');
-    }
-
-    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // For Mobile or negative scrolling
-  });
-</script>
 </body>
 </html>
