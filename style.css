@@ -326,6 +326,24 @@ footer {
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
   background: rgba(32, 32, 48, 0.85);
 }
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.gallery-grid img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+  transition: transform 0.3s ease;
+}
+
+.gallery-grid img:hover {
+  transform: scale(1.05);
+}
 
 /* Slider */
 .slider {
