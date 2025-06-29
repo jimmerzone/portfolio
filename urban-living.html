@@ -37,12 +37,9 @@
       transform: scale(1.05);
     }
 
-    #img1:checked ~ #lightbox1,
-#img2:checked ~ #lightbox2,
-#img3:checked ~ #lightbox3,
-#img4:checked ~ #lightbox4 {
-  display: flex;
-}
+    .lightbox-toggle {
+      display: none;
+    }
 
     .lightbox {
       position: fixed;
@@ -107,6 +104,14 @@
       margin-top: 100px;
       text-align: center;
       padding: 20px;
+    }
+
+    /* Lightbox visibility control */
+    #img1:checked ~ #lightbox1,
+    #img2:checked ~ #lightbox2,
+    #img3:checked ~ #lightbox3,
+    #img4:checked ~ #lightbox4 {
+      display: flex;
     }
   </style>
 </head>
