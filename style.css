@@ -35,6 +35,9 @@ body::-webkit-scrollbar {
   width: 100%;
   z-index: 10;
 }
+.navbar.hide {
+  top: -100px; /* move navbar up to hide it, adjust height as needed */
+}
 .navbar .logo img {
   height: 150px; /* Adjust height as needed */
   width: auto;
