@@ -18,13 +18,13 @@ a {
   color: inherit;
   transition: color 0.3s ease;
 }
-/* Hide Scrollbar */
+/* Hide scrollbar */
 body {
   scrollbar-width: none;        /* Firefox */
-  -ms-overflow-style: none;     /* IE/Edge */
+  -ms-overflow-style: none;     /* IE and Edge */
 }
 body::-webkit-scrollbar {
-  display: none;                /* Chrome, Safari */
+  display: none;                /* Chrome, Safari, Opera */
 }
 
 /* Navbar Styles */
