@@ -7,7 +7,6 @@
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <style>
     body {
       margin: 0;
@@ -22,7 +21,7 @@
       gap: 20px;
       padding: 40px;
       max-width: 1200px;
-      margin: 160px auto 40px; /* space below navbar */
+      margin: 160px auto 40px;
     }
 
     .thumbnail img {
@@ -61,7 +60,7 @@
       box-shadow: 0 12px 40px rgba(0, 0, 0, 0.8);
     }
 
-    /* Show correct lightbox */
+    /* Show lightbox if corresponding radio is checked */
     #img1:checked ~ .lightbox#lightbox1,
     #img2:checked ~ .lightbox#lightbox2,
     #img3:checked ~ .lightbox#lightbox3,
@@ -120,7 +119,6 @@
       transform: scale(1.2);
     }
 
-    /* Ensure footer spacing */
     footer {
       margin-top: 100px;
     }
@@ -154,12 +152,14 @@
     </ul>
   </nav>
 
-  <!-- Lightbox controls -->
+  <!-- Lightbox Radio Buttons -->
   <input type="radio" name="lightbox" id="img1" class="lightbox-toggle">
   <input type="radio" name="lightbox" id="img2" class="lightbox-toggle">
   <input type="radio" name="lightbox" id="img3" class="lightbox-toggle">
   <input type="radio" name="lightbox" id="img4" class="lightbox-toggle">
+  <input type="radio" name="lightbox" id="close" class="lightbox-toggle" checked>
 
+  <!-- Thumbnail Gallery -->
   <div class="villa-gallery">
     <label for="img1" class="thumbnail">
       <img src="images/bg1.jpg" alt="Villa Image 1">
@@ -175,10 +175,10 @@
     </label>
   </div>
 
-  <!-- Lightboxes with close buttons -->
+  <!-- Lightboxes -->
   <div class="lightbox" id="lightbox1">
-    <label for="" class="lightbox-close"></label>
-    <label for="" class="close-button" title="Close">&times;</label>
+    <label for="close" class="lightbox-close"></label>
+    <label for="close" class="close-button" title="Close">&times;</label>
     <img src="images/bg1.jpg" alt="Villa Image 1 Large">
     <div class="nav">
       <label for="img4">&#10094;</label>
@@ -187,8 +187,8 @@
   </div>
 
   <div class="lightbox" id="lightbox2">
-    <label for="" class="lightbox-close"></label>
-    <label for="" class="close-button" title="Close">&times;</label>
+    <label for="close" class="lightbox-close"></label>
+    <label for="close" class="close-button" title="Close">&times;</label>
     <img src="images/bg17.jpg" alt="Villa Image 2 Large">
     <div class="nav">
       <label for="img1">&#10094;</label>
@@ -197,8 +197,8 @@
   </div>
 
   <div class="lightbox" id="lightbox3">
-    <label for="" class="lightbox-close"></label>
-    <label for="" class="close-button" title="Close">&times;</label>
+    <label for="close" class="lightbox-close"></label>
+    <label for="close" class="close-button" title="Close">&times;</label>
     <img src="images/bg3.jpg" alt="Villa Image 3 Large">
     <div class="nav">
       <label for="img2">&#10094;</label>
@@ -207,8 +207,8 @@
   </div>
 
   <div class="lightbox" id="lightbox4">
-    <label for="" class="lightbox-close"></label>
-    <label for="" class="close-button" title="Close">&times;</label>
+    <label for="close" class="lightbox-close"></label>
+    <label for="close" class="close-button" title="Close">&times;</label>
     <img src="images/bg5.jpg" alt="Villa Image 4 Large">
     <div class="nav">
       <label for="img3">&#10094;</label>
@@ -217,7 +217,7 @@
   </div>
 </header>
 
-<!-- Villa Text Content -->
+<!-- Villa Content -->
 <div class="villa-content">
   <section class="villa-details">
     <h2>Contemporary Villa</h2>
