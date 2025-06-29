@@ -71,6 +71,7 @@ body::-webkit-scrollbar {
   position: absolute;
   top: 100%;
   left: 0;
+  list-style: none;
   background: transparent; /* No dropdown background box */
   padding: 10px 0;
   border-radius: 6px;
@@ -89,6 +90,7 @@ body::-webkit-scrollbar {
   color: #fff;
   transition: background 0.3s ease, color 0.3s ease;
   white-space: nowrap; /* Prevent wrapping of text */
+  text-decoration: none;
 }
 
 .navbar .dropdown li a:hover {
