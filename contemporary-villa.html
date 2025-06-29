@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+
   <style>
     body {
       margin: 0;
@@ -22,7 +22,7 @@
       gap: 20px;
       padding: 40px;
       max-width: 1200px;
-      margin: auto;
+      margin: 160px auto 40px; /* space below navbar */
     }
 
     .thumbnail img {
@@ -37,22 +37,21 @@
       transform: scale(1.05);
     }
 
-    /* Hide all radio buttons */
     .lightbox-toggle {
       display: none;
     }
 
-    /* Lightbox style */
     .lightbox {
       position: fixed;
       top: 0; left: 0;
       width: 100vw; height: 100vh;
-      background: rgba(15, 15, 15, 0.9);
+      background: rgba(15, 15, 15, 0.95);
       display: none;
       justify-content: center;
       align-items: center;
       z-index: 1000;
       text-align: center;
+      padding: 20px;
     }
 
     .lightbox img {
@@ -72,13 +71,31 @@
 
     .lightbox-close {
       position: absolute;
-      top: 0; left: 0;
+      top: 0;
+      left: 0;
       width: 100%;
       height: 100%;
       cursor: default;
     }
 
-    /* Navigation arrows */
+    .close-button {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 2rem;
+      color: #fff;
+      cursor: pointer;
+      z-index: 1100;
+      background: rgba(0, 0, 0, 0.4);
+      border-radius: 50%;
+      padding: 5px 12px;
+      transition: background 0.3s ease;
+    }
+
+    .close-button:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
     .nav {
       position: absolute;
       top: 50%;
@@ -102,10 +119,14 @@
     .nav label:hover {
       transform: scale(1.2);
     }
+
+    /* Ensure footer spacing */
+    footer {
+      margin-top: 100px;
+    }
   </style>
 </head>
 <body>
-<!-- Hero Section -->
 <header class="landing-section">
   <nav class="navbar">
     <div class="logo">
@@ -132,36 +153,32 @@
       <li><a href="#about">About</a></li>
     </ul>
   </nav>
-  
-  <!-- GALLERY RADIO CONTROLS + THUMBNAILS -->
+
+  <!-- Lightbox controls -->
   <input type="radio" name="lightbox" id="img1" class="lightbox-toggle">
   <input type="radio" name="lightbox" id="img2" class="lightbox-toggle">
   <input type="radio" name="lightbox" id="img3" class="lightbox-toggle">
   <input type="radio" name="lightbox" id="img4" class="lightbox-toggle">
 
   <div class="villa-gallery">
-
     <label for="img1" class="thumbnail">
       <img src="images/bg1.jpg" alt="Villa Image 1">
     </label>
-
     <label for="img2" class="thumbnail">
       <img src="images/bg17.jpg" alt="Villa Image 2">
     </label>
-
     <label for="img3" class="thumbnail">
       <img src="images/bg3.jpg" alt="Villa Image 3">
     </label>
-
     <label for="img4" class="thumbnail">
       <img src="images/bg5.jpg" alt="Villa Image 4">
     </label>
-
   </div>
 
-  <!-- LIGHTBOXES -->
+  <!-- Lightboxes with close buttons -->
   <div class="lightbox" id="lightbox1">
     <label for="" class="lightbox-close"></label>
+    <label for="" class="close-button" title="Close">&times;</label>
     <img src="images/bg1.jpg" alt="Villa Image 1 Large">
     <div class="nav">
       <label for="img4">&#10094;</label>
@@ -171,6 +188,7 @@
 
   <div class="lightbox" id="lightbox2">
     <label for="" class="lightbox-close"></label>
+    <label for="" class="close-button" title="Close">&times;</label>
     <img src="images/bg17.jpg" alt="Villa Image 2 Large">
     <div class="nav">
       <label for="img1">&#10094;</label>
@@ -180,6 +198,7 @@
 
   <div class="lightbox" id="lightbox3">
     <label for="" class="lightbox-close"></label>
+    <label for="" class="close-button" title="Close">&times;</label>
     <img src="images/bg3.jpg" alt="Villa Image 3 Large">
     <div class="nav">
       <label for="img2">&#10094;</label>
@@ -189,26 +208,34 @@
 
   <div class="lightbox" id="lightbox4">
     <label for="" class="lightbox-close"></label>
+    <label for="" class="close-button" title="Close">&times;</label>
     <img src="images/bg5.jpg" alt="Villa Image 4 Large">
     <div class="nav">
       <label for="img3">&#10094;</label>
       <label for="img1">&#10095;</label>
     </div>
   </div>
+</header>
+
+<!-- Villa Text Content -->
 <div class="villa-content">
-      <section class="villa-details">
-        <h2>Contemporary Villa</h2>
-        <p>
-          Expansive visuals emphasizing space, luxury, and harmony with the natural surroundings. The villa offers a seamless integration of indoor and outdoor spaces, designed with modern aesthetics and functional elegance.
-        </p>
-        <p>Explore the open spaces, contemporary design elements, and unique architectural features that make this villa a statement of modern living.</p>
-        <p>Additional imagery showcasing the villa’s interiors, design highlights, and landscaping features...</p>
-      </section>
-    </div>
-  
-  <!-- Footer -->
+  <section class="villa-details">
+    <h2>Contemporary Villa</h2>
+    <p>
+      Expansive visuals emphasizing space, luxury, and harmony with the natural surroundings. The villa offers a seamless integration of indoor and outdoor spaces, designed with modern aesthetics and functional elegance.
+    </p>
+    <p>
+      Explore the open spaces, contemporary design elements, and unique architectural features that make this villa a statement of modern living.
+    </p>
+    <p>
+      Additional imagery showcasing the villa’s interiors, design highlights, and landscaping features...
+    </p>
+  </section>
+</div>
+
+<!-- Footer -->
 <footer>
-  &copy; 2025 archisign — Where architecture meets design.
+  &copy; 2025 Archisign — Where architecture meets design.
 </footer>
 </body>
 </html>
