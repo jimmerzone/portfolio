@@ -32,7 +32,7 @@ body::-webkit-scrollbar {
   position: fixed;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: space-between;
   top: 0;
   left: 0;
   width: 100%;
@@ -48,7 +48,7 @@ body::-webkit-scrollbar {
 }
 .navbar .nav-menu {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   gap: 30px;
 }
 .navbar .nav-menu li {
