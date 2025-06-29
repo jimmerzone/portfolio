@@ -81,14 +81,16 @@ body::-webkit-scrollbar {
   padding: 10px 20px;
 }
 .navbar .dropdown li a {
-  color: #f3f3f3;
+  color: #fff;
   font-size: 0.9rem;
   padding: 6px 18px;
-  transition: background 0.3s ease;
+  display: block;
+  transition: color 0.3s ease;
 }
+
 .navbar .dropdown li a:hover {
-  background: #f9d784;
-  color: #23232c;
+  color: #f9d784;
+  background: none;
 }
 
 /* Background Slideshow */
