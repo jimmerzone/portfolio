@@ -37,9 +37,12 @@
       transform: scale(1.05);
     }
 
-    .lightbox-toggle {
-      display: none;
-    }
+    #img1:checked ~ #lightbox1,
+#img2:checked ~ #lightbox2,
+#img3:checked ~ #lightbox3,
+#img4:checked ~ #lightbox4 {
+  display: flex;
+}
 
     .lightbox {
       position: fixed;
