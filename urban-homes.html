@@ -8,11 +8,162 @@
   <title>Urban Homes - Archisign</title>
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      background-color: #111;
+      color: #fff;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      background-color: #000;
+      position: fixed;
+      top: 0; left: 0; width: 100%;
+      z-index: 1000;
+    }
+
+    .logo img {
+      height: 40px;
+    }
+
+    .nav-menu {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+    }
+
+    .nav-menu li {
+      position: relative;
+    }
+
+    .nav-menu a {
+      text-decoration: none;
+      color: #fff;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .nav-menu a:hover {
+      color: #ffa500;
+    }
+
+    .dropdown {
+      display: none;
+      position: absolute;
+      background-color: #222;
+      top: 100%;
+      left: 0;
+      padding: 10px 0;
+      border-radius: 8px;
+      z-index: 999;
+    }
+
+    .nav-menu li:hover .dropdown {
+      display: block;
+    }
+
+    .dropdown li {
+      padding: 8px 20px;
+    }
+
+    .dropdown li a {
+      color: #ddd;
+    }
+
+    .hero {
+      background: url('images/bg13.jpg') center/cover no-repeat;
+      height: 70vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0 20px;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      color: #fff;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 20px 40px;
+      border-radius: 12px;
+    }
+
+    .main-content {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 100px 20px 60px;
+      animation: fadeIn 1s ease-in;
+    }
+
+    .project-details h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: #ffa500;
+    }
+
+    .project-details p {
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+
+    .project-details ul {
+      list-style-type: square;
+      padding-left: 20px;
+    }
+
+    .project-details li {
+      margin-bottom: 10px;
+    }
+
+    footer {
+      background-color: #000;
+      text-align: center;
+      padding: 30px 20px;
+      font-size: 0.9rem;
+      color: #aaa;
+      margin-top: 40px;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-menu {
+        flex-direction: column;
+        background: #111;
+        position: absolute;
+        top: 80px;
+        right: 0;
+        padding: 20px;
+        display: none;
+      }
+
+      .nav-menu.show {
+        display: flex;
+      }
+    }
+  </style>
 </head>
 <body>
+
+  <!-- Navigation -->
   <header class="navbar">
     <div class="logo">
-      <img src="images/logos.png" alt="Archisign Logo" />
+      <a href="index.html"><img src="images/logos.png" alt="Archisign Logo" /></a>
     </div>
     <ul class="nav-menu">
       <li><a href="index.html">Home</a></li>
@@ -37,9 +188,15 @@
     </ul>
   </header>
 
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Urban Homes Reimagined</h1>
+  </section>
+
+  <!-- Main Content -->
   <div class="main-content">
     <section class="project-details">
-      <h2>Urban Homes</h2>
+      <h2>Smart, Sustainable, Stylish</h2>
       <p>
         Our Urban Homes projects focus on blending modern architectural design with the unique challenges and opportunities that city living offers. These homes are optimized for smaller spaces while maintaining luxury, functionality, and aesthetic appeal.
       </p>
@@ -56,8 +213,10 @@
     </section>
   </div>
 
+  <!-- Footer -->
   <footer>
-    &copy; 2025 Chariot Architecture & Design — Visualizing space with precision, beauty, and purpose.
+    &copy; 2025 Archisign — Visualizing space with precision, beauty, and purpose.
   </footer>
+
 </body>
 </html>
