@@ -29,15 +29,10 @@ body::-webkit-scrollbar {
 
 /* Navbar Styles */
 .navbar {
+  transition: top 0.3s ease;
+  top: 0; /* default position */
   position: fixed;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  top: 0;
-  left: 0;
   width: 100%;
-  padding: 30px 60px 0 60px;
-  background: none;
   z-index: 10;
 }
 .navbar .logo img {
