@@ -52,7 +52,6 @@ body::-webkit-scrollbar {
   gap: 30px;
 }
 .navbar .nav-menu li {
-  list-style: none;
   position: relative;
 }
 .navbar .nav-menu a {
@@ -63,8 +62,9 @@ body::-webkit-scrollbar {
 }
 .navbar .nav-menu a:hover {
   background: #f9d784;
+  text-decoration: none;
   color: #23232c;
-  border-radius: 4px;
+  border-radius: 10px;
 }
 .navbar .dropdown {
   display: none;
