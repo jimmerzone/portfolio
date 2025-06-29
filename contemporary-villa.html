@@ -9,17 +9,42 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <header class="navbar">
-    <div class="logo">Chariot Architecture & Design</div>
+<!-- Hero Section -->
+<header class="landing-section">
+  <nav class="navbar">
+    <div class="logo">
+      <img src="images/logos.png" alt="Archisign Logo" />
+    </div>
     <ul class="nav-menu">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="#">Our Services</a></li>
+      <li><a href="#">Our Services</a>
+        <ul class="dropdown">
+          <li><a href="residential-spaces.html">Residential Spaces</a></li>
+          <li><a href="commercial-interiors.html">Commercial Interiors</a></li>
+          <li><a href="landscape-architecture.html">Landscape Architecture</a></li>
+          <li><a href="interior-styling.html">Interior Styling</a></li>
+        </ul>
+      </li>
       <li><a href="#">Pricing</a></li>
-      <li><a href="#">Projects</a></li>
-      <li><a href="#">Contact</a></li>
+      <li><a href="#">Projects</a>
+        <ul class="dropdown">
+          <li><a href="urban-homes.html">Urban Homes</a></li>
+          <li><a href="luxury-villas.html">Luxury Villas</a></li>
+          <li><a href="corporate-spaces.html">Corporate Spaces</a></li>
+        </ul>
+      </li>
+      <li><a href="contact.html">Contact Us</a></li>
       <li><a href="#about">About</a></li>
     </ul>
-  </header>
+  </nav>
+
+  <!-- Background Slideshow -->
+<div class="background-slideshow">
+  <div class="slide active"><img src="images/bg1.jpg" alt="Slide 1"></div>
+  <div class="slide"><img src="images/bg5.jpg" alt="Slide 2"></div>
+  <div class="slide"><img src="images/bg6.jpg" alt="Slide 3"></div>
+  <div class="slide"><img src="images/bg7.jpg" alt="Slide 4"></div>
+  <div class="slide"><img src="images/bg8.jpg" alt="Slide 5"></div>
+</div>
 
   <div class="main-content">
     <section class="project-details">
@@ -34,7 +59,7 @@
   </div>
 
   <footer>
-    &copy; 2025 Chariot Architecture & Design — Visualizing space with precision, beauty, and purpose.
+    &copy; 2025 Archisign — Visualizing space with precision, beauty, and purpose.
   </footer>
 </body>
 </html>
