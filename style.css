@@ -24,8 +24,43 @@ body {
   -ms-overflow-style: none;     /* IE/Edge */
 }
 body::-webkit-scrollbar {
-  display: none;                /* Chrome/Safari */
+  display: none;                /* Chrome, Safari */
 }
+Make sure no other CSS or JavaScript overrides these styles.
+
+Test in multiple browsers: Chrome, Firefox, Edge, Safari.
+
+If you want to hide scrollbars on the entire page but still allow scrolling, your current setup is correct.
+
+Additional tip: If you want to hide scrollbar only on the .background-slideshow or other containers, apply the same CSS to those elements.
+Example:
+
+css
+.background-slideshow {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.background-slideshow::-webkit-scrollbar {
+  display: none;
+}
+Summary
+Your HTML targets the right element (body) for scrollbar hiding.
+
+Your CSS for hiding scrollbars on body is correctly written.
+
+Ensure your CSS is loaded and not overridden.
+
+Clear browser cache and test.
+
+If you still see scrollbars, it might be due to content overflow or browser-specific quirks, but your current setup is the standard and correct way to hide scrollbars while maintaining scroll functionality.
+
+Related
+Does the script correctly target the background-slideshow element for the slideshow
+How can I verify that the active class is properly toggled on slides
+Is there a need to add additional CSS to ensure only one slide is visible at a time
+Could there be conflicts between my CSS and JavaScript affecting slide transitions
+How do I confirm that the slideshow runs smoothly across different browsers
+
 /* Navbar Styles */
 .navbar {
   position: fixed;
