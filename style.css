@@ -71,9 +71,9 @@ body::-webkit-scrollbar {
   position: absolute;
   top: 100%;
   left: 0;
-  background: transparent; /* Keep dropdown background invisible */
-  padding: 8px 0;
-  min-width: 180px;
+  background: transparent; /* No dropdown background box */
+  min-width: 220px;         /* Wider box to prevent text stacking */
+  padding: 4px 0;
 }
 
 .navbar .nav-menu li:hover .dropdown {
@@ -81,23 +81,23 @@ body::-webkit-scrollbar {
 }
 
 .navbar .dropdown li {
-  list-style: none;
   width: 100%;
 }
 
 .navbar .dropdown li a {
   display: block;
   width: 100%;
+  padding: 10px 18px;
+  font-size: 0.95rem;
   color: #fff;
-  font-size: 0.9rem;
-  padding: 6px 18px;
-  white-space: nowrap;
-  transition: color 0.3s ease;
+  border-radius: 4px;
+  transition: background 0.3s ease, color 0.3s ease;
+  white-space: nowrap; /* Prevent wrapping of text */
 }
 
 .navbar .dropdown li a:hover {
-  color: #f9d784;
-  background: none;
+  background: #f9d784;  /* Highlight box on hover */
+  color: #23232c;       /* Dark text when highlighted */
 }
 
 /* Background Slideshow */
