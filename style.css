@@ -72,8 +72,9 @@ body::-webkit-scrollbar {
   top: 100%;
   left: 0;
   background: transparent; /* No dropdown background box */
-  min-width: 220px;         /* Wider box to prevent text stacking */
-  padding: 4px 0;
+  padding: 10px;
+  border-radius: 6px;
+  z-index: 999;
 }
 
 .navbar .nav-menu li:hover .dropdown {
