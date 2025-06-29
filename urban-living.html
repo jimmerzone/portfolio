@@ -1,40 +1,207 @@
-<!-- urban-living.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Urban Living - Chariot Architecture & Design</title>
+  <title>Archisign – Urban Living</title>
+  <link rel="icon" href="images/favicon.png" type="image/x-icon" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      background-color: #111;
+      color: #fff;
+    }
+
+    .project-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      padding: 40px;
+      max-width: 1200px;
+      margin: 160px auto 40px;
+    }
+
+    .thumbnail img {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .thumbnail img:hover {
+      transform: scale(1.05);
+    }
+
+    .lightbox-toggle {
+      display: none;
+    }
+
+    .lightbox {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background: rgba(15, 15, 15, 0.95);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .lightbox img {
+      max-width: 80%;
+      max-height: 80%;
+      border-radius: 12px;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.8);
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      cursor: default;
+    }
+
+    .close-button {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 2rem;
+      color: #fff;
+      cursor: pointer;
+      z-index: 1100;
+      background: rgba(0, 0, 0, 0.4);
+      border-radius: 50%;
+      padding: 5px 12px;
+    }
+
+    .nav {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      transform: translateY(-50%);
+      pointer-events: none;
+    }
+
+    .nav label {
+      pointer-events: all;
+      cursor: pointer;
+      color: white;
+      font-size: 3rem;
+      padding: 0 1rem;
+    }
+
+    footer {
+      margin-top: 100px;
+      text-align: center;
+      padding: 20px;
+    }
+  </style>
 </head>
 <body>
-  <header class="navbar">
-    <div class="logo">Chariot Architecture & Design</div>
+
+<!-- Navigation -->
+<header class="landing-section">
+  <nav class="navbar">
+    <div class="logo">
+      <img src="images/logos.png" alt="Archisign Logo" />
+    </div>
     <ul class="nav-menu">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="#">Our Services</a></li>
+      <li><a href="#">Our Services</a>
+        <ul class="dropdown">
+          <li><a href="residential-spaces.html">Residential Spaces</a></li>
+          <li><a href="commercial-interiors.html">Commercial Interiors</a></li>
+          <li><a href="landscape-architecture.html">Landscape Architecture</a></li>
+          <li><a href="interior-styling.html">Interior Styling</a></li>
+        </ul>
+      </li>
       <li><a href="#">Pricing</a></li>
-      <li><a href="#">Projects</a></li>
-      <li><a href="#">Contact</a></li>
+      <li><a href="#">Projects</a>
+        <ul class="dropdown">
+          <li><a href="urban-homes.html">Urban Homes</a></li>
+          <li><a href="luxury-villas.html">Luxury Villas</a></li>
+          <li><a href="corporate-spaces.html">Corporate Spaces</a></li>
+        </ul>
+      </li>
+      <li><a href="contact.html">Contact Us</a></li>
       <li><a href="#about">About</a></li>
     </ul>
-  </header>
+  </nav>
 
-  <div class="main-content">
-    <section class="project-details">
-      <h2>Urban Living</h2>
-      <img src="images/bg13.jpg" alt="Urban Living">
-      <p>
-        Designed for city life—efficient layouts, high-end finishes, and contemporary flair. This project focuses on urban functionality while maintaining a sophisticated, luxurious atmosphere.
-      </p>
-      <p>Explore the features that make this urban residence a perfect blend of style and practicality.</p>
-      <p>Additional images and more details about the space layout...</p>
-    </section>
+  <!-- Lightbox Radio Inputs -->
+  <input type="radio" name="lightbox" id="img1" class="lightbox-toggle">
+  <input type="radio" name="lightbox" id="img2" class="lightbox-toggle">
+  <input type="radio" name="lightbox" id="img3" class="lightbox-toggle">
+  <input type="radio" name="lightbox" id="img4" class="lightbox-toggle">
+  <input type="radio" name="lightbox" id="close" class="lightbox-toggle" checked>
+
+  <!-- Gallery -->
+  <div class="project-gallery">
+    <label for="img1" class="thumbnail"><img src="images/urban1.jpg" alt="Urban Image 1"></label>
+    <label for="img2" class="thumbnail"><img src="images/urban2.jpg" alt="Urban Image 2"></label>
+    <label for="img3" class="thumbnail"><img src="images/urban3.jpg" alt="Urban Image 3"></label>
+    <label for="img4" class="thumbnail"><img src="images/urban4.jpg" alt="Urban Image 4"></label>
   </div>
 
-  <footer>
-    &copy; 2025 Chariot Architecture & Design — Visualizing space with precision, beauty, and purpose.
-  </footer>
+  <!-- Lightboxes -->
+  <div class="lightbox" id="lightbox1">
+    <label for="close" class="lightbox-close"></label>
+    <label for="close" class="close-button" title="Close">&times;</label>
+    <img src="images/urban1.jpg" alt="Urban Image 1 Large">
+    <div class="nav"><label for="img4">&#10094;</label><label for="img2">&#10095;</label></div>
+  </div>
+
+  <div class="lightbox" id="lightbox2">
+    <label for="close" class="lightbox-close"></label>
+    <label for="close" class="close-button" title="Close">&times;</label>
+    <img src="images/urban2.jpg" alt="Urban Image 2 Large">
+    <div class="nav"><label for="img1">&#10094;</label><label for="img3">&#10095;</label></div>
+  </div>
+
+  <div class="lightbox" id="lightbox3">
+    <label for="close" class="lightbox-close"></label>
+    <label for="close" class="close-button" title="Close">&times;</label>
+    <img src="images/urban3.jpg" alt="Urban Image 3 Large">
+    <div class="nav"><label for="img2">&#10094;</label><label for="img4">&#10095;</label></div>
+  </div>
+
+  <div class="lightbox" id="lightbox4">
+    <label for="close" class="lightbox-close"></label>
+    <label for="close" class="close-button" title="Close">&times;</label>
+    <img src="images/urban4.jpg" alt="Urban Image 4 Large">
+    <div class="nav"><label for="img3">&#10094;</label><label for="img1">&#10095;</label></div>
+  </div>
+</header>
+
+<!-- Content -->
+<div class="project-content">
+  <section class="project-details" style="max-width: 900px; margin: auto; padding: 20px;">
+    <h2>Urban Living</h2>
+    <p>
+      Discover the perfect blend of urban aesthetics and efficient design. This project is centered on functionality, comfort, and the elegance of minimalistic living in city environments.
+    </p>
+    <p>
+      The design showcases open-plan layouts, high-contrast materials, and intelligent use of space that adapts to modern metropolitan lifestyles.
+    </p>
+    <p>
+      Browse our image gallery to experience this modern take on city life.
+    </p>
+  </section>
+</div>
+
+<!-- Footer -->
+<footer>
+  &copy; 2025 Archisign — Where architecture meets design.
+</footer>
+
 </body>
 </html>
