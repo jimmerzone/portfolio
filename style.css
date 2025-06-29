@@ -71,20 +71,27 @@ body::-webkit-scrollbar {
   position: absolute;
   top: 100%;
   left: 0;
-  background: #23232c;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
+  background: transparent; /* Keep dropdown background invisible */
+  padding: 8px 0;
+  min-width: 180px;
 }
+
 .navbar .nav-menu li:hover .dropdown {
   display: block;
 }
+
 .navbar .dropdown li {
-  padding: 10px 20px;
+  list-style: none;
+  width: 100%;
 }
+
 .navbar .dropdown li a {
+  display: block;
+  width: 100%;
   color: #fff;
   font-size: 0.9rem;
   padding: 6px 18px;
-  display: block;
+  white-space: nowrap;
   transition: color 0.3s ease;
 }
 
