@@ -30,7 +30,8 @@
 
   <ul class="nav-menu">
     <li><a href="index.html">Home</a></li>
-    <li><a href="#">Our Services</a>
+    <li class="has-dropdown">
+      <a href="#">Our Services</a>
       <ul class="dropdown">
         <li><a href="residential-spaces.html">Residential Spaces</a></li>
         <li><a href="commercial-interiors.html">Commercial Interiors</a></li>
@@ -39,7 +40,8 @@
       </ul>
     </li>
     <li><a href="#">Pricing</a></li>
-    <li><a href="#">Projects</a>
+    <li class="has-dropdown">
+      <a href="#">Projects</a>
       <ul class="dropdown">
         <li><a href="urban-homes.html">Urban Homes</a></li>
         <li><a href="luxury-villas.html">Luxury Villas</a></li>
@@ -56,7 +58,7 @@
   <ul>
     <li><a href="index.html">Home</a></li>
     <li>
-      <a href="#">Our Services</a>
+      <a href="#" class="mobile-dropdown-toggle">Our Services</a>
       <ul>
         <li><a href="residential-spaces.html">Residential Spaces</a></li>
         <li><a href="commercial-interiors.html">Commercial Interiors</a></li>
@@ -66,7 +68,7 @@
     </li>
     <li><a href="#">Pricing</a></li>
     <li>
-      <a href="#">Projects</a>
+      <a href="#" class="mobile-dropdown-toggle">Projects</a>
       <ul>
         <li><a href="urban-homes.html">Urban Homes</a></li>
         <li><a href="luxury-villas.html">Luxury Villas</a></li>
@@ -171,16 +173,24 @@
     closeSideMenu();
   });
 
-  // Dropdown toggle inside side menu
-  const sideMenuItems = sideMenu.querySelectorAll("li > a");
+  // Dropdown toggle inside side menu for mobile
+  const mobileDropdownToggles = sideMenu.querySelectorAll(".mobile-dropdown-toggle");
 
-  sideMenuItems.forEach((item) => {
-    item.addEventListener("click", (e) => {
-      const nextElem = item.nextElementSibling;
-      if (nextElem && nextElem.tagName === "UL") {
-        e.preventDefault();
-        item.parentElement.classList.toggle("open");
-      }
+  mobileDropdownToggles.forEach((toggle) => {
+    toggle.addEventListener("click", (e) => {
+      e.preventDefault();
+      toggle.parentElement.classList.toggle("open");
+    });
+  });
+
+  // Desktop dropdown hover fix (optional: support click for accessibility)
+  const desktopDropdownParents = document.querySelectorAll(".nav-menu .has-dropdown > a");
+
+  desktopDropdownParents.forEach((parentLink) => {
+    parentLink.addEventListener("click", (e) => {
+      // Prevent default only if you want click to toggle dropdown instead of navigating
+      // e.preventDefault();
+      // Optionally toggle dropdown visibility here if you want click to open dropdown on desktop
     });
   });
 </script>
