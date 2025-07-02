@@ -72,7 +72,7 @@ body::-webkit-scrollbar {
   transform: translateY(-15px);
 }
 
-/* Mobile right container: logo + hamburger */
+/* Mobile right container: hamburger + logo (logo moved after hamburger) */
 .mobile-right {
   display: none;
   align-items: center;
@@ -245,6 +245,8 @@ body::-webkit-scrollbar {
   height: 100vh;
   overflow: hidden;
   z-index: -1;
+  /* Prevent shifting on scroll */
+  will-change: transform;
 }
 
 .background-slideshow .slide {
