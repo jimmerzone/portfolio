@@ -40,7 +40,14 @@ body::-webkit-scrollbar {
   width: 100%;
   background: none;
   z-index: 10;
-  transition: padding 0.3s ease, background 0.3s ease;
+  transition: transform 0.3s ease, padding 0.3s ease, background 0.3s ease;
+  will-change: transform;
+}
+
+/* Navbar hidden on scroll down */
+.navbar.navbar-hidden {
+  transform: translateY(-100%);
+  pointer-events: none;
 }
 
 /* Shrink navbar padding and add background on scroll */
@@ -50,7 +57,7 @@ body::-webkit-scrollbar {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
 }
 
-/* Logo */
+/* Desktop Logo */
 .logo img {
   height: 150px;
   width: auto;
@@ -63,6 +70,27 @@ body::-webkit-scrollbar {
 .logo.logo-scrolled img {
   height: 80px;
   transform: translateY(-15px);
+}
+
+/* Mobile right container: logo + hamburger */
+.mobile-right {
+  display: none;
+  align-items: center;
+  gap: 15px;
+}
+
+/* Mobile logo */
+.mobile-logo img {
+  height: 50px;
+  width: auto;
+  display: block;
+  transition: height 0.3s ease, transform 0.3s ease;
+}
+
+/* Shrink mobile logo on scroll */
+.mobile-logo.logo-scrolled img {
+  height: 35px;
+  transform: translateY(-10px);
 }
 
 /* Desktop nav menu */
@@ -404,8 +432,15 @@ footer {
   .nav-menu {
     display: none !important;
   }
-  .navbar .logo {
+  .logo {
     display: none;
+  }
+
+  /* Show mobile right container */
+  .mobile-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
   }
 
   /* Show hamburger */
@@ -413,7 +448,7 @@ footer {
     display: block;
   }
 
-  /* Side menu */
+  /* Show side menu */
   .side-menu {
     display: block;
   }
@@ -436,6 +471,9 @@ footer {
     display: none !important;
   }
   .hamburger {
+    display: none !important;
+  }
+  .mobile-right {
     display: none !important;
   }
 }
