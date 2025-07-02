@@ -15,26 +15,46 @@
       color: #fff;
     }
 
-    .villa-gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
-      padding: 40px;
-      max-width: 1200px;
-      margin: 160px auto 40px;
-    }
+    .project-gallery {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: 20px;
+    padding: 40px 20px 60px;
+    max-width: 1200px;
+    margin: 140px auto 40px;
+  }
 
-    .thumbnail img {
-      width: 100%;
-      border-radius: 12px;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
-      cursor: pointer;
-      transition: transform 0.3s ease;
-    }
+  .project-gallery::-webkit-scrollbar {
+    height: 8px;
+  }
+  .project-gallery::-webkit-scrollbar-thumb {
+    background: rgba(249, 215, 132, 0.8);
+    border-radius: 4px;
+  }
 
-    .thumbnail img:hover {
-      transform: scale(1.05);
-    }
+  .thumbnail {
+    flex: 0 0 auto;
+    scroll-snap-align: center;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    width: 280px;
+    position: relative;
+  }
+
+  .thumbnail img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    display: block;
+  }
+
+  .thumbnail:hover {
+    transform: scale(1.05);
+  }
 
     .lightbox-toggle {
       display: none;
@@ -161,7 +181,7 @@
   <input type="radio" name="lightbox" id="close" class="lightbox-toggle" checked>
 
   <!-- Thumbnail Gallery -->
-  <div class="villa-gallery">
+  <div class="project-gallery">
     <label for="img1" class="thumbnail">
       <img src="images/bg1.jpg" alt="Villa Image 1">
     </label>
