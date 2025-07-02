@@ -26,6 +26,9 @@
     <div class="logo">
       <img src="images/logos.png" alt="Archisign Logo" />
     </div>
+	    <div class="hamburger" id="hamburger">
+	  &#9776; <!-- Unicode hamburger icon -->
+    </div>
     <ul class="nav-menu">
       <li><a href="#">Our Services</a>
         <ul class="dropdown">
@@ -47,6 +50,32 @@
       <li><a href="#about">About</a></li>
     </ul>
   </nav>
+
+<!-- Mobile Nav Section -->
+<nav class="side-menu" id="sideMenu">
+  <ul>
+    <li>
+      <a href="#">Our Services</a>
+      <ul>
+        <li><a href="residential-spaces.html">Residential Spaces</a></li>
+        <li><a href="commercial-interiors.html">Commercial Interiors</a></li>
+        <li><a href="landscape-architecture.html">Landscape Architecture</a></li>
+        <li><a href="interior-styling.html">Interior Styling</a></li>
+      </ul>
+    </li>
+    <li><a href="#">Pricing</a></li>
+    <li>
+      <a href="#">Projects</a>
+      <ul>
+        <li><a href="urban-homes.html">Urban Homes</a></li>
+        <li><a href="luxury-villas.html">Luxury Villas</a></li>
+        <li><a href="corporate-spaces.html">Corporate Spaces</a></li>
+      </ul>
+    </li>
+    <li><a href="contact.html">Contact Us</a></li>
+    <li><a href="#about">About</a></li>
+  </ul>
+</nav>
 
   <!-- Hero Section Content -->
   <div class="hero-content">
@@ -88,6 +117,29 @@
 <footer>
   &copy; 2025 archisign — Where architecture meets design.
 </footer>
+
+<!-- Dropdown Mobile Script -->
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const sideMenu = document.getElementById('sideMenu');
+
+  hamburger.addEventListener('click', () => {
+    sideMenu.classList.toggle('open');
+  });
+
+  // Handle dropdown toggles inside side menu
+  const sideMenuItems = sideMenu.querySelectorAll('li > a');
+
+  sideMenuItems.forEach(item => {
+    item.addEventListener('click', (e) => {
+      const nextElem = item.nextElementSibling;
+      if (nextElem && nextElem.tagName === 'UL') {
+        e.preventDefault(); // prevent default link behavior
+        item.parentElement.classList.toggle('open');
+      }
+    });
+  });
+</script>
 
 <!-- Slideshow Script -->
 <script>
