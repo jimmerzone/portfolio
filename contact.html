@@ -137,7 +137,6 @@
 
 <!-- Scripts -->
 <script>
-  // Hamburger toggle for mobile side menu
   const hamburger = document.getElementById("hamburger");
   const sideMenu = document.getElementById("sideMenu");
   const sideMenuOverlay = document.getElementById("sideMenuOverlay");
@@ -173,24 +172,13 @@
     closeSideMenu();
   });
 
-  // Dropdown toggle inside side menu for mobile
+  // Mobile dropdown toggles
   const mobileDropdownToggles = sideMenu.querySelectorAll(".mobile-dropdown-toggle");
 
   mobileDropdownToggles.forEach((toggle) => {
     toggle.addEventListener("click", (e) => {
       e.preventDefault();
       toggle.parentElement.classList.toggle("open");
-    });
-  });
-
-  // Desktop dropdown hover fix (optional: support click for accessibility)
-  const desktopDropdownParents = document.querySelectorAll(".nav-menu .has-dropdown > a");
-
-  desktopDropdownParents.forEach((parentLink) => {
-    parentLink.addEventListener("click", (e) => {
-      // Prevent default only if you want click to toggle dropdown instead of navigating
-      // e.preventDefault();
-      // Optionally toggle dropdown visibility here if you want click to open dropdown on desktop
     });
   });
 </script>
