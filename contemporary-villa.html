@@ -1,80 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <link rel="icon" href="images/favicon.png" type="image/x-icon" />
   <title>Archisign – Contemporary Villa Gallery</title>
   <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
       margin: 0;
-      font-family: 'Montserrat', sans-serif;
+      font-family: sans-serif;
       background-color: #111;
       color: #fff;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
     }
 
-    /* Ensure footer sticks to bottom */
-    main {
-      flex: 1 0 auto;
-    }
-
-    footer {
-      flex-shrink: 0;
-      background: #23232c;
-      color: #f3f3f3;
-      text-align: center;
-      padding: 20px 0;
-      margin-top: 40px;
-    }
-
-    /* Horizontal scroll gallery */
     .villa-gallery {
-      display: flex;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      -webkit-overflow-scrolling: touch;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 20px;
-      padding: 20px;
+      padding: 40px;
       max-width: 1200px;
-      margin: 20px auto 40px;
-    }
-
-    .villa-gallery::-webkit-scrollbar {
-      height: 8px;
-    }
-    .villa-gallery::-webkit-scrollbar-thumb {
-      background: rgba(249, 215, 132, 0.8);
-      border-radius: 4px;
-    }
-
-    .thumbnail {
-      flex: 0 0 auto;
-      scroll-snap-align: center;
-      border-radius: 12px;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
-      cursor: pointer;
-      transition: transform 0.3s ease;
-      width: 280px;
-      position: relative;
+      margin: 160px auto 40px;
     }
 
     .thumbnail img {
       width: 100%;
-      height: auto;
       border-radius: 12px;
-      display: block;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+      cursor: pointer;
+      transition: transform 0.3s ease;
     }
 
-    .thumbnail:hover {
+    .thumbnail img:hover {
       transform: scale(1.05);
     }
 
-    /* Lightbox styles */
     .lightbox-toggle {
       display: none;
     }
@@ -88,8 +49,8 @@
       justify-content: center;
       align-items: center;
       z-index: 1000;
-      padding: 20px;
       text-align: center;
+      padding: 20px;
     }
 
     .lightbox img {
@@ -100,10 +61,10 @@
     }
 
     /* Show lightbox if corresponding radio is checked */
-    #img1:checked ~ #lightbox1,
-    #img2:checked ~ #lightbox2,
-    #img3:checked ~ #lightbox3,
-    #img4:checked ~ #lightbox4 {
+    #img1:checked ~ .lightbox#lightbox1,
+    #img2:checked ~ .lightbox#lightbox2,
+    #img3:checked ~ .lightbox#lightbox3,
+    #img4:checked ~ .lightbox#lightbox4 {
       display: flex;
     }
 
@@ -128,7 +89,6 @@
       border-radius: 50%;
       padding: 5px 12px;
       transition: background 0.3s ease;
-      user-select: none;
     }
 
     .close-button:hover {
@@ -159,315 +119,124 @@
       transform: scale(1.2);
     }
 
-    /* Villa Content */
-    .villa-content {
-      max-width: 900px;
-      margin: 160px auto 40px;
-      padding: 0 20px;
-      color: #f3f3f3;
-      font-family: 'Montserrat', sans-serif;
-      line-height: 1.6;
-      text-align: center;
-      overflow-x: hidden;
-    }
-
-    .villa-content h2 {
-      font-size: 2.8rem;
-      font-weight: 700;
-      color: #f9d784;
-      margin-bottom: 20px;
-      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
-      word-break: break-word;
-    }
-
-    .villa-content p {
-      font-size: 1.15rem;
-      margin-bottom: 20px;
-      max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
-      word-wrap: break-word;
-    }
-
-    /* Navbar Styles */
-    .navbar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 30px 60px 0 60px;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      background: none;
-      z-index: 10;
-      transition: transform 0.3s ease, padding 0.3s ease, background 0.3s ease;
-      will-change: transform;
-    }
-
-    .logo img {
-      height: 150px;
-      width: auto;
-      padding-left: 30px;
-      display: block;
-      transition: height 0.3s ease, transform 0.3s ease;
-    }
-
-    /* Mobile right container: hamburger */
-    .mobile-right {
-      display: none;
-      align-items: center;
-      gap: 15px;
-    }
-
-    .hamburger {
-      display: none;
-      font-size: 2.5rem;
-      color: #f3f3f3;
-      cursor: pointer;
-      padding-right: 30px;
-      user-select: none;
-      z-index: 25;
-      position: relative;
-    }
-
-    /* Show hamburger and mobile-right on mobile */
-    @media (max-width: 600px) {
-      .hamburger {
-        display: block;
-      }
-      .mobile-right {
-        display: flex;
-      }
-      .nav-menu {
-        display: none !important;
-      }
-    }
-
-    /* Side menu */
-    .side-menu {
-      position: fixed;
-      top: 0;
-      left: -260px;
-      width: 260px;
-      height: 100%;
-      background: rgba(32, 32, 48, 0.95);
-      box-shadow: 3px 0 12px rgba(0, 0, 0, 0.7);
-      padding-top: 100px;
-      transition: left 0.3s ease;
-      z-index: 30;
-      overflow-y: auto;
-    }
-
-    .side-menu.open {
-      left: 0;
-    }
-
-    .side-menu ul {
-      list-style: none;
-      padding-left: 0;
-    }
-
-    .side-menu li {
-      padding: 15px 25px;
-      border-bottom: 1px solid #444;
-    }
-
-    .side-menu li a {
-      color: #f3f3f3;
-      font-size: 1.2rem;
-      display: block;
-    }
-
-    .side-menu li a:hover {
-      background: #f9d784;
-      color: #23232c;
-      border-radius: 4px;
-    }
-
-    /* Overlay behind side menu */
-    .side-menu-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: rgba(0, 0, 0, 0.5);
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.3s ease;
-      z-index: 20;
-    }
-
-    .side-menu-overlay.active {
-      opacity: 1;
-      visibility: visible;
+    footer {
+      margin-top: 100px;
     }
   </style>
 </head>
 <body>
-  <header class="landing-section">
-    <nav class="navbar" id="navbar">
-      <div class="logo" id="logo">
-        <img src="images/logos.png" alt="Archisign Logo" />
-      </div>
-      <div class="mobile-right">
-        <div
-          class="hamburger"
-          id="hamburger"
-          aria-label="Toggle menu"
-          role="button"
-          tabindex="0"
-          aria-expanded="false"
-        >
-          &#9776;
-        </div>
-      </div>
-      <ul class="nav-menu">
-        <li><a href="index.html">Home</a></li>
-        <li class="has-dropdown">
-          <a href="#">Our Services</a>
-          <ul class="dropdown">
-            <li><a href="residential-spaces.html">Residential Spaces</a></li>
-            <li><a href="commercial-interiors.html">Commercial Interiors</a></li>
-            <li><a href="landscape-architecture.html">Landscape Architecture</a></li>
-            <li><a href="interior-styling.html">Interior Styling</a></li>
-          </ul>
-        </li>
-        <li><a href="#">Pricing</a></li>
-        <li class="has-dropdown">
-          <a href="#">Projects</a>
-          <ul class="dropdown">
-            <li><a href="urban-homes.html">Urban Homes</a></li>
-            <li><a href="luxury-villas.html">Luxury Villas</a></li>
-            <li><a href="corporate-spaces.html">Corporate Spaces</a></li>
-          </ul>
-        </li>
-        <li><a href="contact.html">Contact Us</a></li>
-        <li><a href="#about">About</a></li>
-      </ul>
-    </nav>
-
-    <!-- Mobile Side Menu -->
-    <nav class="side-menu" id="sideMenu" aria-label="Mobile menu">
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li>
-          <a href="#" class="mobile-dropdown-toggle">Our Services</a>
-          <ul>
-            <li><a href="residential-spaces.html">Residential Spaces</a></li>
-            <li><a href="commercial-interiors.html">Commercial Interiors</a></li>
-            <li><a href="landscape-architecture.html">Landscape Architecture</a></li>
-            <li><a href="interior-styling.html">Interior Styling</a></li>
-          </ul>
-        </li>
-        <li><a href="#">Pricing</a></li>
-        <li>
-          <a href="#" class="mobile-dropdown-toggle">Projects</a>
-          <ul>
-            <li><a href="urban-homes.html">Urban Homes</a></li>
-            <li><a href="luxury-villas.html">Luxury Villas</a></li>
-            <li><a href="corporate-spaces.html">Corporate Spaces</a></li>
-          </ul>
-        </li>
-        <li><a href="contact.html">Contact Us</a></li>
-        <li><a href="#about">About</a></li>
-      </ul>
-    </nav>
-
-    <div class="side-menu-overlay" id="sideMenuOverlay"></div>
-
-    <!-- Lightbox Radio Buttons -->
-    <input type="radio" name="lightbox" id="img1" class="lightbox-toggle" />
-    <input type="radio" name="lightbox" id="img2" class="lightbox-toggle" />
-    <input type="radio" name="lightbox" id="img3" class="lightbox-toggle" />
-    <input type="radio" name="lightbox" id="img4" class="lightbox-toggle" />
-    <input type="radio" name="lightbox" id="close" class="lightbox-toggle" checked />
-
-    <!-- Villa Content -->
-    <div class="villa-content">
-      <section class="villa-details">
-        <h2>Contemporary Villa</h2>
-
-        <div class="villa-gallery">
-          <label for="img1" class="thumbnail">
-            <img src="images/bg1.jpg" alt="Villa Image 1" />
-          </label>
-          <label for="img2" class="thumbnail">
-            <img src="images/bg17.jpg" alt="Villa Image 2" />
-          </label>
-          <label for="img3" class="thumbnail">
-            <img src="images/bg3.jpg" alt="Villa Image 3" />
-          </label>
-          <label for="img4" class="thumbnail">
-            <img src="images/bg5.jpg" alt="Villa Image 4" />
-          </label>
-        </div>
-
-        <p>
-          Expansive visuals emphasizing space, luxury, and harmony with the natural surroundings. The villa offers a seamless integration of indoor and outdoor spaces, designed with modern aesthetics and functional elegance.
-        </p>
-        <p>
-          Explore the open spaces, contemporary design elements, and unique architectural features that make this villa a statement of modern living.
-        </p>
-        <p>
-          Additional imagery showcasing the villa’s interiors, design highlights, and landscaping features...
-        </p>
-      </section>
+<header class="landing-section">
+  <nav class="navbar">
+    <div class="logo">
+      <img src="images/logos.png" alt="Archisign Logo" />
     </div>
-  </header>
+    <ul class="nav-menu">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="#">Our Services</a>
+        <ul class="dropdown">
+          <li><a href="residential-spaces.html">Residential Spaces</a></li>
+          <li><a href="commercial-interiors.html">Commercial Interiors</a></li>
+          <li><a href="landscape-architecture.html">Landscape Architecture</a></li>
+          <li><a href="interior-styling.html">Interior Styling</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Pricing</a></li>
+      <li><a href="#">Projects</a>
+        <ul class="dropdown">
+          <li><a href="urban-homes.html">Urban Homes</a></li>
+          <li><a href="luxury-villas.html">Luxury Villas</a></li>
+          <li><a href="corporate-spaces.html">Corporate Spaces</a></li>
+        </ul>
+      </li>
+      <li><a href="contact.html">Contact Us</a></li>
+      <li><a href="#about">About</a></li>
+    </ul>
+  </nav>
 
-  <!-- Footer -->
-  <footer>
-    &copy; 2025 Archisign — Where architecture meets design.
-  </footer>
+  <!-- Lightbox Radio Buttons -->
+  <input type="radio" name="lightbox" id="img1" class="lightbox-toggle">
+  <input type="radio" name="lightbox" id="img2" class="lightbox-toggle">
+  <input type="radio" name="lightbox" id="img3" class="lightbox-toggle">
+  <input type="radio" name="lightbox" id="img4" class="lightbox-toggle">
+  <input type="radio" name="lightbox" id="close" class="lightbox-toggle" checked>
 
-  <script>
-    // Hamburger toggle for mobile menu
-    const hamburger = document.getElementById('hamburger');
-    const sideMenu = document.getElementById('sideMenu');
-    const sideMenuOverlay = document.getElementById('sideMenuOverlay');
+  <!-- Thumbnail Gallery -->
+  <div class="villa-gallery">
+    <label for="img1" class="thumbnail">
+      <img src="images/bg1.jpg" alt="Villa Image 1">
+    </label>
+    <label for="img2" class="thumbnail">
+      <img src="images/bg17.jpg" alt="Villa Image 2">
+    </label>
+    <label for="img3" class="thumbnail">
+      <img src="images/bg3.jpg" alt="Villa Image 3">
+    </label>
+    <label for="img4" class="thumbnail">
+      <img src="images/bg5.jpg" alt="Villa Image 4">
+    </label>
+  </div>
 
-    function closeSideMenu() {
-      sideMenu.classList.remove('open');
-      sideMenuOverlay.classList.remove('active');
-      hamburger.setAttribute('aria-expanded', 'false');
-    }
+  <!-- Lightboxes -->
+  <div class="lightbox" id="lightbox1">
+    <label for="close" class="lightbox-close"></label>
+    <label for="close" class="close-button" title="Close">&times;</label>
+    <img src="images/bg1.jpg" alt="Villa Image 1 Large">
+    <div class="nav">
+      <label for="img4">&#10094;</label>
+      <label for="img2">&#10095;</label>
+    </div>
+  </div>
 
-    function openSideMenu() {
-      sideMenu.classList.add('open');
-      sideMenuOverlay.classList.add('active');
-      hamburger.setAttribute('aria-expanded', 'true');
-    }
+  <div class="lightbox" id="lightbox2">
+    <label for="close" class="lightbox-close"></label>
+    <label for="close" class="close-button" title="Close">&times;</label>
+    <img src="images/bg17.jpg" alt="Villa Image 2 Large">
+    <div class="nav">
+      <label for="img1">&#10094;</label>
+      <label for="img3">&#10095;</label>
+    </div>
+  </div>
 
-    hamburger.addEventListener('click', () => {
-      if (sideMenu.classList.contains('open')) {
-        closeSideMenu();
-      } else {
-        openSideMenu();
-      }
-    });
+  <div class="lightbox" id="lightbox3">
+    <label for="close" class="lightbox-close"></label>
+    <label for="close" class="close-button" title="Close">&times;</label>
+    <img src="images/bg3.jpg" alt="Villa Image 3 Large">
+    <div class="nav">
+      <label for="img2">&#10094;</label>
+      <label for="img4">&#10095;</label>
+    </div>
+  </div>
 
-    hamburger.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        hamburger.click();
-      }
-    });
+  <div class="lightbox" id="lightbox4">
+    <label for="close" class="lightbox-close"></label>
+    <label for="close" class="close-button" title="Close">&times;</label>
+    <img src="images/bg5.jpg" alt="Villa Image 4 Large">
+    <div class="nav">
+      <label for="img3">&#10094;</label>
+      <label for="img1">&#10095;</label>
+    </div>
+  </div>
+</header>
 
-    sideMenuOverlay.addEventListener('click', () => {
-      closeSideMenu();
-    });
+<!-- Villa Content -->
+<div class="villa-content">
+  <section class="villa-details">
+    <h2>Contemporary Villa</h2>
+    <p>
+      Expansive visuals emphasizing space, luxury, and harmony with the natural surroundings. The villa offers a seamless integration of indoor and outdoor spaces, designed with modern aesthetics and functional elegance.
+    </p>
+    <p>
+      Explore the open spaces, contemporary design elements, and unique architectural features that make this villa a statement of modern living.
+    </p>
+    <p>
+      Additional imagery showcasing the villa’s interiors, design highlights, and landscaping features...
+    </p>
+  </section>
+</div>
 
-    // Mobile dropdown toggles
-    const mobileDropdownToggles = sideMenu.querySelectorAll('.mobile-dropdown-toggle');
-
-    mobileDropdownToggles.forEach(toggle => {
-      toggle.addEventListener('click', e => {
-        e.preventDefault();
-        toggle.parentElement.classList.toggle('open');
-      });
-    });
-  </script>
+<!-- Footer -->
+<footer>
+  &copy; 2025 Archisign — Where architecture meets design.
+</footer>
 </body>
 </html>
