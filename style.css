@@ -1,3 +1,4 @@
+
 /* Reset and General Styles */
 * {
   margin: 0;
@@ -25,6 +26,81 @@ body {
 }
 body::-webkit-scrollbar {
   display: none;                /* Chrome, Safari, Opera */
+}
+/* Hide hamburger by default */
+.hamburger {
+  display: none;
+  font-size: 2.5rem;
+  color: #f3f3f3;
+  cursor: pointer;
+  padding-right: 30px;
+  user-select: none;
+}
+
+/* Mobile styles */
+@media (max-width: 600px) {
+  /* Hide the horizontal nav menu */
+  .navbar .nav-menu {
+    display: none;
+  }
+
+  /* Show hamburger */
+  .hamburger {
+    display: block;
+  }
+
+  /* Side menu styles */
+  .side-menu {
+    position: fixed;
+    top: 0;
+    left: -260px; /* Hidden offscreen */
+    width: 260px;
+    height: 100%;
+    background: rgba(32, 32, 48, 0.95);
+    box-shadow: 3px 0 12px rgba(0,0,0,0.7);
+    padding-top: 100px; /* space for navbar */
+    transition: left 0.3s ease;
+    z-index: 20;
+    overflow-y: auto;
+  }
+
+  /* When side menu is open */
+  .side-menu.open {
+    left: 0;
+  }
+
+  /* Side menu list */
+  .side-menu ul {
+    list-style: none;
+    padding-left: 0;
+  }
+
+  .side-menu li {
+    padding: 15px 25px;
+    border-bottom: 1px solid #444;
+  }
+
+  .side-menu li a {
+    color: #f3f3f3;
+    font-size: 1.2rem;
+    display: block;
+  }
+
+  .side-menu li a:hover {
+    background: #f9d784;
+    color: #23232c;
+    border-radius: 4px;
+  }
+
+  /* Dropdown inside side menu */
+  .side-menu li ul {
+    padding-left: 15px;
+    display: none;
+  }
+
+  .side-menu li.open > ul {
+    display: block;
+  }
 }
 
 /* Navbar Styles */
