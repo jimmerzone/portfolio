@@ -23,19 +23,29 @@
 <!-- Hero Section -->
 <header class="landing-section">
   <nav class="navbar" id="navbar">
+    <!-- Desktop Logo -->
     <div class="logo" id="logo">
       <img src="images/logos.png" alt="Archisign Logo" />
     </div>
-    <div
-      class="hamburger"
-      id="hamburger"
-      aria-label="Toggle menu"
-      role="button"
-      tabindex="0"
-      aria-expanded="false"
-    >
-      &#9776;
+
+    <!-- Mobile right container: logo + hamburger -->
+    <div class="mobile-right">
+      <div class="mobile-logo" id="mobileLogo" aria-label="Site logo" role="img">
+        <img src="images/logos.png" alt="Archisign Logo" />
+      </div>
+      <div
+        class="hamburger"
+        id="hamburger"
+        aria-label="Toggle menu"
+        role="button"
+        tabindex="0"
+        aria-expanded="false"
+      >
+        &#9776;
+      </div>
     </div>
+
+    <!-- Desktop nav menu -->
     <ul class="nav-menu">
       <li>
         <a href="#">Our Services</a>
@@ -199,19 +209,61 @@
     slides[currentIndex].classList.add("active");
   }, 5000);
 
-  // Logo scroll effect
-  const logo = document.getElementById("logo");
-  const navbar = document.getElementById("navbar");
+  // Navbar hide/show on scroll with logo shrink
+  (() => {
+    const navbar = document.getElementById("navbar");
+    const logo = document.getElementById("logo");
+    const mobileLogo = document.getElementById("mobileLogo");
 
-  window.addEventListener("scroll", () => {
-    if (window.scrollY > 50) {
-      logo.classList.add("logo-scrolled");
-      navbar.classList.add("navbar-scrolled");
-    } else {
-      logo.classList.remove("logo-scrolled");
-      navbar.classList.remove("navbar-scrolled");
+    let lastScrollTop = 0;
+    const delta = 5;
+    let ticking = false;
+
+    function onScroll() {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+      if (Math.abs(scrollTop - lastScrollTop) <= delta) {
+        ticking = false;
+        return;
+      }
+
+      if (scrollTop > lastScrollTop && scrollTop > 100) {
+        // Scroll down - hide navbar
+        navbar.classList.add("navbar-hidden");
+      } else {
+        // Scroll up - show navbar
+        navbar.classList.remove("navbar-hidden");
+      }
+
+      // Shrink logo only when navbar visible
+      if (!navbar.classList.contains("navbar-hidden")) {
+        if (scrollTop > 50) {
+          logo.classList.add("logo-scrolled");
+          navbar.classList.add("navbar-scrolled");
+          if (mobileLogo) mobileLogo.classList.add("logo-scrolled");
+        } else {
+          logo.classList.remove("logo-scrolled");
+          navbar.classList.remove("navbar-scrolled");
+          if (mobileLogo) mobileLogo.classList.remove("logo-scrolled");
+        }
+      } else {
+        // When navbar hidden, remove shrink classes
+        logo.classList.remove("logo-scrolled");
+        navbar.classList.remove("navbar-scrolled");
+        if (mobileLogo) mobileLogo.classList.remove("logo-scrolled");
+      }
+
+      lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+      ticking = false;
     }
-  });
+
+    window.addEventListener("scroll", () => {
+      if (!ticking) {
+        window.requestAnimationFrame(onScroll);
+        ticking = true;
+      }
+    });
+  })();
 </script>
 </body>
 </html>
