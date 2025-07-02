@@ -1,41 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <link rel="icon" href="images/favicon.png" type="image/x-icon" />
   <title>Archisign – Contemporary Villa Gallery</title>
   <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
     body {
       margin: 0;
-      font-family: sans-serif;
+      font-family: 'Montserrat', sans-serif;
       background-color: #111;
       color: #fff;
     }
 
+    /* Horizontal scroll gallery */
     .villa-gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
       gap: 20px;
-      padding: 40px;
+      padding: 40px 20px;
       max-width: 1200px;
       margin: 160px auto 40px;
     }
 
-    .thumbnail img {
-      width: 100%;
+    .villa-gallery::-webkit-scrollbar {
+      height: 8px;
+    }
+    .villa-gallery::-webkit-scrollbar-thumb {
+      background: rgba(249, 215, 132, 0.8);
+      border-radius: 4px;
+    }
+
+    .thumbnail {
+      flex: 0 0 auto;
+      scroll-snap-align: center;
       border-radius: 12px;
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
       cursor: pointer;
       transition: transform 0.3s ease;
+      width: 280px;
+      position: relative;
     }
 
-    .thumbnail img:hover {
+    .thumbnail img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      display: block;
+    }
+
+    .thumbnail:hover {
       transform: scale(1.05);
     }
 
+    /* Lightbox styles */
     .lightbox-toggle {
       display: none;
     }
@@ -49,8 +71,8 @@
       justify-content: center;
       align-items: center;
       z-index: 1000;
-      text-align: center;
       padding: 20px;
+      text-align: center;
     }
 
     .lightbox img {
@@ -89,6 +111,7 @@
       border-radius: 50%;
       padding: 5px 12px;
       transition: background 0.3s ease;
+      user-select: none;
     }
 
     .close-button:hover {
@@ -119,8 +142,48 @@
       transform: scale(1.2);
     }
 
-    footer {
-      margin-top: 100px;
+    /* Villa Content */
+    .villa-content {
+      max-width: 900px;
+      margin: 0 auto 80px;
+      padding: 0 20px;
+      color: #f3f3f3;
+      font-family: 'Montserrat', sans-serif;
+      line-height: 1.6;
+    }
+
+    .villa-content h2 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: #f9d784;
+      margin-bottom: 20px;
+      text-align: center;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+    }
+
+    .villa-content p {
+      font-size: 1.15rem;
+      margin-bottom: 20px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .villa-gallery {
+        margin-top: 120px;
+        padding: 20px 10px;
+      }
+
+      .villa-content h2 {
+        font-size: 2rem;
+      }
+
+      .villa-content p {
+        font-size: 1rem;
+      }
     }
   </style>
 </head>
@@ -154,25 +217,25 @@
   </nav>
 
   <!-- Lightbox Radio Buttons -->
-  <input type="radio" name="lightbox" id="img1" class="lightbox-toggle">
-  <input type="radio" name="lightbox" id="img2" class="lightbox-toggle">
-  <input type="radio" name="lightbox" id="img3" class="lightbox-toggle">
-  <input type="radio" name="lightbox" id="img4" class="lightbox-toggle">
-  <input type="radio" name="lightbox" id="close" class="lightbox-toggle" checked>
+  <input type="radio" name="lightbox" id="img1" class="lightbox-toggle" />
+  <input type="radio" name="lightbox" id="img2" class="lightbox-toggle" />
+  <input type="radio" name="lightbox" id="img3" class="lightbox-toggle" />
+  <input type="radio" name="lightbox" id="img4" class="lightbox-toggle" />
+  <input type="radio" name="lightbox" id="close" class="lightbox-toggle" checked />
 
   <!-- Thumbnail Gallery -->
   <div class="villa-gallery">
     <label for="img1" class="thumbnail">
-      <img src="images/bg1.jpg" alt="Villa Image 1">
+      <img src="images/bg1.jpg" alt="Villa Image 1" />
     </label>
     <label for="img2" class="thumbnail">
-      <img src="images/bg17.jpg" alt="Villa Image 2">
+      <img src="images/bg17.jpg" alt="Villa Image 2" />
     </label>
     <label for="img3" class="thumbnail">
-      <img src="images/bg3.jpg" alt="Villa Image 3">
+      <img src="images/bg3.jpg" alt="Villa Image 3" />
     </label>
     <label for="img4" class="thumbnail">
-      <img src="images/bg5.jpg" alt="Villa Image 4">
+      <img src="images/bg5.jpg" alt="Villa Image 4" />
     </label>
   </div>
 
@@ -180,7 +243,7 @@
   <div class="lightbox" id="lightbox1">
     <label for="close" class="lightbox-close"></label>
     <label for="close" class="close-button" title="Close">&times;</label>
-    <img src="images/bg1.jpg" alt="Villa Image 1 Large">
+    <img src="images/bg1.jpg" alt="Villa Image 1 Large" />
     <div class="nav">
       <label for="img4">&#10094;</label>
       <label for="img2">&#10095;</label>
@@ -190,7 +253,7 @@
   <div class="lightbox" id="lightbox2">
     <label for="close" class="lightbox-close"></label>
     <label for="close" class="close-button" title="Close">&times;</label>
-    <img src="images/bg17.jpg" alt="Villa Image 2 Large">
+    <img src="images/bg17.jpg" alt="Villa Image 2 Large" />
     <div class="nav">
       <label for="img1">&#10094;</label>
       <label for="img3">&#10095;</label>
@@ -200,7 +263,7 @@
   <div class="lightbox" id="lightbox3">
     <label for="close" class="lightbox-close"></label>
     <label for="close" class="close-button" title="Close">&times;</label>
-    <img src="images/bg3.jpg" alt="Villa Image 3 Large">
+    <img src="images/bg3.jpg" alt="Villa Image 3 Large" />
     <div class="nav">
       <label for="img2">&#10094;</label>
       <label for="img4">&#10095;</label>
@@ -210,7 +273,7 @@
   <div class="lightbox" id="lightbox4">
     <label for="close" class="lightbox-close"></label>
     <label for="close" class="close-button" title="Close">&times;</label>
-    <img src="images/bg5.jpg" alt="Villa Image 4 Large">
+    <img src="images/bg5.jpg" alt="Villa Image 4 Large" />
     <div class="nav">
       <label for="img3">&#10094;</label>
       <label for="img1">&#10095;</label>
