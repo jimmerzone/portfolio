@@ -1,4 +1,3 @@
-
 /* Reset and General Styles */
 * {
   margin: 0;
@@ -19,6 +18,7 @@ a {
   color: inherit;
   transition: color 0.3s ease;
 }
+
 /* Hide scrollbar */
 body {
   scrollbar-width: none;        /* Firefox */
@@ -27,7 +27,106 @@ body {
 body::-webkit-scrollbar {
   display: none;                /* Chrome, Safari, Opera */
 }
-/* Hide hamburger by default */
+
+/* Navbar Styles */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30px 60px 0 60px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: none;
+  z-index: 10;
+  transition: padding 0.3s ease, background 0.3s ease;
+}
+
+/* Shrink navbar padding and add background on scroll */
+.navbar.navbar-scrolled {
+  padding: 10px 60px;
+  background: rgba(32, 32, 48, 0.95);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+}
+
+/* Logo */
+.logo img {
+  height: 150px;
+  width: auto;
+  padding-left: 30px;
+  display: block;
+  transition: height 0.3s ease, transform 0.3s ease;
+}
+
+/* Shrink and move logo up on scroll */
+.logo.logo-scrolled img {
+  height: 80px;
+  transform: translateY(-15px);
+}
+
+/* Desktop nav menu */
+.nav-menu {
+  display: flex;
+  justify-content: flex-end;
+  gap: 30px;
+}
+
+.nav-menu li {
+  list-style: none;
+  position: relative;
+}
+
+.nav-menu a {
+  font-size: 1.2rem;
+  color: #f3f3f3;
+  padding: 12px 16px;
+  transition: background 0.3s ease;
+}
+
+.nav-menu a:hover {
+  background: #f9d784;
+  color: #23232c;
+  border-radius: 4px;
+}
+
+/* Dropdown menu */
+.dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: transparent;
+  min-width: 220px;
+  padding: 4px 0;
+}
+
+.nav-menu li:hover .dropdown {
+  display: block;
+}
+
+.dropdown li {
+  width: 100%;
+}
+
+.dropdown li a {
+  display: block;
+  width: 100%;
+  padding: 10px 18px;
+  font-size: 0.95rem;
+  color: #fff;
+  border-radius: 4px;
+  transition: background 0.3s ease, color 0.3s ease;
+  white-space: nowrap;
+  text-align: left;
+}
+
+.dropdown li a:hover {
+  background: #f9d784;
+  color: #23232c;
+}
+
+/* Hamburger */
 .hamburger {
   display: none;
   font-size: 2.5rem;
@@ -37,144 +136,55 @@ body::-webkit-scrollbar {
   user-select: none;
 }
 
-/* Mobile styles */
-@media (max-width: 600px) {
-  /* Hide the horizontal nav menu */
-  .navbar .nav-menu {
-    display: none;
-  }
-
-  /* Show hamburger */
-  .hamburger {
-    display: block;
-  }
-
-  /* Side menu styles */
-  .side-menu {
-    position: fixed;
-    top: 0;
-    left: -260px; /* Hidden offscreen */
-    width: 260px;
-    height: 100%;
-    background: rgba(32, 32, 48, 0.95);
-    box-shadow: 3px 0 12px rgba(0,0,0,0.7);
-    padding-top: 100px; /* space for navbar */
-    transition: left 0.3s ease;
-    z-index: 20;
-    overflow-y: auto;
-  }
-
-  /* When side menu is open */
-  .side-menu.open {
-    left: 0;
-  }
-
-  /* Side menu list */
-  .side-menu ul {
-    list-style: none;
-    padding-left: 0;
-  }
-
-  .side-menu li {
-    padding: 15px 25px;
-    border-bottom: 1px solid #444;
-  }
-
-  .side-menu li a {
-    color: #f3f3f3;
-    font-size: 1.2rem;
-    display: block;
-  }
-
-  .side-menu li a:hover {
-    background: #f9d784;
-    color: #23232c;
-    border-radius: 4px;
-  }
-
-  /* Dropdown inside side menu */
-  .side-menu li ul {
-    padding-left: 15px;
-    display: none;
-  }
-
-  .side-menu li.open > ul {
-    display: block;
-  }
-}
-
-/* Navbar Styles */
-.navbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;  /* Add this to push items apart */
-  padding: 30px 60px 0 60px;
+/* Side menu (mobile) */
+.side-menu {
   position: fixed;
   top: 0;
-  left: 0;
-  width: 100%;
-  background: none;
-  z-index: 10;
+  left: -260px;
+  width: 260px;
+  height: 100%;
+  background: rgba(32, 32, 48, 0.95);
+  box-shadow: 3px 0 12px rgba(0,0,0,0.7);
+  padding-top: 100px;
+  transition: left 0.3s ease;
+  z-index: 20;
+  overflow-y: auto;
 }
-.navbar .logo img {
-  height: 150px; /* Adjust height as needed */
-  width: auto;
-  padding-left: 30px; /* Keep padding if you want spacing */
+
+.side-menu.open {
+  left: 0;
+}
+
+.side-menu ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.side-menu li {
+  padding: 15px 25px;
+  border-bottom: 1px solid #444;
+}
+
+.side-menu li a {
+  color: #f3f3f3;
+  font-size: 1.2rem;
   display: block;
 }
-.navbar .nav-menu {
-  display: flex;
-  justify-content: flex-end;
-  gap: 30px;
-}
-.navbar .nav-menu li {
-  list-style: none;
-  position: relative;
-}
-.navbar .nav-menu a {
-  font-size: 1.2rem;
-  color: #f3f3f3;
-  padding: 12px 16px;
-  transition: background 0.3s ease;
-}
-.navbar .nav-menu a:hover {
+
+.side-menu li a:hover {
   background: #f9d784;
   color: #23232c;
   border-radius: 4px;
 }
-.navbar .dropdown {
+
+/* Dropdown inside side menu */
+.side-menu li ul {
+  padding-left: 15px;
   display: none;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background: transparent; /* No dropdown background box */
-  min-width: 220px;         /* Wider box to prevent text stacking */
-  padding: 4px 0;
 }
 
-.navbar .nav-menu li:hover .dropdown {
+.side-menu li.open > ul {
   display: block;
-}
-
-.navbar .dropdown li {
-  width: 100%;
-}
-
-.navbar .dropdown li a {
-  display: block;
-  width: 100%;
-  padding: 10px 18px;
-  font-size: 0.95rem;
-  color: #fff;
-  border-radius: 4px;
-  transition: background 0.3s ease, color 0.3s ease;
-  white-space: nowrap; /* Prevent wrapping of text */
-  text-align: left;
-}
-
-.navbar .dropdown li a:hover {
-  background: #f9d784;  /* Highlight box on hover */
-  color: #23232c;       /* Dark text when highlighted */
 }
 
 /* Background Slideshow */
@@ -216,21 +226,15 @@ body::-webkit-scrollbar {
   justify-content: center;
   text-align: center;
 }
-.landing-sections {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  padding-top: 140px;
-}
-.landing-section .hero-content h1 {
+
+.hero-content h1 {
   font-size: 3rem;
   font-weight: 700;
   color: #f9d784;
   margin-bottom: 20px;
 }
-.landing-section .hero-content p {
+
+.hero-content p {
   font-size: 1.3rem;
   color: #f3f3f3;
   font-weight: 400;
@@ -248,6 +252,7 @@ body::-webkit-scrollbar {
   margin-top: 60px;
   text-align: center;
 }
+
 .projects-title {
   font-size: 2.5rem;
   font-weight: 700;
@@ -255,12 +260,14 @@ body::-webkit-scrollbar {
   margin-bottom: 40px;
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
 }
+
 .project-cards {
   display: flex;
   justify-content: space-between;
   gap: 20px;
   flex-wrap: wrap;
 }
+
 .project-card {
   background: rgba(32, 32, 48, 0.85);
   border-radius: 12px;
@@ -271,10 +278,12 @@ body::-webkit-scrollbar {
   cursor: pointer;
   margin-bottom: 40px;
 }
+
 .project-card:hover {
   transform: translateY(-10px);
   box-shadow: 0 16px 50px rgba(0, 0, 0, 0.8);
 }
+
 .project-card img {
   width: 100%;
   height: 180px;
@@ -282,11 +291,13 @@ body::-webkit-scrollbar {
   border-radius: 8px;
   margin-bottom: 16px;
 }
+
 .project-card h3 {
   color: #f9d784;
   font-size: 1.8rem;
   margin-bottom: 10px;
 }
+
 .project-card p {
   color: #f3f3f3;
   font-size: 1rem;
@@ -300,12 +311,14 @@ body::-webkit-scrollbar {
   margin-top: 60px;
   border-radius: 12px;
 }
+
 .about-section h2 {
   font-size: 2.5rem;
   font-weight: 700;
   color: #f9d784;
   margin-bottom: 20px;
 }
+
 .about-section p {
   font-size: 1.2rem;
   color: #e0e0e0;
@@ -322,247 +335,34 @@ footer {
 }
 
 /* Responsive Styles */
-@media (max-width: 900px) {
-  .navbar .nav-menu {
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
+@media (max-width: 600px) {
+  /* Hide desktop nav menu */
+  .nav-menu {
+    display: none !important;
   }
 
-  .project-cards {
-    flex-direction: column;
-    align-items: center;
+  /* Hide desktop logo inside navbar */
+  .navbar .logo {
+    display: none;
   }
 
-  .project-card {
-    width: 80%;
-    margin-bottom: 30px;
+  /* Show hamburger */
+  .hamburger {
+    display: block;
   }
 
-  .landing-section .hero-content h1 {
-    font-size: 2.5rem;
-  }
-
-  .landing-section .hero-content p {
-    font-size: 1.1rem;
-  }
-
-  .about-section {
-    padding: 40px 20px;
+  /* Side menu */
+  .side-menu {
+    display: block;
   }
 }
-/* Villa Content Container */
-.villa-content {
-  max-width: 900px;
-  margin: 80px auto 60px;
-  padding: 0 20px;
-  background: rgba(32, 32, 48, 0.85);
-  border-radius: 12px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
-  color: #f3f3f3;
-  font-family: 'Montserrat', sans-serif;
-  line-height: 1.6;
-}
 
-/* Villa Details Section */
-.villa-details {
-  text-align: center;
-}
-
-.villa-details h2 {
-  font-size: 2.8rem;
-  font-weight: 700;
-  color: #f9d784;
-  margin-bottom: 30px;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
-}
-
-/* Villa Image */
-.villa-details img {
-  width: 100%;
-  max-height: 450px;
-  object-fit: cover;
-  border-radius: 12px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7);
-  margin-bottom: 30px;
-  transition: transform 0.3s ease;
-}
-
-.villa-details img:hover {
-  transform: scale(1.05);
-}
-
-/* Paragraphs */
-.villa-details p {
-  font-size: 1.15rem;
-  color: #e0e0e0;
-  margin-bottom: 20px;
-  max-width: 700px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* Villa Gallery Slider Container */
-.villa-gallery {
-  max-width: 900px;
-  margin: 40px auto 60px;
-  position: relative;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
-  background: rgba(32, 32, 48, 0.85);
-}
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 20px;
-  padding: 20px;
-}
-
-.gallery-grid img {
-  width: 100%;
-  height: auto;
-  border-radius: 12px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
-  transition: transform 0.3s ease;
-}
-
-.gallery-grid img:hover {
-  transform: scale(1.05);
-}
-
-/* Slider */
-.slider {
-  position: relative;
-  width: 100%;
-  height: 450px;
-}
-
-/* Slides container */
-.slides {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-
-/* Each slide image */
-.slides img {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 12px;
-  opacity: 0;
-  transition: opacity 0.6s ease;
-  top: 0;
-  left: 0;
-  z-index: 0;
-}
-
-/* Active slide */
-.slides img.active {
-  opacity: 1;
-  z-index: 1;
-}
-
-/* Navigation buttons */
-.prev,
-.next {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(249, 215, 132, 0.8);
-  border: none;
-  color: #23232c;
-  font-size: 2rem;
-  padding: 8px 14px;
-  cursor: pointer;
-  border-radius: 50%;
-  user-select: none;
-  transition: background 0.3s ease;
-  z-index: 2;
-}
-
-.prev:hover,
-.next:hover {
-  background: #f9d784;
-}
-
-.prev {
-  left: 15px;
-}
-
-.next {
-  right: 15px;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .villa-content {
-    margin: 60px 15px 40px;
-    padding: 20px;
+/* Hide side menu and hamburger on desktop */
+@media (min-width: 601px) {
+  .side-menu {
+    display: none !important;
   }
-
-  .villa-details h2 {
-    font-size: 2rem;
+  .hamburger {
+    display: none !important;
   }
-
-  .villa-details img {
-    max-height: 300px;
-  }
-
-  .villa-details p {
-    font-size: 1rem;
-  }
-
-  .slider {
-    height: 300px;
-  }
-
-  .prev,
-  .next {
-    font-size: 1.5rem;
-    padding: 6px 10px;
-  }
-}
-/* Key Offering Cards on Other Pages */
-.key-offerings {
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
-}
-.key-offerings li {
-  background: rgba(32, 32, 48, 0.85);
-  padding: 12px 20px;
-  border-radius: 8px;
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.6);
-  color: #f3f3f3;
-  transition: transform 0.3s ease;
-}
-.key-offerings li:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.8);
-}
-
-/* Hero and Slide Transitions */
-.hero-image {
-  position: relative;
-  width: 100%;
-  height: 500px;
-  overflow: hidden;
-}
-.hero-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.hero-image .overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
 }
