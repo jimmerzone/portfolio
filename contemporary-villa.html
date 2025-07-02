@@ -13,6 +13,23 @@
       font-family: 'Montserrat', sans-serif;
       background-color: #111;
       color: #fff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Ensure footer sticks to bottom */
+    main {
+      flex: 1 0 auto;
+    }
+
+    footer {
+      flex-shrink: 0;
+      background: #23232c;
+      color: #f3f3f3;
+      text-align: center;
+      padding: 20px 0;
+      margin-top: 40px;
     }
 
     /* Horizontal scroll gallery */
@@ -24,7 +41,7 @@
       gap: 20px;
       padding: 20px;
       max-width: 1200px;
-      margin: 0 auto 40px;
+      margin: 20px auto 40px;
     }
 
     .villa-gallery::-webkit-scrollbar {
@@ -151,7 +168,7 @@
       font-family: 'Montserrat', sans-serif;
       line-height: 1.6;
       text-align: center;
-      overflow-x: hidden; /* Prevent horizontal overflow */
+      overflow-x: hidden;
     }
 
     .villa-content h2 {
@@ -160,7 +177,7 @@
       color: #f9d784;
       margin-bottom: 20px;
       text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
-      word-break: break-word; /* Wrap long words if needed */
+      word-break: break-word;
     }
 
     .villa-content p {
