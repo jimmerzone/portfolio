@@ -83,10 +83,10 @@
     }
 
     /* Show lightbox if corresponding radio is checked */
-    #img1:checked ~ .lightbox#lightbox1,
-    #img2:checked ~ .lightbox#lightbox2,
-    #img3:checked ~ .lightbox#lightbox3,
-    #img4:checked ~ .lightbox#lightbox4 {
+    #img1:checked ~ #lightbox1,
+    #img2:checked ~ #lightbox2,
+    #img3:checked ~ #lightbox3,
+    #img4:checked ~ #lightbox4 {
       display: flex;
     }
 
@@ -151,6 +151,7 @@
       font-family: 'Montserrat', sans-serif;
       line-height: 1.6;
       text-align: center;
+      overflow-x: hidden; /* Prevent horizontal overflow */
     }
 
     .villa-content h2 {
@@ -159,6 +160,7 @@
       color: #f9d784;
       margin-bottom: 20px;
       text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+      word-break: break-word; /* Wrap long words if needed */
     }
 
     .villa-content p {
@@ -167,6 +169,7 @@
       max-width: 700px;
       margin-left: auto;
       margin-right: auto;
+      word-wrap: break-word;
     }
 
     /* Navbar Styles */
@@ -369,7 +372,6 @@
       <section class="villa-details">
         <h2>Contemporary Villa</h2>
 
-        <!-- Gallery placed here -->
         <div class="villa-gallery">
           <label for="img1" class="thumbnail">
             <img src="images/bg1.jpg" alt="Villa Image 1" />
