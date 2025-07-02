@@ -6,23 +6,16 @@
   <link rel="icon" href="images/favicon.png" type="image/x-icon" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet" />
   <style>
-    body {
-      margin: 0;
-      font-family: 'Montserrat', sans-serif;
-      background-color: #111;
-      color: #fff;
-    }
-
+    /* Gallery Grid */
     .project-gallery {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 20px;
-      padding: 40px;
+      padding: 40px 20px 60px;
       max-width: 1200px;
-      margin: 160px auto 40px;
+      margin: 140px auto 40px;
     }
 
     .thumbnail img {
@@ -37,6 +30,7 @@
       transform: scale(1.05);
     }
 
+    /* Lightbox */
     .lightbox-toggle {
       display: none;
     }
@@ -80,8 +74,10 @@
       background: rgba(0, 0, 0, 0.4);
       border-radius: 50%;
       padding: 5px 12px;
+      user-select: none;
     }
 
+    /* Navigation arrows inside lightbox */
     .nav {
       position: absolute;
       top: 50%;
@@ -98,12 +94,7 @@
       color: white;
       font-size: 3rem;
       padding: 0 1rem;
-    }
-
-    footer {
-      margin-top: 100px;
-      text-align: center;
-      padding: 20px;
+      user-select: none;
     }
 
     /* Lightbox visibility control */
@@ -113,19 +104,75 @@
     #img4:checked ~ #lightbox4 {
       display: flex;
     }
+
+    /* Project Content */
+    .project-content {
+      max-width: 900px;
+      margin: 0 auto 80px;
+      padding: 0 20px;
+      color: #f3f3f3;
+      font-family: 'Montserrat', sans-serif;
+      line-height: 1.6;
+    }
+
+    .project-content h2 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: #f9d784;
+      margin-bottom: 20px;
+      text-align: center;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+    }
+
+    .project-content p {
+      font-size: 1.15rem;
+      margin-bottom: 20px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .project-gallery {
+        margin-top: 120px;
+        padding: 20px;
+      }
+
+      .project-content h2 {
+        font-size: 2rem;
+      }
+
+      .project-content p {
+        font-size: 1rem;
+      }
+    }
   </style>
 </head>
 <body>
 
 <!-- Navigation -->
 <header class="landing-section">
-  <nav class="navbar">
-    <div class="logo">
+  <nav class="navbar" id="navbar">
+    <div class="logo" id="logo">
       <img src="images/logos.png" alt="Archisign Logo" />
+    </div>
+    <div class="mobile-right">
+      <div
+        class="hamburger"
+        id="hamburger"
+        aria-label="Toggle menu"
+        role="button"
+        tabindex="0"
+        aria-expanded="false"
+      >
+        &#9776;
+      </div>
     </div>
     <ul class="nav-menu">
       <li><a href="index.html">Home</a></li>
-      <li><a href="#">Our Services</a>
+      <li class="has-dropdown">
+        <a href="#">Our Services</a>
         <ul class="dropdown">
           <li><a href="residential-spaces.html">Residential Spaces</a></li>
           <li><a href="commercial-interiors.html">Commercial Interiors</a></li>
@@ -134,7 +181,8 @@
         </ul>
       </li>
       <li><a href="#">Pricing</a></li>
-      <li><a href="#">Projects</a>
+      <li class="has-dropdown">
+        <a href="#">Projects</a>
         <ul class="dropdown">
           <li><a href="urban-homes.html">Urban Homes</a></li>
           <li><a href="luxury-villas.html">Luxury Villas</a></li>
@@ -146,54 +194,91 @@
     </ul>
   </nav>
 
+  <!-- Mobile Side Menu -->
+  <nav class="side-menu" id="sideMenu" aria-label="Mobile menu">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li>
+        <a href="#" class="mobile-dropdown-toggle">Our Services</a>
+        <ul>
+          <li><a href="residential-spaces.html">Residential Spaces</a></li>
+          <li><a href="commercial-interiors.html">Commercial Interiors</a></li>
+          <li><a href="landscape-architecture.html">Landscape Architecture</a></li>
+          <li><a href="interior-styling.html">Interior Styling</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Pricing</a></li>
+      <li>
+        <a href="#" class="mobile-dropdown-toggle">Projects</a>
+        <ul>
+          <li><a href="urban-homes.html">Urban Homes</a></li>
+          <li><a href="luxury-villas.html">Luxury Villas</a></li>
+          <li><a href="corporate-spaces.html">Corporate Spaces</a></li>
+        </ul>
+      </li>
+      <li><a href="contact.html">Contact Us</a></li>
+      <li><a href="#about">About</a></li>
+    </ul>
+  </nav>
+
+  <div class="side-menu-overlay" id="sideMenuOverlay"></div>
+
   <!-- Lightbox Radio Inputs -->
-  <input type="radio" name="lightbox" id="img1" class="lightbox-toggle">
-  <input type="radio" name="lightbox" id="img2" class="lightbox-toggle">
-  <input type="radio" name="lightbox" id="img3" class="lightbox-toggle">
-  <input type="radio" name="lightbox" id="img4" class="lightbox-toggle">
-  <input type="radio" name="lightbox" id="close" class="lightbox-toggle" checked>
+  <input type="radio" name="lightbox" id="img1" class="lightbox-toggle" />
+  <input type="radio" name="lightbox" id="img2" class="lightbox-toggle" />
+  <input type="radio" name="lightbox" id="img3" class="lightbox-toggle" />
+  <input type="radio" name="lightbox" id="img4" class="lightbox-toggle" />
+  <input type="radio" name="lightbox" id="close" class="lightbox-toggle" checked />
 
   <!-- Gallery -->
   <div class="project-gallery">
-    <label for="img1" class="thumbnail"><img src="images/bg5.jpg" alt="Aparment Image 1"></label>
-    <label for="img2" class="thumbnail"><img src="images/bg6.jpg" alt="Aparment Image 2"></label>
-    <label for="img3" class="thumbnail"><img src="images/bg7.jpg" alt="Aparment Image 3"></label>
-    <label for="img4" class="thumbnail"><img src="images/bg8.jpg" alt="Aparment Image 4"></label>
+    <label for="img1" class="thumbnail"><img src="images/bg5.jpg" alt="Apartment Image 1" /></label>
+    <label for="img2" class="thumbnail"><img src="images/bg6.jpg" alt="Apartment Image 2" /></label>
+    <label for="img3" class="thumbnail"><img src="images/bg7.jpg" alt="Apartment Image 3" /></label>
+    <label for="img4" class="thumbnail"><img src="images/bg8.jpg" alt="Apartment Image 4" /></label>
   </div>
 
   <!-- Lightboxes -->
   <div class="lightbox" id="lightbox1">
     <label for="close" class="lightbox-close"></label>
     <label for="close" class="close-button" title="Close">&times;</label>
-    <img src="images/bg5.jpg" alt="Aparment Image 1 Large">
-    <div class="nav"><label for="img4">&#10094;</label><label for="img2">&#10095;</label></div>
+    <img src="images/bg5.jpg" alt="Apartment Image 1 Large" />
+    <div class="nav">
+      <label for="img4">&#10094;</label><label for="img2">&#10095;</label>
+    </div>
   </div>
 
   <div class="lightbox" id="lightbox2">
     <label for="close" class="lightbox-close"></label>
     <label for="close" class="close-button" title="Close">&times;</label>
-    <img src="images/bg6.jpg" alt="Aparment Image 2 Large">
-    <div class="nav"><label for="img1">&#10094;</label><label for="img3">&#10095;</label></div>
+    <img src="images/bg6.jpg" alt="Apartment Image 2 Large" />
+    <div class="nav">
+      <label for="img1">&#10094;</label><label for="img3">&#10095;</label>
+    </div>
   </div>
 
   <div class="lightbox" id="lightbox3">
     <label for="close" class="lightbox-close"></label>
     <label for="close" class="close-button" title="Close">&times;</label>
-    <img src="images/bg7.jpg" alt="Aparment Image 3 Large">
-    <div class="nav"><label for="img2">&#10094;</label><label for="img4">&#10095;</label></div>
+    <img src="images/bg7.jpg" alt="Apartment Image 3 Large" />
+    <div class="nav">
+      <label for="img2">&#10094;</label><label for="img4">&#10095;</label>
+    </div>
   </div>
 
   <div class="lightbox" id="lightbox4">
     <label for="close" class="lightbox-close"></label>
     <label for="close" class="close-button" title="Close">&times;</label>
-    <img src="images/bg8.jpg" alt="Aparment Image 4 Large">
-    <div class="nav"><label for="img3">&#10094;</label><label for="img1">&#10095;</label></div>
+    <img src="images/bg8.jpg" alt="Apartment Image 4 Large" />
+    <div class="nav">
+      <label for="img3">&#10094;</label><label for="img1">&#10095;</label>
+    </div>
   </div>
 </header>
 
-<!-- Content -->
+<!-- Project Content -->
 <div class="project-content">
-  <section class="project-details" style="max-width: 900px; margin: auto; padding: 20px;">
+  <section class="project-details">
     <h2>Urban Living</h2>
     <p>
       Discover the perfect blend of urban aesthetics and efficient design. This project is centered on functionality, comfort, and the elegance of minimalistic living in city environments.
@@ -211,6 +296,54 @@
 <footer>
   &copy; 2025 Archisign — Where architecture meets design.
 </footer>
+
+<script>
+  // Hamburger toggle for mobile menu
+  const hamburger = document.getElementById('hamburger');
+  const sideMenu = document.getElementById('sideMenu');
+  const sideMenuOverlay = document.getElementById('sideMenuOverlay');
+
+  function closeSideMenu() {
+    sideMenu.classList.remove('open');
+    sideMenuOverlay.classList.remove('active');
+    hamburger.setAttribute('aria-expanded', 'false');
+  }
+
+  function openSideMenu() {
+    sideMenu.classList.add('open');
+    sideMenuOverlay.classList.add('active');
+    hamburger.setAttribute('aria-expanded', 'true');
+  }
+
+  hamburger.addEventListener('click', () => {
+    if (sideMenu.classList.contains('open')) {
+      closeSideMenu();
+    } else {
+      openSideMenu();
+    }
+  });
+
+  hamburger.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      hamburger.click();
+    }
+  });
+
+  sideMenuOverlay.addEventListener('click', () => {
+    closeSideMenu();
+  });
+
+  // Mobile dropdown toggles
+  const mobileDropdownToggles = sideMenu.querySelectorAll('.mobile-dropdown-toggle');
+
+  mobileDropdownToggles.forEach(toggle => {
+    toggle.addEventListener('click', e => {
+      e.preventDefault();
+      toggle.parentElement.classList.toggle('open');
+    });
+  });
+</script>
 
 </body>
 </html>
