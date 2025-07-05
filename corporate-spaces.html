@@ -51,6 +51,18 @@
       text-decoration: none;
       padding: 10px;
       display: inline-block;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+
+    /* Dropdown arrow icon for menu items with dropdown */
+    /* Using class 'has-dropdown' for compatibility */
+    .nav-menu > li.has-dropdown > a::after {
+      content: " ▼"; /* Unicode downward arrow */
+      font-size: 0.6em;
+      margin-left: 6px;
+      color: #f5c518;
+      vertical-align: middle;
     }
 
     .dropdown {
@@ -64,9 +76,10 @@
       border-radius: 6px;
       z-index: 999;
       min-width: 180px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
     }
 
-    .nav-menu li:hover .dropdown {
+    .nav-menu li:hover > .dropdown {
       display: block;
     }
 
@@ -76,10 +89,15 @@
       color: #fff;
       text-decoration: none;
       white-space: nowrap;
+      transition: color 0.3s ease, background-color 0.3s ease;
+      cursor: pointer;
     }
 
-    .dropdown li a:hover {
-      background-color: #333;
+    /* Dropdown menu item hover - grand yellow */
+    .dropdown li a:hover,
+    .nav-menu li:hover > a {
+      color: #f5c518;
+      background-color: transparent; /* no background */
     }
 
     /* Hero Slideshow */
@@ -111,10 +129,13 @@
     .slide6 { background-image: url('images/cg7.jpg'); animation-delay: 15s; }
     .slide7 { background-image: url('images/cg9.jpg'); animation-delay: 18s; }
 
-    /* Crossfade animation for 7 slides */
+    /* Improved crossfade animation */
     @keyframes crossfade {
-      0%, 14.28% { opacity: 1; }
-      21.42%, 100% { opacity: 0; }
+      0%   { opacity: 0; }
+      7%   { opacity: 1; }
+      21%  { opacity: 1; }
+      28%  { opacity: 0; }
+      100% { opacity: 0; }
     }
 
     /* Hero Title Section */
@@ -144,6 +165,11 @@
       opacity: 0;
       animation: slideDownFadeIn 1.5s ease forwards;
       animation-delay: 0.5s;
+
+      /* Remove any background or border */
+      background: transparent !important;
+      border: none !important;
+      box-shadow: none !important;
     }
 
     @keyframes slideDownFadeIn {
@@ -202,7 +228,7 @@
     </div>
     <ul class="nav-menu">
       <li><a href="index.html">Home</a></li>
-      <li><a href="#">Our Services</a>
+      <li class="has-dropdown"><a href="#">Our Services</a>
         <ul class="dropdown">
           <li><a href="residential-spaces.html">Residential Spaces</a></li>
           <li><a href="commercial-interiors.html">Commercial Interiors</a></li>
@@ -211,7 +237,7 @@
         </ul>
       </li>
       <li><a href="#">Pricing</a></li>
-      <li><a href="#">Projects</a>
+      <li class="has-dropdown"><a href="#">Projects</a>
         <ul class="dropdown">
           <li><a href="urban-homes.html">Urban Homes</a></li>
           <li><a href="luxury-villas.html">Luxury Villas</a></li>
