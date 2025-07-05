@@ -1,132 +1,233 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="icon" href="images/favicon.png" type="image/x-icon" />
-  <title>Archisign – Contemporary Villa Gallery</title>
-  <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Corporate Spaces - Archisign</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet" />
   <style>
+    /* Base Styles */
     body {
       margin: 0;
       font-family: 'Montserrat', sans-serif;
       background-color: #111;
       color: #fff;
-      /* Ensure body takes full height for sticky footer if needed */
       display: flex;
       flex-direction: column;
       min-height: 100vh;
     }
 
-    /* Keep header fixed at top, allowing content to scroll below it */
-    header {
-      position: relative; /* Changed from fixed to relative to contain content below navbar */
-      width: 100%;
-      padding-top: 100px; /* Space for the fixed navbar */
-      /* No background on header itself for this page */
-    }
-
-    /* Navbar styles (consistent with main.css but adjusted for this page's context) */
+    /* Navbar */
     .navbar {
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      padding: 10px 60px; /* Reduced padding for more compact header */
-      position: fixed; /* Keep navbar fixed at top */
+      align-items: center;
+      padding: 20px 40px;
+      position: fixed;
       top: 0;
-      left: 0;
       width: 100%;
-      background: transparent !important; /* Add a solid background for readability? */
-      box-shadow: none !important;
-      z-index: 10; /* Ensure navbar is on top */
-      transition: all 0.3s ease; /* Smooth transitions for any changes */
+      background-color: rgba(0, 0, 0, 0.85);
+      z-index: 1000;
     }
 
     .logo img {
-      height: 80px; /* Smaller logo for consistent compact header */
-      width: auto;
-      padding-left: 0; /* No extra padding here */
-      display: block;
+      height: 40px;
     }
 
-    /* Mobile right container: hamburger and optional mobile logo */
-    .mobile-right {
-      display: none; /* Hidden by default, shown via media query */
-      align-items: center;
-      gap: 15px;
-      padding-right: 0; /* Remove extra padding here */
-    }
-
-    .hamburger {
-      font-size: 2.5rem;
-      color: #f3f3f3;
-      cursor: pointer;
-      user-select: none;
-      z-index: 25;
-    }
-
-    /* Desktop nav menu */
     .nav-menu {
+      list-style: none;
       display: flex;
-      justify-content: flex-end;
-      gap: 30px;
+      gap: 20px;
+      margin: 0;
+      padding: 0;
     }
 
     .nav-menu li {
-      list-style: none;
       position: relative;
     }
 
-    .nav-menu a {
-      font-size: 1.2rem;
-      color: #f3f3f3;
-      padding: 8px 12px;
-      transition: background 0.3s ease;
+    .nav-menu > li > a {
+      color: #fff;
+      text-decoration: none;
+      padding: 10px;
+      display: inline-block;
+      cursor: pointer;
+      transition: color 0.3s ease;
     }
 
-    .nav-menu a:hover {
-      background: #f9d784;
-      color: #23232c;
-      border-radius: 4px;
+    /* Dropdown arrow icon for desktop menu items with dropdown */
+    .nav-menu > li.has-dropdown > a::after {
+      content: " ▼";
+      font-size: 0.6em;
+      margin-left: 6px;
+      color: #f5c518;
+      vertical-align: middle;
     }
 
-    /* Dropdown menu (desktop) */
     .dropdown {
       display: none;
       position: absolute;
+      background-color: #222;
       top: 100%;
       left: 0;
-      background: rgba(32, 32, 48, 0.95); /* Solid background for dropdown */
-      min-width: 220px;
-      padding: 4px 0;
-      border-radius: 4px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
-      z-index: 11;
+      list-style: none;
+      padding: 10px 0;
+      border-radius: 6px;
+      z-index: 999;
+      min-width: 180px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
     }
 
-    .nav-menu li:hover .dropdown,
-    .nav-menu li.has-dropdown:hover > .dropdown {
+    .nav-menu li:hover > .dropdown {
       display: block;
     }
 
     .dropdown li a {
-      font-size: 0.95rem;
-      padding: 10px 18px;
+      display: block;
+      padding: 10px 20px;
+      color: #fff;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: color 0.3s ease, background-color 0.3s ease;
+      cursor: pointer;
     }
 
-    /* Side menu (mobile) */
+    /* Dropdown hover color */
+    .dropdown li a:hover,
+    .nav-menu li:hover > a {
+      color: #f5c518;
+      background-color: transparent;
+    }
+
+    /* Hero Slideshow */
+    .hero-slideshow {
+      position: relative;
+      height: 70vh;
+      overflow: hidden;
+      margin-top: 80px; /* offset fixed navbar */
+    }
+
+    .slide {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      animation: crossfade 21s infinite;
+      transition: opacity 1s ease-in-out;
+    }
+
+    /* Background images */
+    .slide1 { background-image: url('images/cg.jpg'); animation-delay: 0s; }
+    .slide2 { background-image: url('images/cg8.jpg'); animation-delay: 3s; }
+    .slide3 { background-image: url('images/cg12.jpg'); animation-delay: 6s; }
+    .slide4 { background-image: url('images/cg11.jpg'); animation-delay: 9s; }
+    .slide5 { background-image: url('images/cg6.jpg'); animation-delay: 12s; }
+    .slide6 { background-image: url('images/cg7.jpg'); animation-delay: 15s; }
+    .slide7 { background-image: url('images/cg9.jpg'); animation-delay: 18s; }
+
+    @keyframes crossfade {
+      0%   { opacity: 0; }
+      7%   { opacity: 1; }
+      21%  { opacity: 1; }
+      28%  { opacity: 0; }
+      100% { opacity: 0; }
+    }
+
+    /* Hero Title */
+    .hero-title {
+      max-width: 900px;
+      margin: 40px auto 20px;
+      text-align: center;
+      overflow: hidden;
+      height: 80px;
+      position: relative;
+    }
+
+    .hero-title h1 {
+      font-size: 3.5rem;
+      color: #f5c518;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      text-shadow:
+        0 0 10px #f5c518,
+        0 0 20px #f5c518,
+        0 0 30px #f5c518,
+        0 0 40px #ffdd55;
+      margin: 0;
+      position: relative;
+      top: -100px;
+      opacity: 0;
+      animation: slideDownFadeIn 1.5s ease forwards;
+      animation-delay: 0.5s;
+      background: transparent !important;
+      border: none !important;
+      box-shadow: none !important;
+    }
+
+    @keyframes slideDownFadeIn {
+      to {
+        top: 0;
+        opacity: 1;
+      }
+    }
+
+    /* Project Details */
+    .project-details {
+      max-width: 900px;
+      margin: 20px auto 60px;
+      padding: 20px;
+      line-height: 1.8;
+      font-size: 1.1rem;
+      color: #ddd;
+    }
+
+    .project-details ul {
+      padding-left: 20px;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      margin-top: auto;
+      background-color: #111;
+      font-size: 0.9rem;
+      color: #aaa;
+    }
+
+    /* Mobile Hamburger & Side Menu */
+    .mobile-right {
+      display: none;
+      align-items: center;
+      gap: 15px;
+      padding-right: 0;
+    }
+
+    .hamburger {
+      font-size: 2.5rem;
+      color: #f5c518;
+      cursor: pointer;
+      user-select: none;
+      z-index: 1100;
+    }
+
+    /* Side menu */
     .side-menu {
       position: fixed;
       top: 0;
       left: -260px;
       width: 260px;
       height: 100%;
-      background: rgba(32, 32, 48, 0.98); /* More opaque */
+      background: rgba(32, 32, 48, 0.98);
       box-shadow: 3px 0 12px rgba(0, 0, 0, 0.7);
-      padding-top: 80px; /* Space from top for mobile */
+      padding-top: 80px;
       transition: left 0.3s ease;
-      z-index: 30;
+      z-index: 1099;
       overflow-y: auto;
     }
 
@@ -134,6 +235,48 @@
       left: 0;
     }
 
+    .side-menu ul {
+      list-style: none;
+      padding: 0 20px;
+      margin: 0;
+    }
+
+    .side-menu ul li {
+      position: relative;
+      margin-bottom: 10px;
+    }
+
+    .side-menu ul li a {
+      color: #f5c518;
+      text-decoration: none;
+      font-weight: 600;
+      display: block;
+      padding: 10px 0;
+      cursor: pointer;
+    }
+
+    /* Dropdown arrow for mobile menu items */
+    .side-menu ul li.has-dropdown > a::after {
+      content: " ▼";
+      font-size: 0.8em;
+      margin-left: 6px;
+      color: #f5c518;
+      vertical-align: middle;
+      float: right;
+    }
+
+    /* Mobile dropdown submenu */
+    .side-menu ul li ul {
+      display: none;
+      padding-left: 15px;
+      margin-top: 5px;
+    }
+
+    .side-menu ul li.open > ul {
+      display: block;
+    }
+
+    /* Overlay */
     .side-menu-overlay {
       position: fixed;
       top: 0;
@@ -144,7 +287,7 @@
       opacity: 0;
       visibility: hidden;
       transition: opacity 0.3s ease;
-      z-index: 20;
+      z-index: 1098;
     }
 
     .side-menu-overlay.active {
@@ -152,252 +295,53 @@
       visibility: visible;
     }
 
-    /* Gallery styles (horizontal scroll) */
-    .project-gallery { /* Renamed from .villa-gallery to .project-gallery for consistency */
-      display: flex;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      -webkit-overflow-scrolling: touch;
-      gap: 20px;
-      padding: 20px; /* Adjust padding for mobile */
-      max-width: 1200px;
-      margin: 20px auto 40px; /* Reduced top margin to remove empty space */
-    }
-
-    .project-gallery::-webkit-scrollbar {
-      height: 8px;
-    }
-    .project-gallery::-webkit-scrollbar-thumb {
-      background: rgba(249, 215, 132, 0.8);
-      border-radius: 4px;
-    }
-
-    .thumbnail {
-      flex: 0 0 auto;
-      scroll-snap-align: center;
-      border-radius: 12px;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
-      cursor: pointer;
-      transition: transform 0.3s ease;
-      width: 280px; /* Fixed width for better mobile scrolling */
-      position: relative;
-    }
-
-    .thumbnail img {
-      width: 100%;
-      height: auto;
-      border-radius: 12px;
-      display: block;
-    }
-
-    .thumbnail:hover {
-      transform: scale(1.05);
-    }
-
-    /* Lightbox styles */
-    .lightbox-toggle {
-      display: none;
-    }
-
-    .lightbox {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100vw; height: 100vh;
-      background: rgba(15, 15, 15, 0.95);
-      display: none;
-      justify-content: center;
-      align-items: center;
-      z-index: 1000;
-      padding: 20px;
-      text-align: center;
-    }
-
-    .lightbox img {
-      max-width: 80%;
-      max-height: 80%;
-      border-radius: 12px;
-      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.8);
-    }
-
-    /* Show lightbox if corresponding radio is checked */
-    #img1:checked ~ #lightbox1,
-    #img2:checked ~ #lightbox2,
-    #img3:checked ~ #lightbox3,
-    #img4:checked ~ #lightbox4 {
-      display: flex;
-    }
-
-    .lightbox-close {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      cursor: default;
-    }
-
-    .close-button {
-      position: absolute;
-      top: 20px;
-      right: 30px;
-      font-size: 2rem;
-      color: #fff;
-      cursor: pointer;
-      z-index: 1100;
-      background: rgba(0, 0, 0, 0.4);
-      border-radius: 50%;
-      padding: 5px 12px;
-      transition: background 0.3s ease;
-      user-select: none;
-    }
-
-    .close-button:hover {
-      background: rgba(255, 255, 255, 0.1);
-    }
-
-    .nav {
-      position: absolute;
-      top: 50%;
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      transform: translateY(-50%);
-      pointer-events: none;
-    }
-
-    .nav label {
-      pointer-events: all;
-      cursor: pointer;
-      color: white;
-      font-size: 3rem;
-      padding: 0 1rem;
-      user-select: none;
-      transition: transform 0.2s;
-    }
-
-    .nav label:hover {
-      transform: scale(1.2);
-    }
-
-    /* Project Content */
-    .project-content { /* Renamed from .villa-content to .project-content for consistency */
-      max-width: 900px;
-      margin: 40px auto 40px; /* Reduced top margin to remove empty space */
-      padding: 0 20px;
-      padding-top: 0; /* remove extra padding if any */
-      color: #f3f3f3;
-      font-family: 'Montserrat', sans-serif;
-      line-height: 1.6;
-      text-align: center;
-      overflow-x: hidden; /* Prevents text overflow on mobile */
-    }
-
-    .project-content h2 {
-      font-size: 2rem;
-      font-weight: 700;
-      color: #bfa14a;
-      margin-bottom: 30px;
-      margin-top: 120px;
-      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
-      word-break: break-word; /* Ensure long words wrap */
-    }
-
-    .project-content p {
-      font-size: 1.15rem;
-      margin-bottom: 20px;
-      max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
-      word-wrap: break-word;
-    }
-
-    /* Footer */
-    footer {
-      text-align: center;
-      padding: 20px 0;
-      background: #23232c;
-      color: #f3f3f3;
-      margin-top: auto; /* Push footer to the bottom */
-    }
-
-    /* Responsive adjustments */
-    @media (max-width: 600px) {
-      .navbar {
-        padding: 10px 20px; /* Adjust padding for mobile navbar */
-      }
-      .logo img {
-        height: 60px; /* Smaller logo on mobile */
-      }
+    /* Responsive */
+    @media (max-width: 768px) {
       .nav-menu {
-        display: none; /* Hide desktop menu */
+        display: none;
       }
       .mobile-right {
-        display: flex; /* Show mobile elements */
-        padding-right: 0;
+        display: flex;
       }
-      .hamburger {
-        display: block; /* Show hamburger */
-        font-size: 2rem; /* Smaller hamburger */
+      .hero-title h1 {
+        font-size: 2.2rem;
+        line-height: 1.1;
+        height: auto;
+        top: 0;
+        opacity: 1;
+        animation: none;
+        padding: 0 10px;
       }
-      .side-menu {
-        padding-top: 60px; /* Adjust for smaller mobile header */
+      .hero-title {
+        height: auto;
+        margin: 30px 10px 20px;
       }
-      .project-gallery {
-        padding: 10px; /* Less padding on mobile gallery */
-        margin: 20px auto; /* Adjust margin */
-      }
-      .thumbnail {
-        width: 250px; /* Slightly smaller thumbnails on mobile */
-      }
-      .project-content {
-        margin: 20px auto;
-        padding: 0 15px; /* Add horizontal padding for text */
-      }
-      .project-content h2 {
-        font-size: 2rem; /* Smaller title on mobile */
-        margin-top: 100px; /* slightly less on mobile */
-      }
-      .project-content p {
-        font-size: 1rem; /* Smaller text on mobile */
+      .navbar {
+        padding: 15px 20px;
       }
     }
 
-    /* Hide mobile specific elements on desktop */
-    @media (min-width: 601px) {
-      .mobile-right {
-        display: none !important;
-      }
-      .hamburger {
-        display: none !important;
-      }
-      .side-menu, .side-menu-overlay {
+    @media (min-width: 769px) {
+      .side-menu,
+      .side-menu-overlay {
         display: none !important;
       }
     }
   </style>
 </head>
 <body>
-  <!-- Fixed Navbar, will scroll with page content -->
-  <nav class="navbar" id="navbar">
-    <div class="logo" id="logo">
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="logo">
       <img src="images/logos.png" alt="Archisign Logo" />
     </div>
     <div class="mobile-right">
-      <div
-        class="hamburger"
-        id="hamburger"
-        aria-label="Toggle menu"
-        role="button"
-        tabindex="0"
-        aria-expanded="false"
-      >
-        &#9776;
-      </div>
+      <div id="hamburger" class="hamburger" aria-label="Toggle menu" role="button" tabindex="0" aria-expanded="false">&#9776;</div>
     </div>
     <ul class="nav-menu">
       <li><a href="index.html">Home</a></li>
-      <li class="has-dropdown">
-        <a href="#">Our Services</a>
+      <li class="has-dropdown"><a href="#">Our Services</a>
         <ul class="dropdown">
           <li><a href="residential-spaces.html">Residential Spaces</a></li>
           <li><a href="commercial-interiors.html">Commercial Interiors</a></li>
@@ -406,24 +350,23 @@
         </ul>
       </li>
       <li><a href="#">Pricing</a></li>
-      <li class="has-dropdown">
-        <a href="#">Projects</a>
+      <li class="has-dropdown"><a href="#">Projects</a>
         <ul class="dropdown">
           <li><a href="urban-homes.html">Urban Homes</a></li>
           <li><a href="luxury-villas.html">Luxury Villas</a></li>
           <li><a href="corporate-spaces.html">Corporate Spaces</a></li>
         </ul>
       </li>
-      <li><a href="contact.html">Contact Us</a></li>
+      <li><a href="#">Contact</a></li>
       <li><a href="#about">About</a></li>
     </ul>
-  </nav>
+  </header>
 
   <!-- Mobile Side Menu -->
   <nav class="side-menu" id="sideMenu" aria-label="Mobile menu">
     <ul>
       <li><a href="index.html">Home</a></li>
-      <li>
+      <li class="has-dropdown">
         <a href="#" class="mobile-dropdown-toggle">Our Services</a>
         <ul>
           <li><a href="residential-spaces.html">Residential Spaces</a></li>
@@ -433,7 +376,7 @@
         </ul>
       </li>
       <li><a href="#">Pricing</a></li>
-      <li>
+      <li class="has-dropdown">
         <a href="#" class="mobile-dropdown-toggle">Projects</a>
         <ul>
           <li><a href="urban-homes.html">Urban Homes</a></li>
@@ -441,130 +384,54 @@
           <li><a href="corporate-spaces.html">Corporate Spaces</a></li>
         </ul>
       </li>
-      <li><a href="contact.html">Contact Us</a></li>
+      <li><a href="#">Contact</a></li>
       <li><a href="#about">About</a></li>
     </ul>
   </nav>
 
   <div class="side-menu-overlay" id="sideMenuOverlay"></div>
 
-  <!-- Main content area -->
-  <main>
-    <!-- Lightbox Radio Inputs (must be near lightboxes for CSS sibling selector) -->
-    <input type="radio" name="lightbox" id="img1" class="lightbox-toggle" />
-    <input type="radio" name="lightbox" id="img2" class="lightbox-toggle" />
-    <input type="radio" name="lightbox" id="img3" class="lightbox-toggle" />
-    <input type="radio" name="lightbox" id="img4" class="lightbox-toggle" />
-    <input type="radio" name="lightbox" id="close" class="lightbox-toggle" checked />
+  <!-- Hero Slideshow -->
+  <section class="hero-slideshow">
+    <div class="slide slide1"></div>
+    <div class="slide slide2"></div>
+    <div class="slide slide3"></div>
+    <div class="slide slide4"></div>
+    <div class="slide slide5"></div>
+    <div class="slide slide6"></div>
+    <div class="slide slide7"></div>
+  </section>
 
-    <!-- Project Content (title and description) -->
-    <div class="project-content">
-      <section class="project-details">
-        <h2>Contemporary Villa</h2>
-        <!-- Gallery is here -->
-        <div class="project-gallery">
-          <label for="img1" class="thumbnail">
-            <img src="images/vg.jpg" alt="Villa Image 1" />
-          </label>
-          <label for="img2" class="thumbnail">
-            <img src="images/bg17.jpg" alt="Villa Image 2" />
-          </label>
-          <label for="img3" class="thumbnail">
-            <img src="images/vg2.jpg" alt="Villa Image 3" />
-          </label>
-          <label for="img4" class="thumbnail">
-            <img src="images/vg1.jpg" alt="Villa Image 4" />
-          </label>
-          <label for="img5" class="thumbnail">
-            <img src="images/ag.jpg" alt="Villa Image 5" />
-          </label>
-          <label for="img6" class="thumbnail">
-            <img src="images/ag8.jpg" alt="Villa Image 4" />
-          </label>
-          <label for="img7" class="thumbnail">
-            <img src="images/ag3.jpg" alt="Villa Image 4" />
-          </label>
-        </div>
+  <!-- Title sliding down below slideshow -->
+  <section class="hero-title">
+    <h1>Corporate Spaces</h1>
+  </section>
 
-        <p>
-          Expansive visuals emphasizing space, luxury, and harmony with the natural surroundings. The villa offers a seamless integration of indoor and outdoor spaces, designed with modern aesthetics and functional elegance.
-        </p>
-        <p>
-          Explore the open spaces, contemporary design elements, and unique architectural features that make this villa a statement of modern living.
-        </p>
-        <p>
-          Additional imagery showcasing the villa’s interiors, design highlights, and landscaping features...
-        </p>
-      </section>
-    </div>
-
-    <!-- Lightboxes (must be close to lightbox-toggles for CSS sibling selector) -->
-    <div class="lightbox" id="lightbox1">
-      <label for="close" class="lightbox-close"></label>
-      <label for="close" class="close-button" title="Close">&times;</label>
-      <img src="images/vg.jpg" alt="Villa Image 1 Large" />
-      <div class="nav">
-        <label for="img4">&#10094;</label><label for="img2">&#10095;</label>
-      </div>
-    </div>
-
-    <div class="lightbox" id="lightbox2">
-      <label for="close" class="lightbox-close"></label>
-      <label for="close" class="close-button" title="Close">&times;</label>
-      <img src="images/bg17.jpg" alt="Villa Image 2 Large" />
-      <div class="nav">
-        <label for="img1">&#10094;</label><label for="img3">&#10095;</label>
-      </div>
-    </div>
-
-    <div class="lightbox" id="lightbox3">
-      <label for="close" class="lightbox-close"></label>
-      <label for="close" class="close-button" title="Close">&times;</label>
-      <img src="images/vg2.jpg" alt="Villa Image 3 Large" />
-      <div class="nav">
-        <label for="img2">&#10094;</label><label for="img4">&#10095;</label>
-      </div>
-    </div>
-
-    <div class="lightbox" id="lightbox4">
-      <label for="close" class="lightbox-close"></label>
-      <label for="close" class="close-button" title="Close">&times;</label>
-      <img src="images/vg1.jpg" alt="Villa Image 4 Large" />
-      <div class="nav">
-        <label for="img3">&#10094;</label><label for="img1">&#10095;</label>
-      </div>
-
-      <div class="lightbox" id="lightbox5">
-      <label for="close" class="lightbox-close"></label>
-      <label for="close" class="close-button" title="Close">&times;</label>
-      <img src="images/ag.jpg" alt="Villa Image 5 Large" />
-      <div class="nav">
-
-        <div class="lightbox" id="lightbox6">
-      <label for="close" class="lightbox-close"></label>
-      <label for="close" class="close-button" title="Close">&times;</label>
-      <img src="images/ag8.jpg" alt="Villa Image 6 Large" />
-      <div class="nav">
-        <label for="img3">&#10094;</label><label for="img1">&#10095;</label>
-      </div>
-
-          <div class="lightbox" id="lightbox7">
-      <label for="close" class="lightbox-close"></label>
-      <label for="close" class="close-button" title="Close">&times;</label>
-      <img src="images/ag3.jpg" alt="Villa Image 7 Large" />
-      <div class="nav">
-        <label for="img3">&#10094;</label><label for="img1">&#10095;</label>
-      </div>
-    </div>
-  </main>
+  <!-- Content -->
+  <section class="project-details">
+    <p>
+      Our Corporate Spaces are designed to create environments that encourage collaboration, enhance productivity, and reflect the values of the company. We work closely with clients to understand their brand, culture, and goals, ensuring the workspace supports their mission.
+    </p>
+    <p>
+      From high-tech offices to conference rooms, break areas, and open-plan workspaces, we focus on integrating modern design with practical solutions for everyday work.
+    </p>
+    <p>Corporate Spaces services include:</p>
+    <ul>
+      <li>Office Interior Design</li>
+      <li>Workspace Planning</li>
+      <li>Corporate Branding</li>
+      <li>Flexible Workspaces</li>
+      <li>Executive & Conference Rooms</li>
+    </ul>
+  </section>
 
   <!-- Footer -->
   <footer>
-    &copy; 2025 Archisign — Where architecture meets design.
+    &copy; 2025 Archisign — Designing workplaces that work.
   </footer>
 
   <script>
-    // Hamburger toggle for mobile menu
+    // Mobile menu toggle
     const hamburger = document.getElementById('hamburger');
     const sideMenu = document.getElementById('sideMenu');
     const sideMenuOverlay = document.getElementById('sideMenuOverlay');
@@ -596,9 +463,7 @@
       }
     });
 
-    sideMenuOverlay.addEventListener('click', () => {
-      closeSideMenu();
-    });
+    sideMenuOverlay.addEventListener('click', closeSideMenu);
 
     // Mobile dropdown toggles
     const mobileDropdownToggles = sideMenu.querySelectorAll('.mobile-dropdown-toggle');
@@ -606,7 +471,8 @@
     mobileDropdownToggles.forEach(toggle => {
       toggle.addEventListener('click', e => {
         e.preventDefault();
-        toggle.parentElement.classList.toggle('open');
+        const parentLi = toggle.parentElement;
+        parentLi.classList.toggle('open');
       });
     });
   </script>
