@@ -206,24 +206,24 @@
       color: #aaa;
     }
 
-    /* Mobile Hamburger & Side Menu */
+    /* Mobile Hamburger */
     .mobile-right {
-      display: none; /* hidden on desktop */
+      display: none;
     }
 
     .hamburger {
       font-size: 2.5rem;
-      color: #fff; /* White hamburger */
+      color: #fff; /* white hamburger */
       cursor: pointer;
       user-select: none;
       z-index: 1600;
     }
 
-    /* Side menu */
+    /* Side Menu */
     .side-menu {
       position: fixed;
       top: 0;
-      left: -260px; /* hidden off screen */
+      left: -260px; /* hidden offscreen */
       width: 260px;
       height: 100vh;
       background: rgba(15, 15, 15, 0.95);
@@ -259,7 +259,7 @@
       visibility: visible;
     }
 
-    /* Menu List */
+    /* Side menu list */
     .side-menu ul {
       list-style: none;
       padding: 0;
@@ -267,15 +267,13 @@
       flex-grow: 1;
     }
 
-    /* Menu Items */
     .side-menu ul li {
       margin-bottom: 20px;
       position: relative;
     }
 
-    /* Menu Links */
     .side-menu ul li > a {
-      color: #fff; /* White text on mobile menu */
+      color: #fff;
       font-size: 1.3rem;
       font-weight: 700;
       text-decoration: none;
@@ -296,7 +294,6 @@
       outline: none;
     }
 
-    /* Dropdown arrow */
     .side-menu ul li.has-dropdown > a::after {
       content: "▸";
       margin-left: auto;
@@ -309,7 +306,6 @@
       transform: rotate(90deg);
     }
 
-    /* Submenu */
     .side-menu ul li ul {
       max-height: 0;
       overflow: hidden;
@@ -320,10 +316,9 @@
     }
 
     .side-menu ul li.open > ul {
-      max-height: 500px; /* enough to show all submenu items */
+      max-height: 500px;
     }
 
-    /* Submenu links */
     .side-menu ul li ul li > a {
       font-weight: 500;
       font-size: 1.1rem;
