@@ -33,6 +33,7 @@
 
     .logo {
       flex-shrink: 0;
+      margin-right: auto;
     }
 
     .logo img {
@@ -205,36 +206,43 @@
       color: #aaa;
     }
 
-    /* Stunning Mobile Side Menu */
+    /* Mobile Hamburger & Side Menu */
+    .mobile-right {
+      display: none; /* Hidden on desktop */
+    }
+
+    .hamburger {
+      font-size: 2.5rem;
+      color: #fff; /* White hamburger */
+      cursor: pointer;
+      user-select: none;
+      z-index: 1600;
+    }
+
+    /* Side menu */
     .side-menu {
       position: fixed;
       top: 0;
       left: -260px; /* hidden off screen */
       width: 260px;
       height: 100vh;
-      background: rgba(15, 15, 15, 0.85);
+      background: rgba(15, 15, 15, 0.95);
       backdrop-filter: blur(12px);
       box-shadow: 4px 0 30px rgba(245, 197, 24, 0.7);
       padding: 60px 30px 30px 30px;
       transition: left 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-      z-index: 1600;
+      z-index: 1500;
       display: flex;
       flex-direction: column;
       overflow-y: auto;
       font-family: 'Montserrat', sans-serif;
     }
 
-    /* Partially visible state on mobile */
-    .side-menu.partially-visible {
-      left: -60px; /* only 60px hidden, 200px visible */
-    }
-
-    /* Fully open state */
     .side-menu.open {
       left: 0;
     }
 
-    /* Overlay hidden when partially visible */
+    /* Overlay */
     .side-menu-overlay {
       position: fixed;
       inset: 0;
@@ -243,32 +251,12 @@
       opacity: 0;
       visibility: hidden;
       transition: opacity 0.35s ease;
-      z-index: 1500;
+      z-index: 1400;
     }
 
     .side-menu-overlay.active {
       opacity: 1;
       visibility: visible;
-    }
-
-    /* Close Button */
-    .side-menu-close {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      font-size: 2.5rem;
-      color: #f5c518;
-      cursor: pointer;
-      user-select: none;
-      transition: color 0.3s ease;
-      background: transparent;
-      border: none;
-    }
-
-    .side-menu-close:hover,
-    .side-menu-close:focus {
-      color: #fff;
-      outline: none;
     }
 
     /* Menu List */
@@ -287,7 +275,7 @@
 
     /* Menu Links */
     .side-menu ul li > a {
-      color: #f5c518;
+      color: #fff; /* White text on mobile menu */
       font-size: 1.3rem;
       font-weight: 700;
       text-decoration: none;
@@ -332,14 +320,14 @@
     }
 
     .side-menu ul li.open > ul {
-      max-height: 500px; /* enough to show all submenu items */
+      max-height: 500px;
     }
 
     /* Submenu links */
     .side-menu ul li ul li > a {
       font-weight: 500;
       font-size: 1.1rem;
-      color: #f5c518;
+      color: #fff;
       padding: 8px 15px;
       border-radius: 6px;
     }
@@ -357,20 +345,7 @@
         display: none;
       }
       .mobile-right {
-        display: none; /* Hide hamburger on mobile */
-      }
-      /* Show side menu partially visible on mobile */
-      .side-menu {
-        left: -60px;
-      }
-      .side-menu.partially-visible {
-        left: -60px;
-      }
-      .side-menu.open {
-        left: 0;
-      }
-      .side-menu-overlay {
-        display: none !important; /* Hide overlay when partially visible */
+        display: flex;
       }
       .hero-title h1 {
         font-size: 2.2rem;
@@ -395,9 +370,6 @@
       .side-menu-overlay {
         display: none !important;
       }
-      .mobile-right {
-        display: flex;
-      }
     }
   </style>
 </head>
@@ -406,8 +378,7 @@
   <!-- Navbar -->
   <header class="navbar">
     <div class="mobile-right">
-      <!-- Hamburger hidden on mobile per requirements -->
-      <!-- Left empty or remove hamburger if you want -->
+      <div id="hamburger" class="hamburger" aria-label="Toggle menu" role="button" tabindex="0" aria-expanded="false">&#9776;</div>
     </div>
     <div class="logo">
       <img src="images/logos.png" alt="Archisign Logo" />
@@ -436,8 +407,7 @@
   </header>
 
   <!-- Mobile Side Menu -->
-  <nav class="side-menu partially-visible" id="sideMenu" aria-label="Mobile menu" tabindex="-1">
-    <button class="side-menu-close" id="sideMenuClose" aria-label="Close menu">&times;</button>
+  <nav class="side-menu" id="sideMenu" aria-label="Mobile menu" tabindex="-1">
     <ul>
       <li><a href="index.html">Home</a></li>
       <li class="has-dropdown">
@@ -505,24 +475,43 @@
   </footer>
 
   <script>
+    const hamburger = document.getElementById('hamburger');
     const sideMenu = document.getElementById('sideMenu');
-    const sideMenuClose = document.getElementById('sideMenuClose');
+    const sideMenuOverlay = document.getElementById('sideMenuOverlay');
     const dropdownToggles = sideMenu.querySelectorAll('.mobile-dropdown-toggle');
 
-    // Close button toggles full open/close
-    sideMenuClose.addEventListener('click', () => {
+    function openMenu() {
+      sideMenu.classList.add('open');
+      sideMenuOverlay.classList.add('active');
+      sideMenu.setAttribute('tabindex', '0');
+      sideMenu.focus();
+      hamburger.setAttribute('aria-expanded', 'true');
+    }
+
+    function closeMenu() {
+      sideMenu.classList.remove('open');
+      sideMenuOverlay.classList.remove('active');
+      sideMenu.setAttribute('tabindex', '-1');
+      hamburger.setAttribute('aria-expanded', 'false');
+    }
+
+    hamburger.addEventListener('click', () => {
       if (sideMenu.classList.contains('open')) {
-        // Close fully: revert to partially visible
-        sideMenu.classList.remove('open');
-        sideMenu.classList.add('partially-visible');
+        closeMenu();
       } else {
-        // Open fully: slide fully in
-        sideMenu.classList.add('open');
-        sideMenu.classList.remove('partially-visible');
+        openMenu();
       }
     });
 
-    // Dropdown toggles
+    hamburger.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        hamburger.click();
+      }
+    });
+
+    sideMenuOverlay.addEventListener('click', closeMenu);
+
     dropdownToggles.forEach(toggle => {
       toggle.addEventListener('click', e => {
         e.preventDefault();
@@ -542,26 +531,12 @@
       });
     });
 
-    // Optional: close menu on Escape key
     document.addEventListener('keydown', e => {
       if (e.key === 'Escape' && sideMenu.classList.contains('open')) {
-        sideMenu.classList.remove('open');
-        sideMenu.classList.add('partially-visible');
+        closeMenu();
+        hamburger.focus();
       }
     });
-
-    // On window resize, ensure side menu is partially visible on mobile
-    function handleResize() {
-      if (window.innerWidth <= 768) {
-        if (!sideMenu.classList.contains('open')) {
-          sideMenu.classList.add('partially-visible');
-        }
-      } else {
-        sideMenu.classList.remove('open', 'partially-visible');
-      }
-    }
-    window.addEventListener('resize', handleResize);
-    window.addEventListener('load', handleResize);
   </script>
 </body>
 </html>
