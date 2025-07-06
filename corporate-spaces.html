@@ -35,6 +35,7 @@
       height: 40px;
     }
 
+    /* Desktop nav menu */
     .nav-menu {
       list-style: none;
       display: flex;
@@ -208,6 +209,25 @@
       padding-right: 0;
     }
 
+    /* Hamburger on left for mobile */
+    .navbar.mobile-left {
+      justify-content: flex-start;
+      padding-left: 20px;
+    }
+    .navbar.mobile-left .logo {
+      margin-left: 40px; /* Push logo right to compensate */
+    }
+    .navbar.mobile-left .mobile-right {
+      order: 0;
+      margin-right: 10px;
+    }
+    .navbar.mobile-left .logo {
+      order: 1;
+    }
+    .navbar.mobile-left .nav-menu {
+      display: none;
+    }
+
     .hamburger {
       font-size: 2.5rem;
       color: #f5c518;
@@ -319,6 +339,19 @@
       .navbar {
         padding: 15px 20px;
       }
+      /* Apply mobile-left class styles */
+      .navbar {
+        justify-content: flex-start;
+        padding-left: 20px;
+      }
+      .navbar .logo {
+        margin-left: 40px;
+        order: 1;
+      }
+      .navbar .mobile-right {
+        order: 0;
+        margin-right: 10px;
+      }
     }
 
     @media (min-width: 769px) {
@@ -332,12 +365,12 @@
 <body>
 
   <!-- Navbar -->
-  <header class="navbar">
-    <div class="logo">
-      <img src="images/logos.png" alt="Archisign Logo" />
-    </div>
+  <header class="navbar mobile-left">
     <div class="mobile-right">
       <div id="hamburger" class="hamburger" aria-label="Toggle menu" role="button" tabindex="0" aria-expanded="false">&#9776;</div>
+    </div>
+    <div class="logo">
+      <img src="images/logos.png" alt="Archisign Logo" />
     </div>
     <ul class="nav-menu">
       <li><a href="index.html">Home</a></li>
