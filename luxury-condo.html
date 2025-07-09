@@ -6,8 +6,7 @@
   <title>Luxury Condo - Archisign</title>
   <link rel="icon" href="images/favicon.png" type="image/x-icon" />
   <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet" />
   <style>
     body {
       margin: 0;
@@ -16,32 +15,91 @@
       color: #f2f2f2;
     }
 
-    .hamburger {
+    /* Navbar Styles */
+    .navbar {
+      position: relative;
+      background: #121212;
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 1000;
+    }
+
+    .logo img {
+      height: 40px;
+    }
+
+    .nav-menu {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-menu li {
+      position: relative;
+    }
+
+    .nav-menu li a {
+      color: #f2f2f2;
+      text-decoration: none;
+      font-size: 1rem;
+    }
+
+    .nav-menu li:hover > ul {
+      display: block;
+    }
+
+    .dropdown {
       display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: #1c1c1c;
+      padding: 0.5rem 0;
+      list-style: none;
+      min-width: 180px;
+      z-index: 1000;
+    }
+
+    .dropdown li {
+      padding: 0.5rem 1rem;
+    }
+
+    .dropdown li a {
+      color: #f2f2f2;
+      text-decoration: none;
+      font-size: 0.95rem;
+    }
+
+    /* Mobile Nav */
+    .mobile-right {
+      display: none;
+      align-items: center;
+      position: absolute;
+      left: 1rem;
+      top: 1.2rem;
+      z-index: 10001;
+    }
+
+    .hamburger {
       font-size: 2rem;
       cursor: pointer;
-      z-index: 10001;
+      display: none;
     }
 
     .mobile-logo img {
       height: 36px;
     }
 
-    .mobile-right {
-      display: none;
-      align-items: center;
-      gap: 1rem;
-      position: absolute;
-      right: 1.5rem;
-      top: 1.5rem;
-    }
-
     .side-menu {
       position: fixed;
       top: 0;
-      right: -100%;
-      height: 100vh;
+      right: -280px;
       width: 280px;
+      height: 100%;
       background: #1c1c1c;
       transition: right 0.3s ease;
       z-index: 9999;
@@ -62,19 +120,19 @@
       margin-bottom: 1rem;
     }
 
-    .side-menu li a {
+    .side-menu a {
       color: #f2f2f2;
       text-decoration: none;
       font-size: 1.1rem;
     }
 
-    .side-menu li ul {
+    .side-menu .has-dropdown ul {
       display: none;
-      margin-top: 0.5rem;
       padding-left: 1rem;
+      margin-top: 0.5rem;
     }
 
-    .side-menu li.open ul {
+    .side-menu .has-dropdown.open ul {
       display: block;
     }
 
@@ -82,7 +140,7 @@
       display: none;
       position: fixed;
       inset: 0;
-      background: rgba(0,0,0,0.6);
+      background: rgba(0, 0, 0, 0.6);
       z-index: 9998;
     }
 
@@ -102,8 +160,13 @@
       .hamburger {
         display: block;
       }
+
+      .desktop-logo {
+        display: none;
+      }
     }
 
+    /* Hero */
     .luxury-hero {
       position: relative;
       height: 100vh;
@@ -127,7 +190,7 @@
       top: 50%;
       transform: translateY(-50%);
       font-size: 2.5rem;
-      background: rgba(0,0,0,0.4);
+      background: rgba(0, 0, 0, 0.4);
       color: white;
       border: none;
       cursor: pointer;
@@ -138,6 +201,7 @@
     .luxury-hero .nav.prev { left: 10px; }
     .luxury-hero .nav.next { right: 10px; }
 
+    /* Content */
     .luxury-content {
       max-width: 1200px;
       margin: 80px auto 40px;
@@ -167,7 +231,7 @@
       width: 100%;
       border-radius: 12px;
       object-fit: cover;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
       transition: transform 0.3s ease;
       cursor: pointer;
     }
@@ -176,15 +240,7 @@
       transform: scale(1.03);
     }
 
-    footer {
-      text-align: center;
-      padding: 2rem 1rem;
-      font-size: 0.95rem;
-      background: #1a1a1a;
-      color: #888;
-      margin-top: 4rem;
-    }
-
+    /* Modal */
     .modal {
       display: none;
       position: fixed;
@@ -193,7 +249,7 @@
       top: 0;
       width: 100%;
       height: 100%;
-      background-color: rgba(0,0,0,0.9);
+      background-color: rgba(0, 0, 0, 0.9);
       justify-content: center;
       align-items: center;
     }
@@ -214,6 +270,15 @@
       z-index: 10000;
     }
 
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.95rem;
+      background: #1a1a1a;
+      color: #888;
+      margin-top: 4rem;
+    }
+
     @media (max-width: 768px) {
       .luxury-content h2 {
         font-size: 2rem;
@@ -227,17 +292,17 @@
 </head>
 <body>
 
-  <!-- Navbar -->
+  <!-- Header -->
   <header class="navbar">
-    <div class="logo">
-      <a href="index.html"><img src="images/logos.png" alt="Archisign Logo" /></a>
-    </div>
-
     <div class="mobile-right">
       <div class="hamburger">&#9776;</div>
       <div class="mobile-logo">
         <a href="index.html"><img src="images/logos.png" alt="Archisign Logo" /></a>
       </div>
+    </div>
+
+    <div class="logo desktop-logo">
+      <a href="index.html"><img src="images/logos.png" alt="Archisign Logo" /></a>
     </div>
 
     <ul class="nav-menu">
@@ -265,7 +330,7 @@
     </ul>
   </header>
 
-  <!-- Side Menu (mobile) -->
+  <!-- Side Menu -->
   <div class="side-menu">
     <ul>
       <li><a href="index.html">Home</a></li>
@@ -293,7 +358,7 @@
   </div>
   <div class="side-menu-overlay"></div>
 
-  <!-- Hero Slideshow -->
+  <!-- Hero Section -->
   <div class="luxury-hero">
     <div class="slides">
       <img src="images/bg6.jpg" alt="Living Area">
@@ -304,17 +369,12 @@
     <button class="nav next">&#10095;</button>
   </div>
 
-  <!-- Content -->
+  <!-- Main Content -->
   <div class="luxury-content">
     <h2>Luxury Condo</h2>
-    <p>
-      Discover our signature approach to high-rise living with this bespoke luxury condo, where elegance meets innovation. Every inch of this interior is curated for comfort, from the warm textures to the expansive open plan that invites natural light.
-    </p>
-    <p>
-      The space incorporates smart home systems, ambient lighting, and premium finishes, creating a seamless experience of elevated modern living.
-    </p>
+    <p>Discover our signature approach to high-rise living with this bespoke luxury condo, where elegance meets innovation. Every inch of this interior is curated for comfort, from the warm textures to the expansive open plan that invites natural light.</p>
+    <p>The space incorporates smart home systems, ambient lighting, and premium finishes, creating a seamless experience of elevated modern living.</p>
 
-    <!-- Gallery -->
     <div class="luxury-gallery">
       <img src="images/bg12.jpg" alt="Lounge Area" />
       <img src="images/bg13.jpg" alt="Open Concept Dining" />
@@ -334,6 +394,7 @@
     &copy; 2025 Archisign — Visualizing space with precision, beauty, and purpose.
   </footer>
 
+  <!-- Scripts -->
   <script>
     // Slideshow
     const slidesContainer = document.querySelector(".luxury-hero .slides");
@@ -356,7 +417,7 @@
       updateSlide();
     });
 
-    // Modal for gallery images
+    // Modal
     const modal = document.getElementById("imageModal");
     const modalImg = document.getElementById("modalImage");
     const closeModal = document.getElementById("modalClose");
@@ -377,7 +438,7 @@
       if (e.target === modal) modal.style.display = "none";
     });
 
-    // Mobile Menu
+    // Mobile Nav Toggle
     document.querySelector(".hamburger").addEventListener("click", () => {
       document.querySelector(".side-menu").classList.toggle("open");
       document.querySelector(".side-menu-overlay").classList.toggle("active");
@@ -395,6 +456,5 @@
       });
     });
   </script>
-
 </body>
 </html>
