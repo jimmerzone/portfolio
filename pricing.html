@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pricing - Archisign</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      background-color: #111;
+      color: #fff;
+    }
+
+    header {
+      padding: 20px 40px;
+      background-color: rgba(0, 0, 0, 0.85);
+      text-align: center;
+    }
+
+    header h1 {
+      color: #f5c518;
+      font-size: 3rem;
+      margin: 0;
+      text-shadow: 0 0 10px rgba(245, 197, 24, 0.4);
+    }
+
+    .pricing-section {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 60px 20px 40px;
+      gap: 30px;
+    }
+
+    .pricing-box {
+      background-color: #1a1a1a;
+      border: 1px solid rgba(245, 197, 24, 0.3);
+      box-shadow: 0 0 20px rgba(245, 197, 24, 0.2);
+      border-radius: 16px;
+      width: 320px;
+      max-width: 100%;
+      padding: 30px 25px;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .pricing-box:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 0 30px rgba(245, 197, 24, 0.4);
+    }
+
+    .pricing-box img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+
+    .pricing-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #f5c518;
+      margin-bottom: 10px;
+    }
+
+    .price-tag {
+      font-size: 2rem;
+      font-weight: 700;
+      margin: 10px 0 20px;
+      color: #fff;
+      text-shadow: 0 0 6px rgba(245, 197, 24, 0.3);
+    }
+
+    .features {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      margin-bottom: 20px;
+      color: #ccc;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    .features li::before {
+      content: '✓';
+      color: #f5c518;
+      margin-right: 10px;
+    }
+
+    .custom-message {
+      font-size: 1rem;
+      color: #ccc;
+      margin-bottom: 20px;
+    }
+
+    .cta-section {
+      max-width: 800px;
+      margin: 60px auto 40px;
+      text-align: center;
+      padding: 0 20px;
+    }
+
+    .cta-section p {
+      font-size: 1.1rem;
+      color: #ccc;
+      margin-bottom: 30px;
+      line-height: 1.7;
+    }
+
+    .cta-section a {
+      display: inline-block;
+      padding: 14px 30px;
+      background-color: #f5c518;
+      color: #111;
+      text-decoration: none;
+      font-weight: 700;
+      border-radius: 8px;
+      font-size: 1rem;
+      box-shadow: 0 0 10px rgba(245, 197, 24, 0.4);
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .cta-section a:hover {
+      background-color: #ffd84b;
+      box-shadow: 0 0 20px rgba(245, 197, 24, 0.5);
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      background-color: #111;
+      font-size: 0.9rem;
+      color: #888;
+    }
+
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2.2rem;
+      }
+
+      .pricing-box {
+        width: 90%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Our Pricing</h1>
+  </header>
+
+  <section class="pricing-section">
+    <div class="pricing-box">
+      <img src="images/floorplan.jpg" alt="1-Floor Project" />
+      <div class="pricing-title">1-Floor Project (up to 500 sqft)</div>
+      <div class="price-tag">From RM575</div>
+      <ul class="features">
+        <li>2D Floor Plan</li>
+        <li>3D Visualization</li>
+        <li>Material Suggestions</li>
+        <li>Basic Layout Planning</li>
+      </ul>
+    </div>
+
+    <div class="pricing-box">
+      <img src="images/villa.jpg" alt="Villa Project" />
+      <div class="pricing-title">Villa / Bungalow</div>
+      <div class="price-tag">From RM1375</div>
+      <ul class="features">
+        <li>2D & 3D Design</li>
+        <li>High-Resolution Renders</li>
+        <li>Detailed Layouts</li>
+        <li>Full Space Planning</li>
+      </ul>
+    </div>
+
+    <div class="pricing-box">
+      <img src="images/custom.jpg" alt="Custom Project" />
+      <div class="pricing-title">Custom Project</div>
+      <div class="custom-message">Please reach out to us for personalized consultation and pricing.</div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <p>
+      Not sure which package suits your needs best? Or working on a custom project?
+      <br />
+      Contact us today for a personalized quote based on your unique space and design goals.
+    </p>
+    <a href="contact.html">Contact Us</a>
+  </section>
+
+  <footer>
+    &copy; 2025 Archisign — Exceptional Spaces, Thoughtfully Designed.
+  </footer>
+
+</body>
+</html>
