@@ -338,9 +338,18 @@
     @media (max-width: 768px) {
       .nav-menu {
         display: none;
+        justify-content: space-between;
+  align-items: center;
+  width: 100%;
       }
       .mobile-right {
         display: flex;
+      }
+      desktop-logo {
+    display: none;
+  }
+      .mobile-logo img {
+        height: 36px;
       }
       .hero-title h1 {
         font-size: 2.2rem;
@@ -349,18 +358,39 @@
         top: 0;
         opacity: 1;
         animation: none;
-        padding: 0 10px;
+        padding: 0 15px;
       }
       .hero-title {
         height: auto;
-        margin: 30px 10px 20px;
+        margin: 25px 10px 15px;
       }
+      /* Cleaner desktop title */
+.hero-title h1 {
+  font-size: 3rem;
+  text-shadow: 0 0 6px rgba(245, 197, 24, 0.5);
+  letter-spacing: 0.08em;
+}
       .navbar {
-        padding: 15px 20px;
+        padding: 20px 30px;
+        gap: 20px;
       }
     }
 
     @media (min-width: 769px) {
+      .navbar {
+    padding: 20px 30px;
+    gap: 20px;
+  }
+
+  .desktop-logo {
+    margin-right: 40px;
+  }
+
+  .nav-menu {
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+}
       .side-menu,
       .side-menu-overlay {
         display: none !important;
@@ -372,34 +402,37 @@
 
   <!-- Navbar -->
   <header class="navbar">
-    <div class="mobile-right">
-      <div id="hamburger" class="hamburger" aria-label="Toggle menu" role="button" tabindex="0" aria-expanded="false">&#9776;</div>
+  <div class="mobile-right">
+    <div id="hamburger" class="hamburger" aria-label="Toggle menu" role="button" tabindex="0" aria-expanded="false">&#9776;</div>
+    <div class="mobile-logo">
+      <a href="index.html"><img src="images/logos.png" alt="Archisign Logo" /></a>
     </div>
-    <div class="logo">
-      <img src="images/logos.png" alt="Archisign Logo" />
-    </div>
-    <ul class="nav-menu">
-      <li><a href="index.html">Home</a></li>
-      <li class="has-dropdown"><a href="#">Our Services</a>
-        <ul class="dropdown">
-          <li><a href="residential-spaces.html">Residential Spaces</a></li>
-          <li><a href="commercial-interiors.html">Commercial Interiors</a></li>
-          <li><a href="landscape-architecture.html">Landscape Architecture</a></li>
-          <li><a href="interior-styling.html">Interior Styling</a></li>
-        </ul>
-      </li>
-      <li><a href="#">Pricing</a></li>
-      <li class="has-dropdown"><a href="#">Projects</a>
-        <ul class="dropdown">
-          <li><a href="urban-homes.html">Urban Homes</a></li>
-          <li><a href="luxury-villas.html">Luxury Villas</a></li>
-          <li><a href="corporate-spaces.html">Corporate Spaces</a></li>
-        </ul>
-      </li>
-      <li><a href="#">Contact</a></li>
-      <li><a href="#about">About</a></li>
-    </ul>
-  </header>
+  </div>
+  <div class="logo desktop-logo">
+    <img src="images/logos.png" alt="Archisign Logo" />
+  </div>
+  <ul class="nav-menu">
+    <li><a href="index.html">Home</a></li>
+    <li class="has-dropdown"><a href="#">Our Services</a>
+      <ul class="dropdown">
+        <li><a href="residential-spaces.html">Residential Spaces</a></li>
+        <li><a href="commercial-interiors.html">Commercial Interiors</a></li>
+        <li><a href="landscape-architecture.html">Landscape Architecture</a></li>
+        <li><a href="interior-styling.html">Interior Styling</a></li>
+      </ul>
+    </li>
+    <li><a href="#">Pricing</a></li>
+    <li class="has-dropdown"><a href="#">Projects</a>
+      <ul class="dropdown">
+        <li><a href="urban-homes.html">Urban Homes</a></li>
+        <li><a href="luxury-villas.html">Luxury Villas</a></li>
+        <li><a href="corporate-spaces.html">Corporate Spaces</a></li>
+      </ul>
+    </li>
+    <li><a href="#">Contact</a></li>
+    <li><a href="#about">About</a></li>
+  </ul>
+</header>
 
   <!-- Mobile Side Menu -->
   <nav class="side-menu" id="sideMenu" aria-label="Mobile menu" tabindex="-1">
