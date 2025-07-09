@@ -8,6 +8,13 @@
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      background-color: #121212;
+      color: #f2f2f2;
+    }
+
     .luxury-hero {
       position: relative;
       height: 100vh;
@@ -79,6 +86,15 @@
       transform: scale(1.03);
     }
 
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.95rem;
+      background: #1a1a1a;
+      color: #888;
+      margin-top: 4rem;
+    }
+
     @media (max-width: 768px) {
       .luxury-content h2 {
         font-size: 2rem;
@@ -89,17 +105,18 @@
       }
     }
 
-    /* Mobile Nav Fix */
+    /* --- Mobile Nav Fix --- */
     .side-menu {
       position: fixed;
       top: 0;
-      right: -280px;
-      width: 280px;
+      right: -260px; /* completely hidden offscreen */
+      width: 260px;
       height: 100%;
       background: #1c1c1c;
       transition: right 0.3s ease;
       z-index: 1002;
       padding: 2rem 1rem;
+      overflow-y: auto;
     }
 
     .side-menu.open {
@@ -143,7 +160,7 @@
         position: absolute;
         top: 1rem;
         left: 1rem;
-        z-index: 1001;
+        z-index: 1003;
       }
 
       .hamburger {
@@ -160,7 +177,7 @@
   </style>
 </head>
 <body>
-  <!-- Navbar (identical to index.html) -->
+  <!-- Navbar -->
   <header class="navbar">
     <div class="logo">
       <a href="index.html"><img src="images/logos.png" alt="Archisign Logo" /></a>
@@ -187,7 +204,7 @@
     </div>
   </header>
 
-  <!-- Side Menu (mobile) -->
+  <!-- Side Menu -->
   <div class="side-menu">
     <ul>
       <li><a href="index.html">Home</a></li>
@@ -229,7 +246,6 @@
       The space incorporates smart home systems, ambient lighting, and premium finishes, creating a seamless experience of elevated modern living.
     </p>
 
-    <!-- Gallery -->
     <div class="luxury-gallery">
       <img src="images/bg12.jpg" alt="Lounge Area" />
       <img src="images/bg13.jpg" alt="Open Concept Dining" />
@@ -243,7 +259,7 @@
     &copy; 2025 Archisign — Visualizing space with precision, beauty, and purpose.
   </footer>
 
-  <!-- Script for slideshow and menu -->
+  <!-- Script -->
   <script>
     const slidesContainer = document.querySelector(".luxury-hero .slides");
     const images = slidesContainer.querySelectorAll("img");
@@ -265,16 +281,7 @@
       updateSlide();
     });
 
-    // Swipe Support
-    let startX = 0;
-    slidesContainer.addEventListener("touchstart", e => startX = e.touches[0].clientX);
-    slidesContainer.addEventListener("touchend", e => {
-      const endX = e.changedTouches[0].clientX;
-      if (startX - endX > 50) nextBtn.click();
-      else if (endX - startX > 50) prevBtn.click();
-    });
-
-    // Mobile Dropdown toggle
+    // Mobile dropdown toggle
     document.querySelectorAll(".side-menu .has-dropdown > a").forEach(link => {
       link.addEventListener("click", function (e) {
         e.preventDefault();
