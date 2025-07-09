@@ -313,5 +313,40 @@
   <footer>
     &copy; 2025 Archisign — Visualizing space with precision, beauty, and purpose.
   </footer>
+
+  <script>
+  const slidesContainer = document.querySelector(".hero-image .slides");
+  const images = slidesContainer.querySelectorAll("img");
+  const prevBtn = document.querySelector(".hero-image .nav.prev");
+  const nextBtn = document.querySelector(".hero-image .nav.next");
+  let currentIndex = 0;
+
+  function updateSlide() {
+    slidesContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
+  }
+
+  prevBtn.addEventListener("click", () => {
+    currentIndex = (currentIndex === 0) ? images.length - 1 : currentIndex - 1;
+    updateSlide();
+  });
+
+  nextBtn.addEventListener("click", () => {
+    currentIndex = (currentIndex + 1) % images.length;
+    updateSlide();
+  });
+
+  // Optional: Swipe support for mobile
+  let startX = 0;
+  slidesContainer.addEventListener("touchstart", (e) => {
+    startX = e.touches[0].clientX;
+  });
+
+  slidesContainer.addEventListener("touchend", (e) => {
+    const endX = e.changedTouches[0].clientX;
+    if (startX - endX > 50) nextBtn.click();
+    else if (endX - startX > 50) prevBtn.click();
+  });
+</script>
+
 </body>
 </html>
