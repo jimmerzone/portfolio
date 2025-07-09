@@ -6,13 +6,159 @@
   <title>Luxury Condo - Archisign</title>
   <link rel="icon" href="images/favicon.png" type="image/x-icon" />
   <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet" />
   <style>
     body {
       margin: 0;
       font-family: 'Montserrat', sans-serif;
       background-color: #121212;
       color: #f2f2f2;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: #121212;
+      position: relative;
+      z-index: 1000;
+    }
+
+    .logo img {
+      height: 40px;
+    }
+
+    .nav-menu {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-menu li {
+      position: relative;
+    }
+
+    .nav-menu li a {
+      color: #f2f2f2;
+      text-decoration: none;
+      font-size: 1rem;
+    }
+
+    .nav-menu li:hover > .dropdown {
+      display: block;
+    }
+
+    .dropdown {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: #1c1c1c;
+      list-style: none;
+      min-width: 180px;
+      padding: 0.5rem 0;
+      z-index: 1000;
+    }
+
+    .dropdown li {
+      padding: 0.5rem 1rem;
+    }
+
+    .dropdown li a {
+      color: #f2f2f2;
+      text-decoration: none;
+      font-size: 0.95rem;
+    }
+
+    .mobile-right {
+      display: none;
+      position: absolute;
+      top: 1rem;
+      width: 100%;
+      padding: 0 1rem;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1001;
+    }
+
+    .hamburger {
+      font-size: 2rem;
+      cursor: pointer;
+    }
+
+    .mobile-logo img {
+      height: 36px;
+    }
+
+    .side-menu {
+      position: fixed;
+      top: 0;
+      right: -240px;
+      width: 240px;
+      height: 100%;
+      background: #1c1c1c;
+      transition: right 0.3s ease;
+      z-index: 9999;
+      padding: 2rem 1rem;
+    }
+
+    .side-menu.open {
+      right: 0;
+    }
+
+    .side-menu ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .side-menu li {
+      margin-bottom: 1rem;
+    }
+
+    .side-menu a {
+      color: #f2f2f2;
+      text-decoration: none;
+      font-size: 1.1rem;
+    }
+
+    .side-menu .has-dropdown ul {
+      display: none;
+      padding-left: 1rem;
+      margin-top: 0.5rem;
+    }
+
+    .side-menu .has-dropdown.open ul {
+      display: block;
+    }
+
+    .side-menu-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 9998;
+    }
+
+    .side-menu-overlay.active {
+      display: block;
+    }
+
+    @media (max-width: 900px) {
+      .nav-menu {
+        display: none;
+      }
+
+      .mobile-right {
+        display: flex;
+      }
+
+      .logo {
+        display: none;
+      }
     }
 
     .luxury-hero {
@@ -80,10 +226,36 @@
       object-fit: cover;
       box-shadow: 0 8px 24px rgba(0,0,0,0.5);
       transition: transform 0.3s ease;
+      cursor: pointer;
     }
 
     .luxury-gallery img:hover {
       transform: scale(1.03);
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background-color: rgba(0, 0, 0, 0.9);
+      justify-content: center;
+      align-items: center;
+      z-index: 10000;
+    }
+
+    .modal img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 12px;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      color: white;
+      font-size: 2.5rem;
+      cursor: pointer;
     }
 
     footer {
@@ -104,84 +276,20 @@
         font-size: 1rem;
       }
     }
-
-    /* --- Mobile Nav Fix --- */
-    .side-menu {
-      position: fixed;
-      top: 0;
-      right: -260px; /* completely hidden offscreen */
-      width: 260px;
-      height: 100%;
-      background: #1c1c1c;
-      transition: right 0.3s ease;
-      z-index: 1002;
-      padding: 2rem 1rem;
-      overflow-y: auto;
-    }
-
-    .side-menu.open {
-      right: 0;
-    }
-
-    .side-menu-overlay {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.6);
-      z-index: 1001;
-    }
-
-    .side-menu-overlay.active {
-      display: block;
-    }
-
-    .mobile-right {
-      display: none;
-    }
-
-    .hamburger {
-      font-size: 2rem;
-      cursor: pointer;
-      display: none;
-    }
-
-    .mobile-logo {
-      display: none;
-    }
-
-    @media (max-width: 900px) {
-      .nav-menu {
-        display: none;
-      }
-
-      .mobile-right {
-        display: flex;
-        align-items: center;
-        position: absolute;
-        top: 1rem;
-        left: 1rem;
-        z-index: 1003;
-      }
-
-      .hamburger {
-        display: block;
-      }
-
-      .mobile-logo {
-        display: block;
-        position: absolute;
-        top: 1rem;
-        right: 1rem;
-      }
-    }
   </style>
 </head>
 <body>
-  <!-- Navbar -->
+
   <header class="navbar">
+    <div class="mobile-right">
+      <div class="hamburger">&#9776;</div>
+      <div class="mobile-logo"><a href="index.html"><img src="images/logos.png" alt="Archisign Logo" /></a></div>
+    </div>
+
     <div class="logo">
       <a href="index.html"><img src="images/logos.png" alt="Archisign Logo" /></a>
     </div>
+
     <ul class="nav-menu">
       <li><a href="index.html">Home</a></li>
       <li>
@@ -198,13 +306,8 @@
       <li><a href="#">Contact</a></li>
       <li><a href="#about">About</a></li>
     </ul>
-    <div class="mobile-right">
-      <div class="hamburger">&#9776;</div>
-      <div class="mobile-logo"><a href="index.html"><img src="images/logos.png" alt="Archisign Logo" /></a></div>
-    </div>
   </header>
 
-  <!-- Side Menu -->
   <div class="side-menu">
     <ul>
       <li><a href="index.html">Home</a></li>
@@ -225,7 +328,6 @@
   </div>
   <div class="side-menu-overlay"></div>
 
-  <!-- Hero Slideshow -->
   <div class="luxury-hero">
     <div class="slides">
       <img src="images/bg6.jpg" alt="Living Area">
@@ -236,15 +338,10 @@
     <button class="nav next">&#10095;</button>
   </div>
 
-  <!-- Content -->
   <div class="luxury-content">
     <h2>Luxury Condo</h2>
-    <p>
-      Discover our signature approach to high-rise living with this bespoke luxury condo, where elegance meets innovation. Every inch of this interior is curated for comfort, from the warm textures to the expansive open plan that invites natural light.
-    </p>
-    <p>
-      The space incorporates smart home systems, ambient lighting, and premium finishes, creating a seamless experience of elevated modern living.
-    </p>
+    <p>Discover our signature approach to high-rise living with this bespoke luxury condo, where elegance meets innovation. Every inch of this interior is curated for comfort, from the warm textures to the expansive open plan that invites natural light.</p>
+    <p>The space incorporates smart home systems, ambient lighting, and premium finishes, creating a seamless experience of elevated modern living.</p>
 
     <div class="luxury-gallery">
       <img src="images/bg12.jpg" alt="Lounge Area" />
@@ -254,12 +351,15 @@
     </div>
   </div>
 
-  <!-- Footer -->
+  <div class="modal" id="imageModal">
+    <span class="modal-close" id="modalClose">&times;</span>
+    <img id="modalImage" src="" alt="Expanded View" />
+  </div>
+
   <footer>
     &copy; 2025 Archisign — Visualizing space with precision, beauty, and purpose.
   </footer>
 
-  <!-- Script -->
   <script>
     const slidesContainer = document.querySelector(".luxury-hero .slides");
     const images = slidesContainer.querySelectorAll("img");
@@ -281,15 +381,28 @@
       updateSlide();
     });
 
-    // Mobile dropdown toggle
-    document.querySelectorAll(".side-menu .has-dropdown > a").forEach(link => {
-      link.addEventListener("click", function (e) {
-        e.preventDefault();
-        this.parentElement.classList.toggle("open");
+    // Modal
+    const modal = document.getElementById("imageModal");
+    const modalImg = document.getElementById("modalImage");
+    const closeModal = document.getElementById("modalClose");
+
+    document.querySelectorAll(".luxury-gallery img").forEach(img => {
+      img.addEventListener("click", () => {
+        modal.style.display = "flex";
+        modalImg.src = img.src;
+        modalImg.alt = img.alt;
       });
     });
 
-    // Hamburger toggle
+    closeModal.addEventListener("click", () => {
+      modal.style.display = "none";
+    });
+
+    window.addEventListener("click", e => {
+      if (e.target === modal) modal.style.display = "none";
+    });
+
+    // Hamburger menu
     document.querySelector(".hamburger").addEventListener("click", () => {
       document.querySelector(".side-menu").classList.toggle("open");
       document.querySelector(".side-menu-overlay").classList.toggle("active");
@@ -298,6 +411,13 @@
     document.querySelector(".side-menu-overlay").addEventListener("click", () => {
       document.querySelector(".side-menu").classList.remove("open");
       document.querySelector(".side-menu-overlay").classList.remove("active");
+    });
+
+    document.querySelectorAll(".side-menu .has-dropdown > a").forEach(link => {
+      link.addEventListener("click", function (e) {
+        e.preventDefault();
+        this.parentElement.classList.toggle("open");
+      });
     });
   </script>
 </body>
