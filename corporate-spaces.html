@@ -187,9 +187,9 @@
     .side-menu {
       position: fixed;
       top: 0;
-      left: -210px;
-      width: 210px;
-      height: 100vh;
+      left: -240px;
+      width: 240px;
+      height: 100%;
       background: rgba(15, 15, 15, 0.95);
       backdrop-filter: blur(12px);
       box-shadow: 4px 0 30px rgba(245, 197, 24, 0.7);
@@ -200,7 +200,7 @@
     }
 
     .side-menu.open {
-      left: 0;
+      right: 0;
     }
 
     .side-menu-overlay {
@@ -217,6 +217,7 @@
     .side-menu-overlay.active {
       opacity: 1;
       visibility: visible;
+      display: block;
     }
 
     .side-menu ul {
@@ -226,7 +227,7 @@
     }
 
     .side-menu li {
-      margin-bottom: 20px;
+      margin-bottom: 1rem;
     }
 
     .side-menu a {
