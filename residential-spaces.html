@@ -4,13 +4,151 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="icon" href="images/favicon.png" type="image/x-icon" />
-  <title>Residential Spaces - Archisign</title>
+  <title>Residential - Archisign</title>
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      background-color: #121212;
+      color: #f2f2f2;
+    }
+
+    /* Slideshow Styling */
+    .hero-image {
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero-image .slides {
+      display: flex;
+      height: 100%;
+      width: 100%;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .hero-image .slides img {
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      flex-shrink: 0;
+      display: block;
+    }
+
+    .hero-image .nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0,0,0,0.4);
+      color: #fff;
+      border: none;
+      font-size: 2rem;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      z-index: 5;
+    }
+
+    .hero-image .nav.prev { left: 10px; }
+    .hero-image .nav.next { right: 10px; }
+
+    .hero-image .overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.2));
+      z-index: 3;
+      pointer-events: none;
+    }
+
+    /* Main Content */
+    .main-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+    }
+
+    .service-details h2 {
+      font-size: 2.5rem;
+      margin: 2rem 0 1rem;
+      text-align: center;
+    }
+
+    .service-details p {
+      font-size: 1.1rem;
+      margin: 1rem 0;
+      color: #ddd;
+    }
+
+    .key-offerings {
+      padding-left: 1.5rem;
+      margin: 1.5rem 0 2rem;
+      list-style-type: square;
+    }
+
+    .key-offerings li {
+      margin-bottom: 0.5rem;
+    }
+
+    .projects-title {
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+
+    .project-cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+
+    .project-card {
+      flex: 1 1 calc(33.333% - 2rem);
+      background: #1e1e1e;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+      transition: transform 0.3s;
+      cursor: pointer;
+    }
+
+    .project-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .project-card h3 {
+      margin: 1rem;
+      font-size: 1.2rem;
+    }
+
+    .project-card p {
+      margin: 0 1rem 1.5rem;
+      color: #bbb;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.95rem;
+      background: #1a1a1a;
+      color: #888;
+      margin-top: 4rem;
+    }
+
+    @media (max-width: 900px) {
+      .project-card {
+        flex: 1 1 100%;
+      }
+    }
+  </style>
 </head>
 <body>
 
-<!-- NAVBAR -->
+<!-- Navbar (copied from index.html) -->
 <header class="landing-section">
   <nav class="navbar" id="navbar">
     <div class="logo" id="logo">
@@ -18,9 +156,7 @@
     </div>
 
     <div class="mobile-right">
-      <div class="hamburger" id="hamburger" aria-label="Toggle menu" role="button" tabindex="0" aria-expanded="false">
-        &#9776;
-      </div>
+      <div class="hamburger" id="hamburger" aria-label="Toggle menu" role="button" tabindex="0" aria-expanded="false">&#9776;</div>
       <div class="mobile-logo" id="mobileLogo" aria-label="Site logo" role="img">
         <img src="images/logos.png" alt="Archisign Logo" />
       </div>
@@ -74,27 +210,27 @@
       <li><a href="#about">About</a></li>
     </ul>
   </nav>
-
   <div class="side-menu-overlay" id="sideMenuOverlay"></div>
 </header>
 
+<!-- Slideshow Hero Section -->
+<div class="hero-image slideshow">
+  <div class="slides">
+    <img src="images/bg1.jpg" alt="Slide 1" />
+    <img src="images/bg8.jpg" alt="Slide 2" />
+    <img src="images/bg10.jpg" alt="Slide 3" />
+  </div>
+  <div class="overlay"></div>
+  <button class="nav prev">&#10094;</button>
+  <button class="nav next">&#10095;</button>
+</div>
+
 <!-- Main Content -->
 <div class="main-content">
-  <div class="hero-image slideshow">
-    <div class="slides">
-      <img src="images/bg1.jpg" alt="Slide 1" />
-      <img src="images/bg8.jpg" alt="Slide 2" />
-      <img src="images/bg10.jpg" alt="Slide 3" />
-    </div>
-    <div class="overlay"></div>
-    <button class="nav prev">&#10094;</button>
-    <button class="nav next">&#10095;</button>
-  </div>
-
   <section class="service-details">
     <h2>Residential</h2>
     <p>
-      At Archisign, we specialize in creating personalized residential spaces that combine comfort, elegance, and functionality. Our residential designs focus on optimizing space, incorporating modern materials, and ensuring each project reflects the client’s unique vision.
+      At Archisign, we specialize in creating personalized residential spaces that combine comfort, elegance, and functionality.
     </p>
     <p>
       Whether it’s a modern apartment, a sprawling villa, or a cozy suburban home, we bring every vision to life, blending design with sustainability, and ensuring seamless flow throughout the spaces.
@@ -132,14 +268,13 @@
   </section>
 </div>
 
-<!-- Footer -->
 <footer>
   &copy; 2025 Archisign — Visualizing space with precision, beauty, and purpose.
 </footer>
 
-<!-- Scripts -->
+<!-- Scripts (slideshow + mobile menu) -->
 <script>
-  // Slideshow
+  // Slideshow controls
   const slidesContainer = document.querySelector(".hero-image .slides");
   const images = slidesContainer.querySelectorAll("img");
   const prevBtn = document.querySelector(".hero-image .nav.prev");
@@ -160,7 +295,7 @@
     updateSlide();
   });
 
-  // Swipe for mobile
+  // Touch swipe
   let startX = 0;
   slidesContainer.addEventListener("touchstart", (e) => {
     startX = e.touches[0].clientX;
@@ -172,7 +307,7 @@
     else if (endX - startX > 50) prevBtn.click();
   });
 
-  // Mobile Nav
+  // Mobile nav
   const hamburger = document.getElementById("hamburger");
   const sideMenu = document.getElementById("sideMenu");
   const sideMenuOverlay = document.getElementById("sideMenuOverlay");
@@ -190,17 +325,11 @@
   }
 
   hamburger.addEventListener("click", () => {
-    sideMenu.classList.contains("open") ? closeSideMenu() : openSideMenu();
+    if (sideMenu.classList.contains("open")) closeSideMenu();
+    else openSideMenu();
   });
 
-  hamburger.addEventListener("keydown", (e) => {
-    if (e.key === "Enter" || e.key === " ") {
-      e.preventDefault();
-      hamburger.click();
-    }
-  });
-
-  sideMenuOverlay.addEventListener("click", closeSideMenu);
+  sideMenuOverlay.addEventListener("click", () => closeSideMenu());
 
   const sideMenuItems = sideMenu.querySelectorAll("li > a");
   sideMenuItems.forEach((item) => {
@@ -212,56 +341,6 @@
       }
     });
   });
-
-  // Scroll Navbar Hide/Show and Logo Shrink
-  (() => {
-    const navbar = document.getElementById("navbar");
-    const logo = document.getElementById("logo");
-    const mobileLogo = document.getElementById("mobileLogo");
-
-    let lastScrollTop = 0;
-    const delta = 5;
-    let ticking = false;
-
-    function onScroll() {
-      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
-      if (Math.abs(scrollTop - lastScrollTop) <= delta) return;
-
-      if (scrollTop > lastScrollTop && scrollTop > 100) {
-        navbar.classList.add("navbar-hidden");
-      } else {
-        navbar.classList.remove("navbar-hidden");
-      }
-
-      if (!navbar.classList.contains("navbar-hidden")) {
-        if (scrollTop > 50) {
-          logo.classList.add("logo-scrolled");
-          navbar.classList.add("navbar-scrolled");
-          if (mobileLogo) mobileLogo.classList.add("logo-scrolled");
-        } else {
-          logo.classList.remove("logo-scrolled");
-          navbar.classList.remove("navbar-scrolled");
-          if (mobileLogo) mobileLogo.classList.remove("logo-scrolled");
-        }
-      } else {
-        logo.classList.remove("logo-scrolled");
-        navbar.classList.remove("navbar-scrolled");
-        if (mobileLogo) mobileLogo.classList.remove("logo-scrolled");
-      }
-
-      lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
-      ticking = false;
-    }
-
-    window.addEventListener("scroll", () => {
-      if (!ticking) {
-        window.requestAnimationFrame(onScroll);
-        ticking = true;
-      }
-    });
-  })();
 </script>
-
 </body>
 </html>
