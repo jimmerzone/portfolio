@@ -93,6 +93,14 @@ body::-webkit-scrollbar {
   transform: translateY(-10px);
 }
 
+/* Dropdown Arrow */
+.nav-menu .arrow,
+.side-menu .arrow {
+  display: inline-block;
+  margin-left: 6px;
+  font-size: 0.8rem;
+  transition: transform 0.3s ease;
+}
 /* Desktop nav menu */
 .nav-menu {
   display: flex;
