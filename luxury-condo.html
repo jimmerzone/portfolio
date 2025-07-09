@@ -15,11 +15,11 @@
       color: #f2f2f2;
     }
 
-    /* Navbar Styles */
+    /* Navbar */
     .navbar {
       position: relative;
       background: #121212;
-      padding: 1rem 2rem;
+      padding: 1rem 1.5rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -27,7 +27,7 @@
     }
 
     .logo img {
-      height: 40px;
+      height: 36px;
     }
 
     .nav-menu {
@@ -58,8 +58,8 @@
       top: 100%;
       left: 0;
       background: #1c1c1c;
-      padding: 0.5rem 0;
       list-style: none;
+      padding: 0.5rem 0;
       min-width: 180px;
       z-index: 1000;
     }
@@ -79,8 +79,8 @@
       display: none;
       align-items: center;
       position: absolute;
-      left: 1rem;
       top: 1.2rem;
+      left: 1rem;
       z-index: 10001;
     }
 
@@ -88,6 +88,12 @@
       font-size: 2rem;
       cursor: pointer;
       display: none;
+    }
+
+    .mobile-logo {
+      position: absolute;
+      top: 1.2rem;
+      right: 1rem;
     }
 
     .mobile-logo img {
@@ -296,12 +302,13 @@
   <header class="navbar">
     <div class="mobile-right">
       <div class="hamburger">&#9776;</div>
-      <div class="mobile-logo">
-        <a href="index.html"><img src="images/logos.png" alt="Archisign Logo" /></a>
-      </div>
     </div>
 
     <div class="logo desktop-logo">
+      <a href="index.html"><img src="images/logos.png" alt="Archisign Logo" /></a>
+    </div>
+
+    <div class="mobile-logo">
       <a href="index.html"><img src="images/logos.png" alt="Archisign Logo" /></a>
     </div>
 
@@ -394,7 +401,7 @@
     &copy; 2025 Archisign — Visualizing space with precision, beauty, and purpose.
   </footer>
 
-  <!-- Scripts -->
+  <!-- JS -->
   <script>
     // Slideshow
     const slidesContainer = document.querySelector(".luxury-hero .slides");
