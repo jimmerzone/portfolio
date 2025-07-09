@@ -8,6 +8,13 @@
   <link rel="icon" href="images/favicon.png" type="image/x-icon" />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet" />
   <style>
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      background-color: #121212;
+      color: #f2f2f2;
+    }
+
     .slideshow-wrapper {
       width: 100%;
       max-height: 80vh;
@@ -64,6 +71,89 @@
     .nav-arrow.next {
       right: 10px;
     }
+
+    .content {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
+    .text-block h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    .text-block p {
+      font-size: 1.1rem;
+      margin: 1rem 0;
+      color: #ddd;
+    }
+
+    .key-offerings {
+      padding-left: 1.5rem;
+      margin: 1.5rem 0 2rem;
+      list-style-type: square;
+    }
+
+    .projects-section {
+      margin-top: 3rem;
+    }
+
+    .projects-title {
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+      text-align: center;
+      color: #f2f2f2;
+    }
+
+    .project-cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+
+    .project-card {
+      flex: 1 1 calc(33.333% - 2rem);
+      background: #1e1e1e;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+      transition: transform 0.3s;
+    }
+
+    .project-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .project-card h3 {
+      margin: 1rem;
+      font-size: 1.2rem;
+      color: #f2f2f2;
+    }
+
+    .project-card p {
+      margin: 0 1rem 1.5rem;
+      color: #bbb;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.95rem;
+      background: #1a1a1a;
+      color: #888;
+      margin-top: 4rem;
+    }
+
+    @media (max-width: 900px) {
+      .project-card {
+        flex: 1 1 100%;
+      }
+    }
   </style>
 </head>
 <body>
@@ -103,33 +193,6 @@
   </ul>
 </nav>
 
-<nav class="side-menu" id="sideMenu">
-  <ul>
-    <li>
-      <a href="#">Our Services <span class="arrow">▼</span></a>
-      <ul>
-        <li><a href="residential-spaces.html">Residential Spaces</a></li>
-        <li><a href="commercial-interiors.html">Commercial Interiors</a></li>
-        <li><a href="landscape-architecture.html">Landscape Architecture</a></li>
-        <li><a href="interior-styling.html">Interior Styling</a></li>
-      </ul>
-    </li>
-    <li><a href="#">Pricing</a></li>
-    <li>
-      <a href="#">Projects <span class="arrow">▼</span></a>
-      <ul>
-        <li><a href="urban-homes.html">Urban Homes</a></li>
-        <li><a href="luxury-villas.html">Luxury Villas</a></li>
-        <li><a href="corporate-spaces.html">Corporate Spaces</a></li>
-      </ul>
-    </li>
-    <li><a href="contact.html">Contact Us</a></li>
-    <li><a href="index.html#about">About</a></li>
-  </ul>
-</nav>
-
-<div class="side-menu-overlay" id="sideMenuOverlay"></div>
-
 <!-- Slideshow -->
 <section class="slideshow-wrapper">
   <div class="slideshow-container">
@@ -147,23 +210,54 @@
   </div>
 </section>
 
-<!-- Content Section -->
 <main class="content">
   <section class="text-block">
-    <h1>Residential Spaces</h1>
+    <h1>Residential</h1>
     <p>
-      Archisign crafts elegant and functional residential environments tailored to contemporary lifestyles. 
-      From urban apartments to luxury villas, our visualizations help clients envision spaces that blend comfort, aesthetics, and innovation.
+      At Archisign, we specialize in creating personalized residential spaces that combine comfort, elegance, and functionality.
+      Our residential designs focus on optimizing space, incorporating modern materials, and ensuring each project reflects the client’s unique vision.
     </p>
+    <p>
+      Whether it’s a modern apartment, a sprawling villa, or a cozy suburban home, we bring every vision to life, blending design with sustainability, and ensuring seamless flow throughout the spaces.
+    </p>
+    <p>Some of our key offerings include:</p>
+    <ul class="key-offerings">
+      <li>Interior Layout & Space Planning</li>
+      <li>High-End Residential Design</li>
+      <li>Custom Furniture Design</li>
+      <li>Lighting and Ambiance Creation</li>
+      <li>Material Selection & Finish</li>
+      <li>Smart Home Integration</li>
+    </ul>
+  </section>
+
+  <section class="projects-section">
+    <h3 class="projects-title">Our Featured Projects</h3>
+    <div class="project-cards">
+      <div class="project-card">
+        <img src="images/bg6.jpg" alt="Project 1" />
+        <h3>Luxury Condo</h3>
+        <p>A seamless blend of form and function in the heart of the city.</p>
+      </div>
+      <div class="project-card">
+        <img src="images/bg18.jpg" alt="Project 2" />
+        <h3>Luxury Hillside Villa</h3>
+        <p>Combining natural surroundings with sophisticated design elements.</p>
+      </div>
+      <div class="project-card">
+        <img src="images/bg12.jpg" alt="Project 3" />
+        <h3>Minimalist Suburban Homes</h3>
+        <p>Embracing simplicity and tranquility in every room.</p>
+      </div>
+    </div>
   </section>
 </main>
 
-<!-- Footer -->
 <footer>
-  &copy; 2025 Archisign. All rights reserved.
+  &copy; 2025 Archisign — Visualizing space with precision, beauty, and purpose.
 </footer>
 
-<!-- Script -->
+<!-- JS -->
 <script>
   const slides = document.querySelectorAll(".slide");
   const prevBtn = document.querySelector(".nav-arrow.prev");
@@ -192,44 +286,7 @@
   setInterval(() => {
     nextBtn.click();
   }, 6000);
-
-  // Mobile Nav Toggle
-  const hamburger = document.getElementById("hamburger");
-  const sideMenu = document.getElementById("sideMenu");
-  const sideMenuOverlay = document.getElementById("sideMenuOverlay");
-
-  function closeSideMenu() {
-    sideMenu.classList.remove("open");
-    sideMenuOverlay.classList.remove("active");
-    hamburger.setAttribute("aria-expanded", "false");
-  }
-
-  function openSideMenu() {
-    sideMenu.classList.add("open");
-    sideMenuOverlay.classList.add("active");
-    hamburger.setAttribute("aria-expanded", "true");
-  }
-
-  hamburger.addEventListener("click", () => {
-    if (sideMenu.classList.contains("open")) {
-      closeSideMenu();
-    } else {
-      openSideMenu();
-    }
-  });
-
-  sideMenuOverlay.addEventListener("click", closeSideMenu);
-
-  const sideMenuItems = sideMenu.querySelectorAll("li > a");
-  sideMenuItems.forEach((item) => {
-    item.addEventListener("click", (e) => {
-      const nextElem = item.nextElementSibling;
-      if (nextElem && nextElem.tagName === "UL") {
-        e.preventDefault();
-        item.parentElement.classList.toggle("open");
-      }
-    });
-  });
 </script>
+
 </body>
 </html>
