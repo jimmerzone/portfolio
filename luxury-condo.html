@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Luxury Condo - Archisign</title>
+  <link rel="icon" href="images/favicon.png" type="image/x-icon" />
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    .luxury-hero {
+      position: relative;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .luxury-hero .slides {
+      display: flex;
+      height: 100%;
+      transition: transform 0.7s ease-in-out;
+    }
+
+    .luxury-hero .slides img {
+      width: 100%;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+    .luxury-hero .nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 2.5rem;
+      background: rgba(0,0,0,0.4);
+      color: white;
+      border: none;
+      cursor: pointer;
+      z-index: 10;
+      padding: 0.5rem 1rem;
+    }
+
+    .luxury-hero .nav.prev { left: 10px; }
+    .luxury-hero .nav.next { right: 10px; }
+
+    .luxury-content {
+      max-width: 1200px;
+      margin: 80px auto 40px;
+      padding: 0 20px;
+    }
+
+    .luxury-content h2 {
+      font-size: 2.8rem;
+      margin-bottom: 1rem;
+      color: #f9d784;
+    }
+
+    .luxury-content p {
+      font-size: 1.2rem;
+      color: #ccc;
+      line-height: 1.7;
+      margin-bottom: 2rem;
+    }
+
+    .luxury-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .luxury-gallery img {
+      width: 100%;
+      border-radius: 12px;
+      object-fit: cover;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+      transition: transform 0.3s ease;
+    }
+
+    .luxury-gallery img:hover {
+      transform: scale(1.03);
+    }
+
+    @media (max-width: 768px) {
+      .luxury-content h2 {
+        font-size: 2rem;
+      }
+
+      .luxury-content p {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar (identical to index.html) -->
+  <header class="navbar">
+    <div class="logo">
+      <a href="index.html"><img src="images/logos.png" alt="Archisign Logo" /></a>
+    </div>
+    <ul class="nav-menu">
+      <li><a href="index.html">Home</a></li>
+      <li>
+        <a href="#">Our Services <span class="dropdown-arrow">&#9662;</span></a>
+        <ul class="dropdown">
+          <li><a href="residential-spaces.html">Residential Spaces</a></li>
+          <li><a href="commercial-interiors.html">Commercial Interiors</a></li>
+          <li><a href="landscape-architecture.html">Landscape Architecture</a></li>
+          <li><a href="interior-styling.html">Interior Styling</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Pricing</a></li>
+      <li><a href="#">Projects</a></li>
+      <li><a href="#">Contact</a></li>
+      <li><a href="#about">About</a></li>
+    </ul>
+    <div class="mobile-right">
+      <div class="hamburger">&#9776;</div>
+      <div class="mobile-logo"><a href="index.html"><img src="images/logos.png" alt="Archisign Logo" /></a></div>
+    </div>
+  </header>
+
+  <!-- Side Menu (mobile) -->
+  <div class="side-menu">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li class="has-dropdown">
+        <a href="#">Our Services <span class="dropdown-arrow">&#9662;</span></a>
+        <ul>
+          <li><a href="residential-spaces.html">Residential Spaces</a></li>
+          <li><a href="commercial-interiors.html">Commercial Interiors</a></li>
+          <li><a href="landscape-architecture.html">Landscape Architecture</a></li>
+          <li><a href="interior-styling.html">Interior Styling</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Pricing</a></li>
+      <li><a href="#">Projects</a></li>
+      <li><a href="#">Contact</a></li>
+      <li><a href="#about">About</a></li>
+    </ul>
+  </div>
+  <div class="side-menu-overlay"></div>
+
+  <!-- Hero Slideshow -->
+  <div class="luxury-hero">
+    <div class="slides">
+      <img src="images/bg6.jpg" alt="Living Area">
+      <img src="images/bg8.jpg" alt="Kitchen">
+      <img src="images/bg10.jpg" alt="Bedroom">
+    </div>
+    <button class="nav prev">&#10094;</button>
+    <button class="nav next">&#10095;</button>
+  </div>
+
+  <!-- Content -->
+  <div class="luxury-content">
+    <h2>Luxury Condo</h2>
+    <p>
+      Discover our signature approach to high-rise living with this bespoke luxury condo, where elegance meets innovation. Every inch of this interior is curated for comfort, from the warm textures to the expansive open plan that invites natural light.
+    </p>
+    <p>
+      The space incorporates smart home systems, ambient lighting, and premium finishes, creating a seamless experience of elevated modern living.
+    </p>
+
+    <!-- Gallery -->
+    <div class="luxury-gallery">
+      <img src="images/bg12.jpg" alt="Lounge Area" />
+      <img src="images/bg13.jpg" alt="Open Concept Dining" />
+      <img src="images/bg14.jpg" alt="Master Bedroom" />
+      <img src="images/bg15.jpg" alt="Bathroom Design" />
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    &copy; 2025 Archisign — Visualizing space with precision, beauty, and purpose.
+  </footer>
+
+  <!-- Script for slideshow -->
+  <script>
+    const slidesContainer = document.querySelector(".luxury-hero .slides");
+    const images = slidesContainer.querySelectorAll("img");
+    const prevBtn = document.querySelector(".luxury-hero .nav.prev");
+    const nextBtn = document.querySelector(".luxury-hero .nav.next");
+    let currentIndex = 0;
+
+    function updateSlide() {
+      slidesContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
+    }
+
+    prevBtn.addEventListener("click", () => {
+      currentIndex = (currentIndex === 0) ? images.length - 1 : currentIndex - 1;
+      updateSlide();
+    });
+
+    nextBtn.addEventListener("click", () => {
+      currentIndex = (currentIndex + 1) % images.length;
+      updateSlide();
+    });
+
+    // Swipe Support
+    let startX = 0;
+    slidesContainer.addEventListener("touchstart", e => startX = e.touches[0].clientX);
+    slidesContainer.addEventListener("touchend", e => {
+      const endX = e.changedTouches[0].clientX;
+      if (startX - endX > 50) nextBtn.click();
+      else if (endX - startX > 50) prevBtn.click();
+    });
+
+    // Mobile Dropdown toggle
+    document.querySelectorAll(".side-menu .has-dropdown > a").forEach(link => {
+      link.addEventListener("click", function (e) {
+        e.preventDefault();
+        this.parentElement.classList.toggle("open");
+      });
+    });
+
+    // Hamburger toggle
+    document.querySelector(".hamburger").addEventListener("click", () => {
+      document.querySelector(".side-menu").classList.toggle("open");
+      document.querySelector(".side-menu-overlay").classList.toggle("active");
+    });
+
+    document.querySelector(".side-menu-overlay").addEventListener("click", () => {
+      document.querySelector(".side-menu").classList.remove("open");
+      document.querySelector(".side-menu-overlay").classList.remove("active");
+    });
+  </script>
+</body>
+</html>
