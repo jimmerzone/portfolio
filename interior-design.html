@@ -317,6 +317,56 @@
   setInterval(() => {
     nextBtn.click();
   }, 6000);
+
+  // Hamburger toggle for mobile side menu
+  const hamburger = document.getElementById("hamburger");
+  const sideMenu = document.getElementById("sideMenu");
+  const sideMenuOverlay = document.getElementById("sideMenuOverlay");
+
+  function closeSideMenu() {
+    sideMenu.classList.remove("open");
+    sideMenuOverlay.classList.remove("active");
+    hamburger.setAttribute("aria-expanded", "false");
+  }
+
+  function openSideMenu() {
+    sideMenu.classList.add("open");
+    sideMenuOverlay.classList.add("active");
+    hamburger.setAttribute("aria-expanded", "true");
+  }
+
+  hamburger.addEventListener("click", () => {
+    if (sideMenu.classList.contains("open")) {
+      closeSideMenu();
+    } else {
+      openSideMenu();
+    }
+  });
+
+  hamburger.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      hamburger.click();
+    }
+  });
+
+  // Close side menu when clicking overlay
+  sideMenuOverlay.addEventListener("click", () => {
+    closeSideMenu();
+  });
+
+  // Dropdown toggle inside side menu
+  const sideMenuItems = sideMenu.querySelectorAll("li > a");
+
+  sideMenuItems.forEach((item) => {
+    item.addEventListener("click", (e) => {
+      const nextElem = item.nextElementSibling;
+      if (nextElem && nextElem.tagName === "UL") {
+        e.preventDefault();
+        item.parentElement.classList.toggle("open");
+      }
+    });
+  });
 </script>
 
 </body>
