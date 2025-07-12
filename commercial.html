@@ -81,39 +81,6 @@
   padding: 0 1rem;
 }
 
-.project-card {
-  background-color: #1a1a1a;
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.3);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  display: flex;
-  flex-direction: column;
-}
-
-.project-card img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  display: block;
-}
-
-.project-card h3 {
-  font-size: 1.2rem;
-  margin: 1rem;
-  color: #f2f2f2;
-}
-
-.project-card p {
-  margin: 0 1rem 1.5rem;
-  color: #aaa;
-  flex-grow: 1;
-}
-    .project-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 4px 20px rgba(0,0,0,0.5);
-    }
-
     footer {
       text-align: center;
       padding: 2rem 1rem;
@@ -244,36 +211,8 @@
     &copy; 2025 Archisign — Redefining the architecture of ambition.
   </footer>
 
-  <!-- JS -->
+<!-- Scripts -->
 <script>
-  const slides = document.querySelectorAll(".slide");
-  const prevBtn = document.querySelector(".nav-arrow.prev");
-  const nextBtn = document.querySelector(".nav-arrow.next");
-  let currentSlide = 0;
-
-  function showSlide(index) {
-    slides.forEach((slide, i) => {
-      slide.classList.remove("active");
-      if (i === index) {
-        slide.classList.add("active");
-      }
-    });
-  }
-
-  nextBtn.addEventListener("click", () => {
-    currentSlide = (currentSlide + 1) % slides.length;
-    showSlide(currentSlide);
-  });
-
-  prevBtn.addEventListener("click", () => {
-    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-    showSlide(currentSlide);
-  });
-
-  setInterval(() => {
-    nextBtn.click();
-  }, 6000);
-
   // Hamburger toggle for mobile side menu
   const hamburger = document.getElementById("hamburger");
   const sideMenu = document.getElementById("sideMenu");
@@ -323,6 +262,72 @@
       }
     });
   });
+
+  // Background slideshow
+  const slides = document.querySelectorAll(".background-slideshow .slide");
+  let currentIndex = 0;
+
+  setInterval(() => {
+    slides[currentIndex].classList.remove("active");
+    currentIndex = (currentIndex + 1) % slides.length;
+    slides[currentIndex].classList.add("active");
+  }, 5000);
+
+  // Navbar hide/show on scroll with logo shrink
+  (() => {
+    const navbar = document.getElementById("navbar");
+    const logo = document.getElementById("logo");
+    const mobileLogo = document.getElementById("mobileLogo");
+
+    let lastScrollTop = 0;
+    const delta = 5;
+    let ticking = false;
+
+    function onScroll() {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+      if (Math.abs(scrollTop - lastScrollTop) <= delta) {
+        ticking = false;
+        return;
+      }
+
+      if (scrollTop > lastScrollTop && scrollTop > 100) {
+        // Scroll down - hide navbar
+        navbar.classList.add("navbar-hidden");
+      } else {
+        // Scroll up - show navbar
+        navbar.classList.remove("navbar-hidden");
+      }
+
+      // Shrink logo only when navbar visible
+      if (!navbar.classList.contains("navbar-hidden")) {
+        if (scrollTop > 50) {
+          logo.classList.add("logo-scrolled");
+          navbar.classList.add("navbar-scrolled");
+          if (mobileLogo) mobileLogo.classList.add("logo-scrolled");
+        } else {
+          logo.classList.remove("logo-scrolled");
+          navbar.classList.remove("navbar-scrolled");
+          if (mobileLogo) mobileLogo.classList.remove("logo-scrolled");
+        }
+      } else {
+        // When navbar hidden, remove shrink classes
+        logo.classList.remove("logo-scrolled");
+        navbar.classList.remove("navbar-scrolled");
+        if (mobileLogo) mobileLogo.classList.remove("logo-scrolled");
+      }
+
+      lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+      ticking = false;
+    }
+
+    window.addEventListener("scroll", () => {
+      if (!ticking) {
+        window.requestAnimationFrame(onScroll);
+        ticking = true;
+      }
+    });
+  })();
 </script>
 
 </body>
