@@ -167,36 +167,26 @@
         font-size: 1rem;
       }
 
-      .cta-section {
-      max-width: 800px;
-      margin: 60px auto 40px;
-      text-align: center;
-      padding: 0 20px;
-    }
+      .cta-button {
+  background-color: #f9d784; /* Matches the CTA text color */
+  color: #1a1a1a; /* Dark text for good contrast */
+  font-weight: 700;
+  padding: 12px 36px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.1rem;
+  box-shadow: 0 4px 12px rgba(249, 215, 132, 0.6);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  display: inline-block;
+}
 
-    .cta-section p {
-      font-size: 1.1rem;
-      color: #ccc;
-      margin-bottom: 30px;
-      line-height: 1.7;
-    }
-      .cta-section a {
-      display: inline-block;
-      padding: 14px 30px;
-      background-color: #f5c518;
-      color: #111;
-      text-decoration: none;
-      font-weight: 700;
-      border-radius: 8px;
-      font-size: 1rem;
-      box-shadow: 0 0 10px rgba(245, 197, 24, 0.4);
-      transition: background-color 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .cta-section a:hover {
-      background-color: #ffd84b;
-      box-shadow: 0 0 20px rgba(245, 197, 24, 0.5);
-    }
+.cta-button:hover,
+.cta-button:focus {
+  background-color: #e5c96a; /* Slightly darker golden yellow on hover */
+  color: #000;
+  outline: none;
+}
     }
   </style>
 </head>
@@ -343,13 +333,14 @@
     <p>
       Browse our image gallery to experience this modern take on city life.
     </p>
+    <div class="cta-section" style="text-align: center; margin-top: 40px;">
+  <p style="font-size: 1.25rem; font-weight: 600; color: #f9d784; margin-bottom: 20px;">
+    Ready to take the next step? Get in touch with our team today.
+  </p>
+  <a href="contact.html" class="cta-button">Contact Us</a>
 </div>
-<section class="cta-section">
-    <p>
-      Ready to take the next step? Get in touch with our team today.
-    </p>
-    <a href="contact.html">Contact Us</a>
-  </section>
+</div>
+
 <!-- Footer -->
 <footer>
   &copy; 2025 Archisign — Where architecture meets design.
