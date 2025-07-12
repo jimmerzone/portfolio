@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="icon" href="images/favicon.png" type="image/x-icon" />
-  <title>Commercial Interiors - Archisign</title>
+  <title>Commercial - Archisign</title>
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
@@ -146,24 +146,73 @@
   </style>
 </head>
 <body>
-  <header class="navbar">
-    <div class="logo">
-      <img src="images/logos.png" alt="Archisign Logo" height="40" />
+  <!-- Navbar -->
+<nav class="navbar" id="navbar">
+  <div class="logo" id="logo">
+    <img src="images/logos.png" alt="Archisign Logo" />
+  </div>
+  <div class="mobile-right">
+    <div class="hamburger" id="hamburger">&#9776;</div>
+    <div class="mobile-logo" id="mobileLogo">
+      <img src="images/logos.png" alt="Archisign Logo" />
     </div>
-    <ul class="nav-menu">
+  </div>
+  <ul class="nav-menu">
+    <li><a href="index.html">Home</a></li>
+    <li>
+      <a href="#">Our Services <span class="arrow">▼</span></a>
+      <ul class="dropdown">
+        <li><a href="residential-spaces.html">Residential Spaces</a></li>
+        <li><a href="commercial-interiors.html">Commercial Interiors</a></li>
+        <li><a href="landscape-architecture.html">Landscape Architecture</a></li>
+        <li><a href="interior-design.html">Interior Design</a></li>
+      </ul>
+    </li>
+    <li><a href="#">Pricing</a></li>
+    <li>
+      <a href="#">Projects <span class="arrow">▼</span></a>
+      <ul class="dropdown">
+        <li><a href="urban-homes.html">Urban Homes</a></li>
+        <li><a href="luxury-villas.html">Luxury Villas</a></li>
+        <li><a href="corporate-spaces.html">Corporate Spaces</a></li>
+      </ul>
+    </li>
+    <li><a href="contact.html">Contact Us</a></li>
+    <li><a href="index.html#about">About</a></li>
+  </ul>
+</nav>
+
+<!-- Mobile Nav Sidebar -->
+  <nav class="side-menu" id="sideMenu" aria-label="Mobile menu">
+    <ul>
       <li><a href="index.html">Home</a></li>
-      <li><a href="#">Our Services</a></li>
-      <li><a href="#">Pricing</a></li>
-      <li><a href="#">Projects</a></li>
-      <li><a href="#">Contact</a></li>
+      <li>
+        <a href="#">Our Services <span class="arrow">▼</span></a>
+        <ul>
+          <li><a href="residential-spaces.html">Residential Spaces</a></li>
+          <li><a href="commercial-interiors.html">Commercial Interiors</a></li>
+          <li><a href="landscape-architecture.html">Landscape Architecture</a></li>
+          <li><a href="interior-design.html">Interior Design</a></li>
+        </ul>
+      </li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li>
+        <a href="#">Projects <span class="arrow">▼</span></a>
+        <ul>
+          <li><a href="urban-homes.html">Urban Homes</a></li>
+          <li><a href="luxury-villas.html">Luxury Villas</a></li>
+          <li><a href="corporate-spaces.html">Corporate Spaces</a></li>
+        </ul>
+      </li>
+      <li><a href="contact.html">Contact Us</a></li>
       <li><a href="#about">About</a></li>
     </ul>
-  </header>
+  </nav>
 
   <section class="hero-banner">
     <div class="hero-overlay"></div>
     <div class="hero-text">
-      <h1>Commercial Interiors</h1>
+      <h1>Commercial</h1>
       <p>Designing workspaces that elevate brands, inspire teams, and deliver impact.</p>
     </div>
   </section>
@@ -203,5 +252,87 @@
   <footer>
     &copy; 2025 Archisign — Redefining the architecture of ambition.
   </footer>
+
+  <!-- JS -->
+<script>
+  const slides = document.querySelectorAll(".slide");
+  const prevBtn = document.querySelector(".nav-arrow.prev");
+  const nextBtn = document.querySelector(".nav-arrow.next");
+  let currentSlide = 0;
+
+  function showSlide(index) {
+    slides.forEach((slide, i) => {
+      slide.classList.remove("active");
+      if (i === index) {
+        slide.classList.add("active");
+      }
+    });
+  }
+
+  nextBtn.addEventListener("click", () => {
+    currentSlide = (currentSlide + 1) % slides.length;
+    showSlide(currentSlide);
+  });
+
+  prevBtn.addEventListener("click", () => {
+    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+    showSlide(currentSlide);
+  });
+
+  setInterval(() => {
+    nextBtn.click();
+  }, 6000);
+
+  // Hamburger toggle for mobile side menu
+  const hamburger = document.getElementById("hamburger");
+  const sideMenu = document.getElementById("sideMenu");
+  const sideMenuOverlay = document.getElementById("sideMenuOverlay");
+
+  function closeSideMenu() {
+    sideMenu.classList.remove("open");
+    sideMenuOverlay.classList.remove("active");
+    hamburger.setAttribute("aria-expanded", "false");
+  }
+
+  function openSideMenu() {
+    sideMenu.classList.add("open");
+    sideMenuOverlay.classList.add("active");
+    hamburger.setAttribute("aria-expanded", "true");
+  }
+
+  hamburger.addEventListener("click", () => {
+    if (sideMenu.classList.contains("open")) {
+      closeSideMenu();
+    } else {
+      openSideMenu();
+    }
+  });
+
+  hamburger.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      hamburger.click();
+    }
+  });
+
+  // Close side menu when clicking overlay
+  sideMenuOverlay.addEventListener("click", () => {
+    closeSideMenu();
+  });
+
+  // Dropdown toggle inside side menu
+  const sideMenuItems = sideMenu.querySelectorAll("li > a");
+
+  sideMenuItems.forEach((item) => {
+    item.addEventListener("click", (e) => {
+      const nextElem = item.nextElementSibling;
+      if (nextElem && nextElem.tagName === "UL") {
+        e.preventDefault();
+        item.parentElement.classList.toggle("open");
+      }
+    });
+  });
+</script>
+
 </body>
 </html>
