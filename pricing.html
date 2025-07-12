@@ -215,11 +215,10 @@
   <!-- Overlay for side menu -->
   <div class="side-menu-overlay" id="sideMenuOverlay"></div>
   
-  <header>
+  <section class="pricing-section">
+    <header>
     <h1>Our Pricing</h1>
   </header>
-
-  <section class="pricing-section">
     <div class="pricing-box">
       <img src="images/bx1.jpg" alt="1-Floor Project" />
       <div class="pricing-title">1-Floor Project (up to 500 sqft)</div>
@@ -264,5 +263,56 @@
     &copy; 2025 Archisign — Exceptional Spaces, Thoughtfully Designed.
   </footer>
 
+  <script>
+    // Hamburger toggle for mobile side menu
+  const hamburger = document.getElementById("hamburger");
+  const sideMenu = document.getElementById("sideMenu");
+  const sideMenuOverlay = document.getElementById("sideMenuOverlay");
+
+  function closeSideMenu() {
+    sideMenu.classList.remove("open");
+    sideMenuOverlay.classList.remove("active");
+    hamburger.setAttribute("aria-expanded", "false");
+  }
+
+  function openSideMenu() {
+    sideMenu.classList.add("open");
+    sideMenuOverlay.classList.add("active");
+    hamburger.setAttribute("aria-expanded", "true");
+  }
+
+  hamburger.addEventListener("click", () => {
+    if (sideMenu.classList.contains("open")) {
+      closeSideMenu();
+    } else {
+      openSideMenu();
+    }
+  });
+
+  hamburger.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      hamburger.click();
+    }
+  });
+
+  // Close side menu when clicking overlay
+  sideMenuOverlay.addEventListener("click", () => {
+    closeSideMenu();
+  });
+
+  // Dropdown toggle inside side menu
+  const sideMenuItems = sideMenu.querySelectorAll("li > a");
+
+  sideMenuItems.forEach((item) => {
+    item.addEventListener("click", (e) => {
+      const nextElem = item.nextElementSibling;
+      if (nextElem && nextElem.tagName === "UL") {
+        e.preventDefault();
+        item.parentElement.classList.toggle("open");
+      }
+    });
+  });
+  </script>
 </body>
 </html>
