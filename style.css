@@ -456,9 +456,6 @@ footer {
   /* Show hamburger */
   .hamburger {
     display: block;
-    top: 5px;               /* Distance from top */
-    left: 5px;              /* Distance from left */
-    padding-right: 0;        /* Remove right padding */
   }
 
   /* Show side menu */
