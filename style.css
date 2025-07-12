@@ -456,10 +456,9 @@ footer {
   /* Show hamburger */
   .hamburger {
     display: block;
-    top: 10px;               /* Distance from top */
-    left: 10px;              /* Distance from left */
+    top: 5px;               /* Distance from top */
+    left: 5px;              /* Distance from left */
     padding-right: 0;        /* Remove right padding */
-    z-index: 1000;           /* High z-index to be on top */
   }
 
   /* Show side menu */
