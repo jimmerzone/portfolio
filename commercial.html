@@ -15,27 +15,6 @@
       color: #f2f2f2;
     }
 
-    .navbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 2rem;
-      position: relative;
-      z-index: 10;
-    }
-
-    .nav-menu {
-      list-style: none;
-      display: flex;
-      gap: 1.5rem;
-    }
-
-    .nav-menu li a {
-      color: #f2f2f2;
-      text-decoration: none;
-      font-weight: 500;
-    }
-
     .hero-banner {
       position: relative;
       height: 80vh;
@@ -90,7 +69,7 @@
     }
 
     .projects-showcase {
-      max-width: 1200px;
+      max-width: none;
       margin: 4rem auto;
       padding: 0 1rem;
     }
@@ -148,52 +127,62 @@
 <body>
   <!-- Navbar -->
 <nav class="navbar" id="navbar">
-  <div class="logo" id="logo">
-    <img src="images/logos.png" alt="Archisign Logo" />
-  </div>
-  <div class="mobile-right">
-    <div class="hamburger" id="hamburger">&#9776;</div>
-    <div class="mobile-logo" id="mobileLogo">
+    <!-- Desktop Logo -->
+    <div class="logo" id="logo">
       <img src="images/logos.png" alt="Archisign Logo" />
     </div>
-  </div>
-  <ul class="nav-menu">
-    <li><a href="index.html">Home</a></li>
-    <li>
-      <a href="#">Our Services <span class="arrow">▼</span></a>
-      <ul class="dropdown">
-        <li><a href="residential-spaces.html">Residential</a></li>
-        <li><a href="commercial.html">Commercial</a></li>
-        <li><a href="layout.html">Layout / Floorplan</a></li>
-        <li><a href="interior-design.html">Interior Design</a></li>
-      </ul>
-    </li>
-    <li><a href="#">Pricing</a></li>
-    <li>
-      <a href="#">Projects <span class="arrow">▼</span></a>
-      <ul class="dropdown">
-        <li><a href="urban-homes.html">Urban Homes</a></li>
-        <li><a href="luxury-villas.html">Luxury Villas</a></li>
-        <li><a href="corporate-spaces.html">Corporate Spaces</a></li>
-      </ul>
-    </li>
-    <li><a href="contact.html">Contact Us</a></li>
-    <li><a href="index.html#about">About</a></li>
-  </ul>
-</nav>
 
-<!-- Mobile Nav Sidebar -->
+    <!-- Mobile right container: hamburger + logo (logo moved after hamburger) -->
+    <div class="mobile-right">
+      <div
+        class="hamburger"
+        id="hamburger"
+        aria-label="Toggle menu"
+        role="button"
+        tabindex="0"
+        aria-expanded="false"
+      >
+        &#9776;
+      </div>
+      <div class="mobile-logo" id="mobileLogo" aria-label="Site logo" role="img">
+        <img src="images/logos.png" alt="Archisign Logo" />
+      </div>
+    </div>
+
+    <!-- Desktop nav menu -->
+    <ul class="nav-menu">
+      <li>
+        <a href="#">Our Services <span class="arrow">▼</span></a>
+        <ul class="dropdown">
+          <li><a href="residential-spaces.html">Residential</a></li>
+          <li><a href="commercial.html">Commercial</a></li>
+          <li><a href="layout.html">Layout/Floorplan</a></li>
+          <li><a href="interior-design.html">Interior Design</a></li>
+        </ul>
+      </li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li>
+        <a href="#">Projects <span class="arrow">▼</span></a>
+        <ul class="dropdown">
+          <li><a href="urban-homes.html">Urban Homes</a></li>
+          <li><a href="luxury-villas.html">Luxury Villas</a></li>
+          <li><a href="corporate-spaces.html">Corporate Spaces</a></li>
+        </ul>
+      </li>
+      <li><a href="contact.html">Contact Us</a></li>
+      <li><a href="#about">About</a></li>
+    </ul>
+  </nav>
+
+  <!-- Mobile Nav Sidebar -->
   <nav class="side-menu" id="sideMenu" aria-label="Mobile menu">
-    <!-- Overlay for side menu -->
-    <div class="side-menu-overlay" id="sideMenuOverlay"></div>
     <ul>
-      <li><a href="index.html">Home</a></li>
       <li>
         <a href="#">Our Services <span class="arrow">▼</span></a>
         <ul>
           <li><a href="residential-spaces.html">Residential</a></li>
           <li><a href="commercial.html">Commercial</a></li>
-          <li><a href="layout.html">Layout / Floorplan</a></li>
+          <li><a href="layout.html">Layout/Floorplan</a></li>
           <li><a href="interior-design.html">Interior Design</a></li>
         </ul>
       </li>
