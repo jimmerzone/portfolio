@@ -173,6 +173,16 @@ body::-webkit-scrollbar {
   z-index: 25;
   position: relative;
 }
+/* Show and position hamburger top-left only on mobile */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;          /* Show hamburger */
+    position: fixed;         /* Fix position */
+    top: 10px;               /* Distance from top */
+    left: 10px;              /* Distance from left */
+    padding-right: 0;        /* Remove right padding */
+    z-index: 1000;           /* High z-index to be on top */
+  }
 
 /* Side menu (mobile) */
 .side-menu {
