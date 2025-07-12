@@ -467,8 +467,21 @@ footer {
     display: flex;
     background: none;
     z-index: 999;
+    transition: transform 0.3s ease, background 0.3s ease;
+  }
+ 
+  /* Slide mobile-right up when navbar is hidden */
+  .navbar.navbar-hidden .mobile-right {
+    transform: translateY(-100%);
+    transition: transform 0.3s ease;
   }
 
+  /* Add background and shadow when scrolling down */
+  .navbar.navbar-scrolled .mobile-right {
+    background: rgba(32, 32, 48, 0.95);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+  }
   .mobile-logo {
     margin-left: auto;
   }
@@ -476,7 +489,16 @@ footer {
   .navbar {
     padding: 0 !important; /* overrides large padding */
   }
+.mobile-logo {
+    margin-left: auto;
+  }
 
+  /* Shrink mobile logo on scroll */
+  .mobile-logo.logo-scrolled img {
+    height: 35px;
+    transform: translateY(-10px);
+    transition: height 0.3s ease, transform 0.3s ease;
+  }
   .logo {
     display: none !important;
   }
