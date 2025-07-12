@@ -465,7 +465,6 @@ footer {
     align-items: center;
     padding: 10px 20px;
     display: flex;
-    background: rgba(0, 0, 0, 0.85); /* optional: matches navbar background */
     z-index: 999;
   }
 
