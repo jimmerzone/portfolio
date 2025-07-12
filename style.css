@@ -442,25 +442,43 @@ footer {
   .nav-menu {
     display: none !important;
   }
-  .logo {
-    display: none;
-  }
-
-  /* Show mobile right container */
-  .mobile-right {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-  }
 
   /* Show hamburger */
   .hamburger {
     display: block;
+    margin: 0;
+    padding: 0;
   }
 
   /* Show side menu */
   .side-menu {
     display: block;
+  }
+
+  /* Show mobile right container */
+  .mobile-right {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    display: flex;
+    background: rgba(0, 0, 0, 0.85); /* optional: matches navbar background */
+    z-index: 999;
+  }
+
+  .mobile-logo {
+    margin-left: auto;
+  }
+
+  .navbar {
+    padding: 0 !important; /* overrides large padding */
+  }
+
+  .logo {
+    display: none !important;
   }
 
   /* Fix project cards spacing on mobile */
