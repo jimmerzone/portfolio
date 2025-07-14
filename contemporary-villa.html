@@ -19,6 +19,15 @@
       min-height: 100vh;
     }
 
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      position: relative;
+      z-index: 1000;
+    }
+
    .logo img {
       height: 40px;
     }
@@ -43,28 +52,6 @@
 
     .nav-menu li:hover > .dropdown {
       display: block;
-    }
-
-    .dropdown {
-      display: none;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      background: #1c1c1c;
-      list-style: none;
-      min-width: 180px;
-      padding: 0.5rem 0;
-      z-index: 1000;
-    }
-
-    .dropdown li {
-      padding: 0.5rem 1rem;
-    }
-
-    .dropdown li a {
-      color: #f2f2f2;
-      text-decoration: none;
-      font-size: 0.95rem;
     }
 
     .mobile-right {
