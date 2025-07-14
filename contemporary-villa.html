@@ -327,17 +327,6 @@
     }
     
     @media (max-width: 900px) {
-      .nav-menu {
-        display: none;
-      }
-
-      .mobile-right {
-        display: flex;
-      }
-
-      .logo {
-        display: none;
-      }
       .page-title {
         font-size: 2rem; /* Smaller title on mobile */
         margin-top: 100px; /* slightly less on mobile */
@@ -349,12 +338,15 @@
 <body>
   <!-- Navbar -->
   <header class="navbar">
-    <div class="logo">
+    <div class="logo" id="logo">
+    <img src="images/logos.png" alt="Archisign Logo" />
+  </div>
+  <div class="mobile-right">
+    <div class="hamburger" id="hamburger">&#9776;</div>
+    <div class="mobile-logo" id="mobileLogo">
       <img src="images/logos.png" alt="Archisign Logo" />
     </div>
-    <div class="mobile-right">
-      <div id="hamburger" class="hamburger" aria-label="Toggle menu" role="button" tabindex="0" aria-expanded="false">&#9776;</div>
-    </div>
+  </div>
     <ul class="nav-menu">
       <li><a href="index.html">Home</a></li>
       <li class="has-dropdown"><a href="#">Our Services <span class="dropdown-arrow">&#9662;</span></a>
