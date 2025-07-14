@@ -15,6 +15,41 @@
       color: #f2f2f2;
     }
 
+    /* Fix navbar and hamburger on top with high z-index */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: #121212;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      padding: 0.5rem 1rem;
+      box-sizing: border-box;
+    }
+
+    .logo img,
+    .mobile-logo img {
+      height: 40px;
+      display: block;
+    }
+
+    .mobile-right {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .hamburger {
+      font-size: 2rem;
+      color: #f2f2f2;
+      cursor: pointer;
+      user-select: none;
+      z-index: 10000;
+    }
+
     .hero-banner {
       position: relative;
       height: 80vh;
@@ -23,6 +58,10 @@
       align-items: center;
       justify-content: center;
       text-align: center;
+      padding-top: 60px; /* space for fixed navbar */
+      box-sizing: border-box;
+      margin-top: 0;
+      z-index: 1;
     }
 
     .hero-overlay {
@@ -52,9 +91,11 @@
 
     .intro-section {
       max-width: 1000px;
-      margin: 3rem auto;
+      margin: 3rem auto 0;
       padding: 0 1rem;
       text-align: center;
+      position: relative;
+      z-index: 1;
     }
 
     .intro-section h2 {
@@ -71,17 +112,20 @@
 
     .slideshow-wrapper {
       width: 100%;
-      max-height: 80vh;
       position: relative;
       margin: 0 auto;
-      overflow: hidden;
+      overflow: visible;
+      max-height: none;
+      padding-top: 1rem;
+      margin-top: 0;
+      z-index: 1;
     }
 
     .slideshow-container {
       position: relative;
       display: flex;
       width: 100%;
-      height: 100%;
+      height: auto;
       overflow: visible;
       z-index: 0;
     }
@@ -219,65 +263,66 @@
       }
     }
 
+    /* Mobile specific fixes */
     @media (max-width: 768px) {
       .hero-banner {
-    flex-direction: column;
-    height: 60vh;
-    padding: 1rem 0;
-    padding-top: 13rem; /* keep your spacing */
-  }
+        flex-direction: column;
+        height: 60vh;
+        padding: 1rem 0;
+        padding-top: 60px; /* space for fixed navbar */
+      }
 
-  .hero-text {
-    position: relative;
-    max-width: 100%;
-    padding: 1rem;
-    text-align: center;
-    z-index: 2;
-  }
+      .hero-text {
+        position: relative;
+        max-width: 100%;
+        padding: 1rem;
+        text-align: center;
+        z-index: 2;
+      }
 
-  .slideshow-wrapper {
-    max-height: none !important;
-    overflow: visible !important;
-    height: auto !important;
-    margin-bottom: 2rem; /* space below slideshow */
-  }
+      .slideshow-wrapper {
+        max-height: none !important;
+        overflow: visible !important;
+        height: auto !important;
+        margin-bottom: 3rem;
+        padding-top: 1rem;
+      }
 
-  .slideshow-container {
-    position: relative;
-    width: 100%;
-    height: auto !important;
-    margin-top: 1rem;
-    padding: 1rem 0;
-    overflow: visible;
-    z-index: 0;
-  }
+      .slideshow-container {
+        position: relative;
+        width: 100%;
+        height: auto !important;
+        margin-top: 1rem;
+        padding: 1rem 0;
+        overflow: visible;
+        z-index: 0;
+      }
 
-  /* Make slides position relative so height is respected */
-  .slide {
-    position: relative !important;
-    opacity: 1 !important;
-    min-width: 100%;
-    z-index: 1;
-  }
+      .slide {
+        position: relative !important;
+        opacity: 1 !important;
+        min-width: 100%;
+        z-index: 1;
+      }
 
-  .nav-arrow {
-    display: block;
-    z-index: 10;
-    pointer-events: auto;
-  }
-}
+      .nav-arrow {
+        display: block;
+        z-index: 10;
+        pointer-events: auto;
+      }
+    }
   </style>
 </head>
 <body>
 
 <!-- Navbar -->
-<nav class="navbar" id="navbar">
+<nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
   <div class="logo" id="logo">
     <img src="images/logos.png" alt="Archisign Logo" />
   </div>
   <div class="mobile-right">
-    <div class="hamburger" id="hamburger">&#9776;</div>
-    <div class="mobile-logo" id="mobileLogo">
+    <div class="hamburger" id="hamburger" aria-label="Toggle menu" role="button" tabindex="0">&#9776;</div>
+    <div class="mobile-logo" id="mobileLogo" style="display:none;">
       <img src="images/logos.png" alt="Archisign Logo" />
     </div>
   </div>
@@ -337,7 +382,7 @@
 <div class="side-menu-overlay" id="sideMenuOverlay"></div>
 
 <!-- Slideshow -->
-<section class="slideshow-wrapper">
+<section class="slideshow-wrapper" aria-label="Project image slideshow">
   <section class="hero-banner">
     <div class="hero-overlay"></div>
     <div class="hero-text">
@@ -413,8 +458,8 @@
   &copy; 2025 Archisign — Visualizing space with precision, beauty, and purpose.
 </footer>
 
-<!-- JS -->
 <script>
+  // Slideshow functionality
   const slides = document.querySelectorAll(".slide");
   const prevBtn = document.querySelector(".nav-arrow.prev");
   const nextBtn = document.querySelector(".nav-arrow.next");
@@ -475,14 +520,11 @@
     }
   });
 
-  // Close side menu when clicking overlay
   sideMenuOverlay.addEventListener("click", () => {
     closeSideMenu();
   });
 
-  // Dropdown toggle inside side menu
   const sideMenuItems = sideMenu.querySelectorAll("li > a");
-
   sideMenuItems.forEach((item) => {
     item.addEventListener("click", (e) => {
       const nextElem = item.nextElementSibling;
