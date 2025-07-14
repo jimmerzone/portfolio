@@ -220,21 +220,10 @@
     }
 
     @media (max-width: 768px) {
-      /* Ensure navbar is on top */
-      .navbar {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        z-index: 1000;
-      }
-      
-      /* Also push down hero banner content so it’s below navbar */
       .hero-banner {
-        padding-top: 0 !important; /* remove previous large padding */
-        margin-top: 60px; /* same as navbar height */
-        height: auto !important;
-        min-height: 60vh; /* keep some height */
+        flex-direction: column;
+        height: 60vh; /* reduced height */
+        padding: 1rem 0;
       }
 
       .hero-text {
@@ -243,14 +232,6 @@
         padding: 1rem;
         text-align: center;
         z-index: 2;
-      }
-
-      /* Push down the slideshow wrapper so it doesn't cover navbar */
-      .slideshow-wrapper {
-        margin-top: 60px; /* or height of navbar */
-        max-height: none !important;
-        overflow: visible !important;
-        height: auto !important;
       }
 
       .slideshow-container {
