@@ -221,43 +221,51 @@
 
     @media (max-width: 768px) {
       .hero-banner {
-        flex-direction: column;
-        height: 60vh; /* reduced height */
-        padding: 1rem 0;
-        padding-top: 13rem;
-      }
+    flex-direction: column;
+    height: 60vh;
+    padding: 1rem 0;
+    padding-top: 13rem; /* keep your spacing */
+  }
 
-      .hero-text {
-        position: relative;
-        max-width: 100%;
-        padding: 1rem;
-        text-align: center;
-        z-index: 2;
-      }
+  .hero-text {
+    position: relative;
+    max-width: 100%;
+    padding: 1rem;
+    text-align: center;
+    z-index: 2;
+  }
 
-      .slideshow-container {
-        position: relative;
-        width: 100%;
-        height: auto;
-        margin-top: 1rem;
-        padding: 1rem 0;
-        overflow: visible;
-        z-index: 0;
-      }
+  .slideshow-wrapper {
+    max-height: none !important;
+    overflow: visible !important;
+    height: auto !important;
+    margin-bottom: 2rem; /* space below slideshow */
+  }
 
-      .slide {
-        position: relative;
-        opacity: 1 !important;
-        min-width: 100%;
-        z-index: 1;
-      }
+  .slideshow-container {
+    position: relative;
+    width: 100%;
+    height: auto !important;
+    margin-top: 1rem;
+    padding: 1rem 0;
+    overflow: visible;
+    z-index: 0;
+  }
 
-      .nav-arrow {
-        display: block;
-        z-index: 10;
-        pointer-events: auto;
-      }
-    }
+  /* Make slides position relative so height is respected */
+  .slide {
+    position: relative !important;
+    opacity: 1 !important;
+    min-width: 100%;
+    z-index: 1;
+  }
+
+  .nav-arrow {
+    display: block;
+    z-index: 10;
+    pointer-events: auto;
+  }
+}
   </style>
 </head>
 <body>
