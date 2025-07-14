@@ -35,49 +35,49 @@
     0 0 12px rgba(253, 246, 227, 0.3);
 }
 
-    /* Project Gallery (Images) */
+   /* Gallery Grid */
     .project-gallery {
-      display: flex;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      -webkit-overflow-scrolling: touch;
-      gap: 20px;
-      padding: 20px;
-      max-width: 1200px;
-      margin: 0 auto 40px; /* Below title, above text */
-    }
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: 20px;
+    padding: 40px 20px 60px;
+    max-width: 1200px;
+    margin: 140px auto 40px;
+  }
 
-    .project-gallery::-webkit-scrollbar {
-      height: 8px;
-    }
-    .project-gallery::-webkit-scrollbar-thumb {
-      background: rgba(249, 215, 132, 0.8);
-      border-radius: 4px;
-    }
+  .project-gallery::-webkit-scrollbar {
+    height: 8px;
+  }
+  .project-gallery::-webkit-scrollbar-thumb {
+    background: rgba(249, 215, 132, 0.8);
+    border-radius: 4px;
+  }
 
-    .thumbnail {
-      flex: 0 0 auto;
-      scroll-snap-align: center;
-      border-radius: 12px;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
-      cursor: pointer;
-      transition: transform 0.3s ease;
-      width: 280px;
-      position: relative;
-    }
+  .thumbnail {
+    flex: 0 0 auto;
+    scroll-snap-align: center;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    width: 280px;
+    position: relative;
+  }
 
-    .thumbnail img {
-      width: 100%;
-      height: auto;
-      border-radius: 12px;
-      display: block;
-    }
+  .thumbnail img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    display: block;
+  }
 
-    .thumbnail:hover {
-      transform: scale(1.05);
-    }
+  .thumbnail:hover {
+    transform: scale(1.05);
+  }
 
-    /* Lightbox styles */
+    /* Lightbox */
     .lightbox-toggle {
       display: none;
     }
@@ -102,21 +102,9 @@
       box-shadow: 0 12px 40px rgba(0, 0, 0, 0.8);
     }
 
-    /* Show lightbox if corresponding radio is checked */
-    #img1:checked ~ #lightbox1,
-    #img2:checked ~ #lightbox2,
-    #img3:checked ~ #lightbox3,
-    #img4:checked ~ #lightbox4,
-    #img5:checked ~ #lightbox5,
-    #img6:checked ~ #lightbox6,
-    #img7:checked ~ #lightbox7 {
-      display: flex;
-    }
-
     .lightbox-close {
       position: absolute;
-      top: 0;
-      left: 0;
+      top: 0; left: 0;
       width: 100%;
       height: 100%;
       cursor: default;
@@ -133,13 +121,38 @@
       background: rgba(0, 0, 0, 0.4);
       border-radius: 50%;
       padding: 5px 12px;
-      transition: background 0.3s ease;
       user-select: none;
     }
 
-    .close-button:hover {
-      background: rgba(255, 255, 255, 0.1);
+    /* Navigation arrows inside lightbox */
+    .nav {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      transform: translateY(-50%);
+      pointer-events: none;
     }
+
+    .nav label {
+      pointer-events: all;
+      cursor: pointer;
+      color: white;
+      font-size: 3rem;
+      padding: 0 1rem;
+      user-select: none;
+    }
+
+    /* Lightbox visibility control */
+    #img1:checked ~ #lightbox1,
+    #img2:checked ~ #lightbox2,
+    #img3:checked ~ #lightbox3,
+    #img4:checked ~ #lightbox4 {
+      display: flex;
+    }
+
+    
 
     /* Project Content (Descriptive Text) - using your provided styles */
     .project-content {
@@ -268,103 +281,57 @@
   
   <div class="side-menu-overlay" id="sideMenuOverlay"></div>
 
-  <!-- Main Content Area -->
-  <main>
-    <!-- Page Title (Main heading for the page) -->
-    <h1 class="page-title">Contemporary Villa</h1>
+  <!-- Lightbox Radio Inputs -->
+  <input type="radio" name="lightbox" id="img1" class="lightbox-toggle" />
+  <input type="radio" name="lightbox" id="img2" class="lightbox-toggle" />
+  <input type="radio" name="lightbox" id="img3" class="lightbox-toggle" />
+  <input type="radio" name="lightbox" id="img4" class="lightbox-toggle" />
+  <input type="radio" name="lightbox" id="close" class="lightbox-toggle" checked />
 
-    <!-- Project Gallery (Images) -->
-    <section class="project-gallery">
-      <!-- Radio inputs for lightbox (all 7 images) -->
-      <input type="radio" name="lightbox" id="img1" class="lightbox-toggle" />
-      <input type="radio" name="lightbox" id="img2" class="lightbox-toggle" />
-      <input type="radio" name="lightbox" id="img3" class="lightbox-toggle" />
-      <input type="radio" name="lightbox" id="img4" class="lightbox-toggle" />
-      <input type="radio" name="lightbox" id="img5" class="lightbox-toggle" />
-      <input type="radio" name="lightbox" id="img6" class="lightbox-toggle" />
-      <input type="radio" name="lightbox" id="img7" class="lightbox-toggle" />
-      <input type="radio" name="lightbox" id="close" class="lightbox-toggle" checked />
+  <!-- Gallery -->
+  <div class="project-gallery">
+    <label for="img1" class="thumbnail"><img src="images/bg5.jpg" alt="Apartment Image 1" /></label>
+    <label for="img2" class="thumbnail"><img src="images/bg6.jpg" alt="Apartment Image 2" /></label>
+    <label for="img3" class="thumbnail"><img src="images/bg7.jpg" alt="Apartment Image 3" /></label>
+    <label for="img4" class="thumbnail"><img src="images/bg8.jpg" alt="Apartment Image 4" /></label>
+  </div>
 
-      <!-- Thumbnails (all 7 images) -->
-      <label for="img1" class="thumbnail"><img src="images/vg.jpg" alt="Villa Image 1" /></label>
-      <label for="img2" class="thumbnail"><img src="images/bg17.jpg" alt="Villa Image 2" /></label>
-      <label for="img3" class="thumbnail"><img src="images/vg2.jpg" alt="Villa Image 3" /></label>
-      <label for="img4" class="thumbnail"><img src="images/vg1.jpg" alt="Villa Image 4" /></label>
-      <label for="img5" class="thumbnail"><img src="images/ag.jpg" alt="Villa Image 5" /></label>
-      <label for="img6" class="thumbnail"><img src="images/ag8.jpg" alt="Villa Image 6" /></label>
-      <label for="img7" class="thumbnail"><img src="images/ag3.jpg" alt="Villa Image 7" /></label>
-    </section>
-
-    <!-- Lightboxes (all 7 lightboxes with correct navigation) -->
-    <div class="lightbox" id="lightbox1">
-      <label for="close" class="lightbox-close"></label>
-      <label for="close" class="close-button" title="Close">&times;</label>
-      <img src="images/vg.jpg" alt="Villa Image 1 Large" />
-      <div class="nav">
-        <label for="img7">&#10094;</label>
-        <label for="img2">&#10095;</label>
-      </div>
+  <!-- Lightboxes -->
+  <div class="lightbox" id="lightbox1">
+    <label for="close" class="lightbox-close"></label>
+    <label for="close" class="close-button" title="Close">&times;</label>
+    <img src="images/bg5.jpg" alt="Apartment Image 1 Large" />
+    <div class="nav">
+      <label for="img4">&#10094;</label><label for="img2">&#10095;</label>
     </div>
+  </div>
 
-    <div class="lightbox" id="lightbox2">
-      <label for="close" class="lightbox-close"></label>
-      <label for="close" class="close-button" title="Close">&times;</label>
-      <img src="images/bg17.jpg" alt="Villa Image 2 Large" />
-      <div class="nav">
-        <label for="img1">&#10094;</label>
-        <label for="img3">&#10095;</label>
-      </div>
+  <div class="lightbox" id="lightbox2">
+    <label for="close" class="lightbox-close"></label>
+    <label for="close" class="close-button" title="Close">&times;</label>
+    <img src="images/bg6.jpg" alt="Apartment Image 2 Large" />
+    <div class="nav">
+      <label for="img1">&#10094;</label><label for="img3">&#10095;</label>
     </div>
+  </div>
 
-    <div class="lightbox" id="lightbox3">
-      <label for="close" class="lightbox-close"></label>
-      <label for="close" class="close-button" title="Close">&times;</label>
-      <img src="images/vg2.jpg" alt="Villa Image 3 Large" />
-      <div class="nav">
-        <label for="img2">&#10094;</label>
-        <label for="img4">&#10095;</label>
-      </div>
+  <div class="lightbox" id="lightbox3">
+    <label for="close" class="lightbox-close"></label>
+    <label for="close" class="close-button" title="Close">&times;</label>
+    <img src="images/bg7.jpg" alt="Apartment Image 3 Large" />
+    <div class="nav">
+      <label for="img2">&#10094;</label><label for="img4">&#10095;</label>
     </div>
+  </div>
 
-    <div class="lightbox" id="lightbox4">
-      <label for="close" class="lightbox-close"></label>
-      <label for="close" class="close-button" title="Close">&times;</label>
-      <img src="images/vg1.jpg" alt="Villa Image 4 Large" />
-      <div class="nav">
-        <label for="img3">&#10094;</label>
-        <label for="img5">&#10095;</label>
-      </div>
+  <div class="lightbox" id="lightbox4">
+    <label for="close" class="lightbox-close"></label>
+    <label for="close" class="close-button" title="Close">&times;</label>
+    <img src="images/bg8.jpg" alt="Apartment Image 4 Large" />
+    <div class="nav">
+      <label for="img3">&#10094;</label><label for="img1">&#10095;</label>
     </div>
-
-    <div class="lightbox" id="lightbox5">
-      <label for="close" class="lightbox-close"></label>
-      <label for="close" class="close-button" title="Close">&times;</label>
-      <img src="images/ag.jpg" alt="Villa Image 5 Large" />
-      <div class="nav">
-        <label for="img4">&#10094;</label>
-        <label for="img6">&#10095;</label>
-      </div>
-    </div>
-
-    <div class="lightbox" id="lightbox6">
-      <label for="close" class="lightbox-close"></label>
-      <label for="close" class="close-button" title="Close">&times;</label>
-      <img src="images/ag8.jpg" alt="Villa Image 6 Large" />
-      <div class="nav">
-        <label for="img5">&#10094;</label>
-        <label for="img7">&#10095;</label>
-      </div>
-    </div>
-
-    <div class="lightbox" id="lightbox7">
-      <label for="close" class="lightbox-close"></label>
-      <label for="close" class="close-button" title="Close">&times;</label>
-      <img src="images/ag3.jpg" alt="Villa Image 7 Large" />
-      <div class="nav">
-        <label for="img6">&#10094;</label>
-        <label for="img1">&#10095;</label>
-      </div>
-    </div>
+  </div>
 
     <!-- Project Content (Descriptive Text) -->
     <section class="project-content">
