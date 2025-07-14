@@ -1,12 +1,13 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="icon" href="images/favicon.png" type="image/x-icon" />
-  <title>Commercial - Archisign</title>
+  <title>Residential Spaces - Archisign</title>
   <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="images/favicon.png" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet" />
   <style>
     body {
       margin: 0;
@@ -68,16 +69,130 @@
       line-height: 1.6;
     }
 
-    .projects-showcase {
-      max-width: none;
-      margin: 4rem auto;
+    .slideshow-wrapper {
+      width: 100%;
+      max-height: 80vh;
+      position: relative;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+
+    .slideshow-container {
+      position: relative;
+      display: flex;
+      width: 100%;
+      height: 100%;
+    }
+
+    .slide {
+      min-width: 100%;
+      opacity: 0;
+      transition: opacity 0.6s ease;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    .slide.active {
+      opacity: 1;
+      position: relative;
+    }
+
+    .slide img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+    }
+
+    .nav-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0, 0, 0, 0.4);
+      color: #fff;
+      border: none;
+      font-size: 2rem;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      z-index: 10;
+    }
+
+    .nav-arrow.prev {
+      left: 10px;
+    }
+
+    .nav-arrow.next {
+      right: 10px;
+    }
+
+    .content {
+      max-width: 1200px;
+      margin: 2rem auto;
       padding: 0 1rem;
     }
-    .projects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 1.5rem;
-}
+
+    .text-block h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    .text-block p {
+      font-size: 1.1rem;
+      margin: 1rem 0;
+      color: #ddd;
+    }
+
+    .key-offerings {
+      padding-left: 1.5rem;
+      margin: 1.5rem 0 2rem;
+      list-style-type: square;
+    }
+
+    .projects-section {
+      margin-top: 3rem;
+    }
+
+    .projects-title {
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+      text-align: center;
+      color: #f2f2f2;
+    }
+
+    .project-cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+
+    .project-card {
+      flex: 1 1 calc(33.333% - 2rem);
+      background: #1e1e1e;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+      transition: transform 0.3s;
+    }
+
+    .project-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .project-card h3 {
+      margin: 1rem;
+      font-size: 1.2rem;
+      color: #f2f2f2;
+    }
+
+    .project-card p {
+      margin: 0 1rem 1.5rem;
+      color: #bbb;
+    }
 
     footer {
       text-align: center;
@@ -87,58 +202,51 @@
       color: #888;
       margin-top: 4rem;
     }
+
+    @media (max-width: 900px) {
+      .project-card {
+        flex: 1 1 100%;
+      }
+    }
   </style>
 </head>
 <body>
-  <!-- Navbar -->
+
+<!-- Navbar -->
 <nav class="navbar" id="navbar">
-    <!-- Desktop Logo -->
-    <div class="logo" id="logo">
+  <div class="logo" id="logo">
+    <img src="images/logos.png" alt="Archisign Logo" />
+  </div>
+  <div class="mobile-right">
+    <div class="hamburger" id="hamburger">&#9776;</div>
+    <div class="mobile-logo" id="mobileLogo">
       <img src="images/logos.png" alt="Archisign Logo" />
     </div>
-
-    <!-- Mobile right container: hamburger + logo (logo moved after hamburger) -->
-    <div class="mobile-right">
-      <div
-        class="hamburger"
-        id="hamburger"
-        aria-label="Toggle menu"
-        role="button"
-        tabindex="0"
-        aria-expanded="false"
-      >
-        &#9776;
-      </div>
-      <div class="mobile-logo" id="mobileLogo" aria-label="Site logo" role="img">
-        <img src="images/logos.png" alt="Archisign Logo" />
-      </div>
-    </div>
-
-    <!-- Desktop nav menu -->
-    <ul class="nav-menu">
-      <li><a href="index.html">Home</a></li>
-      <li>
-        <a href="#">Our Services <span class="arrow">▼</span></a>
-        <ul class="dropdown">
-          <li><a href="residential-spaces.html">Residential</a></li>
-          <li><a href="commercial.html">Commercial</a></li>
-          <li><a href="layout.html">Layout/Floorplan</a></li>
-          <li><a href="interior-design.html">Interior Design</a></li>
-        </ul>
-      </li>
-      <li><a href="pricing.html">Pricing</a></li>
-      <li>
-        <a href="#">Projects <span class="arrow">▼</span></a>
-        <ul class="dropdown">
-          <li><a href="urban-homes.html">Urban Homes</a></li>
-          <li><a href="luxury-villas.html">Luxury Villas</a></li>
-          <li><a href="corporate-spaces.html">Corporate Spaces</a></li>
-        </ul>
-      </li>
-      <li><a href="contact.html">Contact Us</a></li>
-      <li><a href="#about">About</a></li>
-    </ul>
-  </nav>
+  </div>
+  <ul class="nav-menu">
+    <li><a href="index.html">Home</a></li>
+    <li>
+      <a href="#">Our Services <span class="arrow">▼</span></a>
+      <ul class="dropdown">
+        <li><a href="residential-spaces.html">Residential</a></li>
+        <li><a href="commercial.html">Commercial</a></li>
+        <li><a href="layout.html">Layout / Floorplan</a></li>
+        <li><a href="interior-design.html">Interior Design</a></li>
+      </ul>
+    </li>
+    <li><a href="pricing.html">Pricing</a></li>
+    <li>
+      <a href="#">Projects <span class="arrow">▼</span></a>
+      <ul class="dropdown">
+        <li><a href="urban-homes.html">Urban Homes</a></li>
+        <li><a href="luxury-villas.html">Luxury Villas</a></li>
+        <li><a href="corporate-spaces.html">Corporate Spaces</a></li>
+      </ul>
+    </li>
+    <li><a href="contact.html">Contact Us</a></li>
+    <li><a href="index.html#about">About</a></li>
+  </ul>
+</nav>
 
   <!-- Mobile Nav Sidebar -->
   <nav class="side-menu" id="sideMenu" aria-label="Mobile menu">
@@ -149,7 +257,7 @@
         <ul>
           <li><a href="residential-spaces.html">Residential</a></li>
           <li><a href="commercial.html">Commercial</a></li>
-          <li><a href="layout.html">Layout/Floorplan</a></li>
+          <li><a href="layout.html">Layout / Floorplan</a></li>
           <li><a href="interior-design.html">Interior Design</a></li>
         </ul>
       </li>
@@ -167,6 +275,9 @@
     </ul>
   </nav>
 
+  <!-- Overlay for side menu -->
+  <div class="side-menu-overlay" id="sideMenuOverlay"></div>
+
   <section class="hero-banner">
     <div class="hero-overlay"></div>
     <div class="hero-text">
@@ -174,6 +285,23 @@
       <p>Designing workspaces that elevate brands, inspire teams, and deliver impact.</p>
     </div>
   </section>
+  
+<!-- Slideshow -->
+<section class="slideshow-wrapper">
+  <div class="slideshow-container">
+    <div class="slide active">
+      <img src="images/gg6.jpg" alt="Slide 1" />
+    </div>
+    <div class="slide">
+      <img src="images/gg7.jpg" alt="Slide 2" />
+    </div>
+    <div class="slide">
+      <img src="images/gg1.jpg" alt="Slide 3" />
+    </div>
+    <button class="nav-arrow prev">&#10094;</button>
+    <button class="nav-arrow next">&#10095;</button>
+  </div>
+</section>
 
   <section class="intro-section">
     <h2>Strategic. Sleek. Smart.</h2>
@@ -182,37 +310,79 @@
     </p>
   </section>
 
-  <section class="projects-showcase">
-    <div class="projects-grid">
+  <section class="projects-section">
+    <h3 class="projects-title">Our Featured Projects</h3>
+    <div class="project-cards">
       <div class="project-card">
-        <img src="images/cg7.jpg" alt="Corporate Office">
-        <h3>Corporate Office</h3>
-        <p>A modern, collaborative environment that balances productivity with style.</p>
+  <a href="luxury-condo.html" style="text-decoration: none; color: inherit;">
+    <img src="images/bg6.jpg" alt="Luxury Condo" />
+    <h3>Modern Retail Shoplots</h3>
+    <p>Strategically located retail spaces designed for high visibility and foot traffic.</p>
+  </a>
+</div>
+      <div class="project-card">
+        <a href="restaurant-cafe.html" style="text-decoration: none; color: inherit;">
+        <img src="images/vil18.jpg" alt="Project 2" />
+        <h3>Restaurant & Café</h3>
+        <p>Inviting dining environments blending stylish interiors with functional flow, optimized for both casual and upscale experiences.</p>
       </div>
       <div class="project-card">
-        <img src="images/cg6.jpg" alt="Retail Concept">
-        <h3>Retail Concept Store</h3>
-        <p>Immersive retail experience that strengthens brand identity and customer flow.</p>
+        <a href="bar-lounge.html" style="text-decoration: none; color: inherit;">
+        <img src="images/vil13.jpg" alt="Project 3" />
+        <h3>Bar & Lounge</h3>
+        <p>Sophisticated nightlife venues combining sleek design with ambient lighting and acoustics.</p>
       </div>
       <div class="project-card">
-        <img src="images/cg15.jpg" alt="Coworking Hub">
-        <h3>Creative Coworking Hub</h3>
-        <p>Dynamic, flexible spaces designed for innovation and community.</p>
+        <a href="boutique-hotel.html" style="text-decoration: none; color: inherit;">
+        <img src="images/vil13.jpg" alt="Project 3" />
+        <h3>Boutique Hotel & Hospitality</h3>
+        <p>Hospitality spaces offering personalized guest experiences, integrating modern amenities with elegant design to ensure comfort and lasting impressions.</p>
       </div>
-      <div class="project-card">
-        <img src="images/cg12.jpg" alt="Executive Lounge">
-        <h3>Executive Lounge</h3>
-        <p>Refined interiors for luxury business hospitality and private meetings.</p>
+    </div>
+    <div class="project-card">
+        <a href="mixed-use.html" style="text-decoration: none; color: inherit;">
+        <img src="images/vil13.jpg" alt="Project 3" />
+        <h3>Mixed-Use Commercial Hub</h3>
+        <p>Dynamic developments that seamlessly integrate retail, dining, and office spaces.</p>
       </div>
     </div>
   </section>
+</main>
 
-  <footer>
-    &copy; 2025 Archisign — Redefining the architecture of ambition.
-  </footer>
+<footer>
+  &copy; 2025 Archisign — Visualizing space with precision, beauty, and purpose.
+</footer>
 
-<!-- Scripts -->
+<!-- JS -->
 <script>
+  const slides = document.querySelectorAll(".slide");
+  const prevBtn = document.querySelector(".nav-arrow.prev");
+  const nextBtn = document.querySelector(".nav-arrow.next");
+  let currentSlide = 0;
+
+  function showSlide(index) {
+    slides.forEach((slide, i) => {
+      slide.classList.remove("active");
+      if (i === index) {
+        slide.classList.add("active");
+      }
+    });
+  }
+
+  nextBtn.addEventListener("click", () => {
+    currentSlide = (currentSlide + 1) % slides.length;
+    showSlide(currentSlide);
+  });
+
+  prevBtn.addEventListener("click", () => {
+    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+    showSlide(currentSlide);
+  });
+
+  setInterval(() => {
+    nextBtn.click();
+  }, 6000);
+
   // Hamburger toggle for mobile side menu
   const hamburger = document.getElementById("hamburger");
   const sideMenu = document.getElementById("sideMenu");
@@ -262,72 +432,6 @@
       }
     });
   });
-
-  // Background slideshow
-  const slides = document.querySelectorAll(".background-slideshow .slide");
-  let currentIndex = 0;
-
-  setInterval(() => {
-    slides[currentIndex].classList.remove("active");
-    currentIndex = (currentIndex + 1) % slides.length;
-    slides[currentIndex].classList.add("active");
-  }, 5000);
-
-  // Navbar hide/show on scroll with logo shrink
-  (() => {
-    const navbar = document.getElementById("navbar");
-    const logo = document.getElementById("logo");
-    const mobileLogo = document.getElementById("mobileLogo");
-
-    let lastScrollTop = 0;
-    const delta = 5;
-    let ticking = false;
-
-    function onScroll() {
-      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
-      if (Math.abs(scrollTop - lastScrollTop) <= delta) {
-        ticking = false;
-        return;
-      }
-
-      if (scrollTop > lastScrollTop && scrollTop > 100) {
-        // Scroll down - hide navbar
-        navbar.classList.add("navbar-hidden");
-      } else {
-        // Scroll up - show navbar
-        navbar.classList.remove("navbar-hidden");
-      }
-
-      // Shrink logo only when navbar visible
-      if (!navbar.classList.contains("navbar-hidden")) {
-        if (scrollTop > 50) {
-          logo.classList.add("logo-scrolled");
-          navbar.classList.add("navbar-scrolled");
-          if (mobileLogo) mobileLogo.classList.add("logo-scrolled");
-        } else {
-          logo.classList.remove("logo-scrolled");
-          navbar.classList.remove("navbar-scrolled");
-          if (mobileLogo) mobileLogo.classList.remove("logo-scrolled");
-        }
-      } else {
-        // When navbar hidden, remove shrink classes
-        logo.classList.remove("logo-scrolled");
-        navbar.classList.remove("navbar-scrolled");
-        if (mobileLogo) mobileLogo.classList.remove("logo-scrolled");
-      }
-
-      lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
-      ticking = false;
-    }
-
-    window.addEventListener("scroll", () => {
-      if (!ticking) {
-        window.requestAnimationFrame(onScroll);
-        ticking = true;
-      }
-    });
-  })();
 </script>
 
 </body>
