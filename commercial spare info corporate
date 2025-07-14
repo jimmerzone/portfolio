@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" href="images/favicon.png" type="image/x-icon" />
+  <title>Commercial - Archisign</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      background-color: #121212;
+      color: #f2f2f2;
+    }
+
+    .hero-banner {
+      position: relative;
+      height: 80vh;
+      background: url('images/cg7.jpg') no-repeat center center/cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.6);
+    }
+
+    .hero-text {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      padding: 2rem;
+    }
+
+    .hero-text h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      color: #f2f2f2;
+    }
+
+    .hero-text p {
+      font-size: 1.2rem;
+      color: #ccc;
+    }
+
+    .intro-section {
+      max-width: 1000px;
+      margin: 3rem auto;
+      padding: 0 1rem;
+      text-align: center;
+    }
+
+    .intro-section h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: #f2f2f2;
+    }
+
+    .intro-section p {
+      font-size: 1.1rem;
+      color: #ccc;
+      line-height: 1.6;
+    }
+
+    .projects-showcase {
+      max-width: none;
+      margin: 4rem auto;
+      padding: 0 1rem;
+    }
+    .projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
+}
+
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.95rem;
+      background: #1a1a1a;
+      color: #888;
+      margin-top: 4rem;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+<nav class="navbar" id="navbar">
+    <!-- Desktop Logo -->
+    <div class="logo" id="logo">
+      <img src="images/logos.png" alt="Archisign Logo" />
+    </div>
+
+    <!-- Mobile right container: hamburger + logo (logo moved after hamburger) -->
+    <div class="mobile-right">
+      <div
+        class="hamburger"
+        id="hamburger"
+        aria-label="Toggle menu"
+        role="button"
+        tabindex="0"
+        aria-expanded="false"
+      >
+        &#9776;
+      </div>
+      <div class="mobile-logo" id="mobileLogo" aria-label="Site logo" role="img">
+        <img src="images/logos.png" alt="Archisign Logo" />
+      </div>
+    </div>
+
+    <!-- Desktop nav menu -->
+    <ul class="nav-menu">
+      <li><a href="index.html">Home</a></li>
+      <li>
+        <a href="#">Our Services <span class="arrow">▼</span></a>
+        <ul class="dropdown">
+          <li><a href="residential-spaces.html">Residential</a></li>
+          <li><a href="commercial.html">Commercial</a></li>
+          <li><a href="layout.html">Layout/Floorplan</a></li>
+          <li><a href="interior-design.html">Interior Design</a></li>
+        </ul>
+      </li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li>
+        <a href="#">Projects <span class="arrow">▼</span></a>
+        <ul class="dropdown">
+          <li><a href="urban-homes.html">Urban Homes</a></li>
+          <li><a href="luxury-villas.html">Luxury Villas</a></li>
+          <li><a href="corporate-spaces.html">Corporate Spaces</a></li>
+        </ul>
+      </li>
+      <li><a href="contact.html">Contact Us</a></li>
+      <li><a href="#about">About</a></li>
+    </ul>
+  </nav>
+
+  <!-- Mobile Nav Sidebar -->
+  <nav class="side-menu" id="sideMenu" aria-label="Mobile menu">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li>
+        <a href="#">Our Services <span class="arrow">▼</span></a>
+        <ul>
+          <li><a href="residential-spaces.html">Residential</a></li>
+          <li><a href="commercial.html">Commercial</a></li>
+          <li><a href="layout.html">Layout/Floorplan</a></li>
+          <li><a href="interior-design.html">Interior Design</a></li>
+        </ul>
+      </li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li>
+        <a href="#">Projects <span class="arrow">▼</span></a>
+        <ul>
+          <li><a href="urban-homes.html">Urban Homes</a></li>
+          <li><a href="luxury-villas.html">Luxury Villas</a></li>
+          <li><a href="corporate-spaces.html">Corporate Spaces</a></li>
+        </ul>
+      </li>
+      <li><a href="contact.html">Contact Us</a></li>
+      <li><a href="#about">About</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero-banner">
+    <div class="hero-overlay"></div>
+    <div class="hero-text">
+      <h1>Commercial</h1>
+      <p>Designing workspaces that elevate brands, inspire teams, and deliver impact.</p>
+    </div>
+  </section>
+
+  <section class="intro-section">
+    <h2>Strategic. Sleek. Smart.</h2>
+    <p>
+      Archisign’s commercial interiors are meticulously planned to boost functionality and create immersive brand experiences. Whether it’s an open-plan office, a high-end retail space, or a hospitality lounge, we design environments that connect people and purpose.
+    </p>
+  </section>
+
+  <section class="projects-showcase">
+    <div class="projects-grid">
+      <div class="project-card">
+        <img src="images/cg7.jpg" alt="Corporate Office">
+        <h3>Corporate Office</h3>
+        <p>A modern, collaborative environment that balances productivity with style.</p>
+      </div>
+      <div class="project-card">
+        <img src="images/cg6.jpg" alt="Retail Concept">
+        <h3>Retail Concept Store</h3>
+        <p>Immersive retail experience that strengthens brand identity and customer flow.</p>
+      </div>
+      <div class="project-card">
+        <img src="images/cg15.jpg" alt="Coworking Hub">
+        <h3>Creative Coworking Hub</h3>
+        <p>Dynamic, flexible spaces designed for innovation and community.</p>
+      </div>
+      <div class="project-card">
+        <img src="images/cg12.jpg" alt="Executive Lounge">
+        <h3>Executive Lounge</h3>
+        <p>Refined interiors for luxury business hospitality and private meetings.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 Archisign — Redefining the architecture of ambition.
+  </footer>
+
+<!-- Scripts -->
+<script>
+  // Hamburger toggle for mobile side menu
+  const hamburger = document.getElementById("hamburger");
+  const sideMenu = document.getElementById("sideMenu");
+  const sideMenuOverlay = document.getElementById("sideMenuOverlay");
+
+  function closeSideMenu() {
+    sideMenu.classList.remove("open");
+    sideMenuOverlay.classList.remove("active");
+    hamburger.setAttribute("aria-expanded", "false");
+  }
+
+  function openSideMenu() {
+    sideMenu.classList.add("open");
+    sideMenuOverlay.classList.add("active");
+    hamburger.setAttribute("aria-expanded", "true");
+  }
+
+  hamburger.addEventListener("click", () => {
+    if (sideMenu.classList.contains("open")) {
+      closeSideMenu();
+    } else {
+      openSideMenu();
+    }
+  });
+
+  hamburger.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      hamburger.click();
+    }
+  });
+
+  // Close side menu when clicking overlay
+  sideMenuOverlay.addEventListener("click", () => {
+    closeSideMenu();
+  });
+
+  // Dropdown toggle inside side menu
+  const sideMenuItems = sideMenu.querySelectorAll("li > a");
+
+  sideMenuItems.forEach((item) => {
+    item.addEventListener("click", (e) => {
+      const nextElem = item.nextElementSibling;
+      if (nextElem && nextElem.tagName === "UL") {
+        e.preventDefault();
+        item.parentElement.classList.toggle("open");
+      }
+    });
+  });
+
+  // Background slideshow
+  const slides = document.querySelectorAll(".background-slideshow .slide");
+  let currentIndex = 0;
+
+  setInterval(() => {
+    slides[currentIndex].classList.remove("active");
+    currentIndex = (currentIndex + 1) % slides.length;
+    slides[currentIndex].classList.add("active");
+  }, 5000);
+
+  // Navbar hide/show on scroll with logo shrink
+  (() => {
+    const navbar = document.getElementById("navbar");
+    const logo = document.getElementById("logo");
+    const mobileLogo = document.getElementById("mobileLogo");
+
+    let lastScrollTop = 0;
+    const delta = 5;
+    let ticking = false;
+
+    function onScroll() {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+      if (Math.abs(scrollTop - lastScrollTop) <= delta) {
+        ticking = false;
+        return;
+      }
+
+      if (scrollTop > lastScrollTop && scrollTop > 100) {
+        // Scroll down - hide navbar
+        navbar.classList.add("navbar-hidden");
+      } else {
+        // Scroll up - show navbar
+        navbar.classList.remove("navbar-hidden");
+      }
+
+      // Shrink logo only when navbar visible
+      if (!navbar.classList.contains("navbar-hidden")) {
+        if (scrollTop > 50) {
+          logo.classList.add("logo-scrolled");
+          navbar.classList.add("navbar-scrolled");
+          if (mobileLogo) mobileLogo.classList.add("logo-scrolled");
+        } else {
+          logo.classList.remove("logo-scrolled");
+          navbar.classList.remove("navbar-scrolled");
+          if (mobileLogo) mobileLogo.classList.remove("logo-scrolled");
+        }
+      } else {
+        // When navbar hidden, remove shrink classes
+        logo.classList.remove("logo-scrolled");
+        navbar.classList.remove("navbar-scrolled");
+        if (mobileLogo) mobileLogo.classList.remove("logo-scrolled");
+      }
+
+      lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+      ticking = false;
+    }
+
+    window.addEventListener("scroll", () => {
+      if (!ticking) {
+        window.requestAnimationFrame(onScroll);
+        ticking = true;
+      }
+    });
+  })();
+</script>
+
+</body>
+</html>
