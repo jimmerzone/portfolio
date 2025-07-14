@@ -81,6 +81,7 @@
       background: #2b2b2b;
       color: #fff;
       font-size: 1rem;
+      animation: glowCycle 15s ease-in-out infinite;
     }
 
     .contact-form .btn-submit {
@@ -209,11 +210,69 @@
 
 <!-- Navbar -->
 <nav class="navbar" id="navbar">
-  <!-- Same navbar as before (not changed) -->
+  <div class="logo" id="logo">
+    <img src="images/logos.png" alt="Archisign Logo" />
+  </div>
+  <div class="mobile-right">
+    <div class="hamburger" id="hamburger">&#9776;</div>
+    <div class="mobile-logo" id="mobileLogo">
+      <img src="images/logos.png" alt="Archisign Logo" />
+    </div>
+  </div>
+  <ul class="nav-menu">
+    <li><a href="index.html">Home</a></li>
+    <li>
+      <a href="#">Our Services <span class="arrow">▼</span></a>
+      <ul class="dropdown">
+        <li><a href="residential-spaces.html">Residential</a></li>
+        <li><a href="commercial.html">Commercial</a></li>
+        <li><a href="layout.html">Layout / Floorplan</a></li>
+        <li><a href="interior-design.html">Interior Design</a></li>
+      </ul>
+    </li>
+    <li><a href="pricing.html">Pricing</a></li>
+    <li>
+      <a href="#">Projects <span class="arrow">▼</span></a>
+      <ul class="dropdown">
+        <li><a href="urban-homes.html">Urban Homes</a></li>
+        <li><a href="luxury-villas.html">Luxury Villas</a></li>
+        <li><a href="corporate-spaces.html">Corporate Spaces</a></li>
+      </ul>
+    </li>
+    <li><a href="contact.html">Contact Us</a></li>
+    <li><a href="index.html#about">About</a></li>
+  </ul>
 </nav>
 
-<!-- Overlay for side menu -->
-<div class="side-menu-overlay" id="sideMenuOverlay"></div>
+  <!-- Mobile Nav Sidebar -->
+  <nav class="side-menu" id="sideMenu" aria-label="Mobile menu">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li>
+        <a href="#">Our Services <span class="arrow">▼</span></a>
+        <ul>
+          <li><a href="residential-spaces.html">Residential</a></li>
+          <li><a href="commercial.html">Commercial</a></li>
+          <li><a href="layout.html">Layout / Floorplan</a></li>
+          <li><a href="interior-design.html">Interior Design</a></li>
+        </ul>
+      </li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li>
+        <a href="#">Projects <span class="arrow">▼</span></a>
+        <ul>
+          <li><a href="urban-homes.html">Urban Homes</a></li>
+          <li><a href="luxury-villas.html">Luxury Villas</a></li>
+          <li><a href="corporate-spaces.html">Corporate Spaces</a></li>
+        </ul>
+      </li>
+      <li><a href="contact.html">Contact Us</a></li>
+      <li><a href="#about">About</a></li>
+    </ul>
+  </nav>
+
+  <!-- Overlay for side menu -->
+  <div class="side-menu-overlay" id="sideMenuOverlay"></div>
 
 <!-- Main Content -->
 <div class="main-content-contact">
@@ -254,8 +313,55 @@
 
 <!-- Scripts -->
 <script>
-  // Hamburger toggle (same logic retained)
-</script>
+  // Hamburger toggle for mobile side menu
+  const hamburger = document.getElementById("hamburger");
+  const sideMenu = document.getElementById("sideMenu");
+  const sideMenuOverlay = document.getElementById("sideMenuOverlay");
+
+  function closeSideMenu() {
+    sideMenu.classList.remove("open");
+    sideMenuOverlay.classList.remove("active");
+    hamburger.setAttribute("aria-expanded", "false");
+  }
+
+  function openSideMenu() {
+    sideMenu.classList.add("open");
+    sideMenuOverlay.classList.add("active");
+    hamburger.setAttribute("aria-expanded", "true");
+  }
+
+  hamburger.addEventListener("click", () => {
+    if (sideMenu.classList.contains("open")) {
+      closeSideMenu();
+    } else {
+      openSideMenu();
+    }
+  });
+
+  hamburger.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      hamburger.click();
+    }
+  });
+
+  // Close side menu when clicking overlay
+  sideMenuOverlay.addEventListener("click", () => {
+    closeSideMenu();
+  });
+
+  // Dropdown toggle inside side menu
+  const sideMenuItems = sideMenu.querySelectorAll("li > a");
+
+  sideMenuItems.forEach((item) => {
+    item.addEventListener("click", (e) => {
+      const nextElem = item.nextElementSibling;
+      if (nextElem && nextElem.tagName === "UL") {
+        e.preventDefault();
+        item.parentElement.classList.toggle("open");
+      }
+    });
+  });
 
 </body>
 </html>
