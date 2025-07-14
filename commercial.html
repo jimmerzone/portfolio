@@ -235,10 +235,12 @@
         z-index: 2;
       }
 
+      /* Push down the slideshow wrapper so it doesn't cover navbar */
       .slideshow-wrapper {
-        max-height: none; /* remove max-height restriction */
-        overflow: visible; /* allow slideshow to fully show */
-        height: auto; /* let height be automatic */
+        margin-top: 60px; /* or height of navbar */
+        max-height: none !important;
+        overflow: visible !important;
+        height: auto !important;
       }
 
       .slideshow-container {
