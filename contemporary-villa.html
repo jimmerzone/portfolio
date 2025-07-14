@@ -344,12 +344,6 @@
 
     /* Responsive adjustments - using your provided styles */
     @media (max-width: 768px) { /* Changed from 600px to 768px for broader mobile application */
-      .navbar {
-        padding: 10px 20px; /* Adjust padding for mobile navbar */
-      }
-      .logo img {
-        height: none;
-      }
       .nav-menu {
         display: none; /* Hide desktop menu */
       }
@@ -388,6 +382,23 @@
         font-size: 1rem; /* Smaller text on mobile */
       }
     }
+    @media (max-width: 900px) {
+      .nav-menu {
+        display: none;
+      }
+
+      .mobile-right {
+        display: flex;
+      }
+
+      .logo {
+        display: none;
+      }
+      .navbar {
+      height: 0;
+      padding: 0;
+    }
+    }
   </style>
 </head>
 <body>
@@ -401,7 +412,7 @@
     </div>
     <ul class="nav-menu">
       <li><a href="index.html">Home</a></li>
-      <li class="has-dropdown"><a href="#">Our Services</a>
+      <li class="has-dropdown"><a href="#">Our Services <span class="dropdown-arrow">&#9662;</span></a>
         <ul class="dropdown">
           <li><a href="residential-spaces.html">Residential Spaces</a></li>
           <li><a href="commercial-interiors.html">Commercial Interiors</a></li>
@@ -410,7 +421,7 @@
         </ul>
       </li>
       <li><a href="#">Pricing</a></li>
-      <li class="has-dropdown"><a href="#">Projects</a>
+      <li class="has-dropdown"><a href="#">Projects <span class="dropdown-arrow">&#9662;</span></a>
         <ul class="dropdown">
           <li><a href="urban-homes.html">Urban Homes</a></li>
           <li><a href="luxury-villas.html">Luxury Villas</a></li>
@@ -427,7 +438,7 @@
     <ul>
       <li><a href="index.html">Home</a></li>
       <li class="has-dropdown">
-        <a href="#" class="mobile-dropdown-toggle">Our Services</a>
+        <a href="#" class="mobile-dropdown-toggle">Our Services <span class="dropdown-arrow">&#9662;</span></a>
         <ul>
           <li><a href="residential-spaces.html">Residential Spaces</a></li>
           <li><a href="commercial-interiors.html">Commercial Interiors</a></li>
@@ -437,7 +448,7 @@
       </li>
       <li><a href="#">Pricing</a></li>
       <li class="has-dropdown">
-        <a href="#" class="mobile-dropdown-toggle">Projects</a>
+        <a href="#" class="mobile-dropdown-toggle">Projects <span class="dropdown-arrow">&#9662;</span></a>
         <ul>
           <li><a href="urban-homes.html">Urban Homes</a></li>
           <li><a href="luxury-villas.html">Luxury Villas</a></li>
