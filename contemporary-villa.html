@@ -18,83 +18,7 @@
       flex-direction: column;
       min-height: 100vh;
     }
-
-    .mobile-right {
-      display: none;
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      justify-content: space-between;
-      align-items: center;
-      z-index: 1001;
-      padding: 1rem;
-      background-color: #121212;
-    }
-
-    .hamburger {
-      font-size: 2rem;
-      cursor: pointer;
-    }
-
-    .mobile-logo img {
-      height: 36px;
-    }
-
-    .side-menu {
-      position: fixed;
-      top: 0;
-      right: -240px;
-      width: 240px;
-      height: 100%;
-      background: #1c1c1c;
-      transition: right 0.3s ease;
-      z-index: 9999;
-      padding: 2rem 1rem;
-    }
-
-    .side-menu.open {
-      right: 0;
-    }
-
-    .side-menu ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .side-menu li {
-      margin-bottom: 1rem;
-    }
-
-    .side-menu a {
-      color: #f2f2f2;
-      text-decoration: none;
-      font-size: 1.1rem;
-    }
-
-    .side-menu .has-dropdown ul {
-      display: none;
-      padding-left: 1rem;
-      margin-top: 0.5rem;
-    }
-
-    .side-menu .has-dropdown.open ul {
-      display: block;
-    }
-
-    .side-menu-overlay {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.6);
-      z-index: 9998;
-    }
-
-    .side-menu-overlay.active {
-      display: block;
-    }
-
+    
     /* Page Title */
     .page-title {
   max-width: 900px;
@@ -217,64 +141,6 @@
       background: rgba(255, 255, 255, 0.1);
     }
 
-    .navbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 2rem;
-      background-color: #121212;
-      position: relative;
-      z-index: 1000;
-    }
-
-    .logo img {
-      height: 40px;
-    }
-
-    .nav-menu {
-      list-style: none;
-      display: flex;
-      gap: 1.5rem;
-      margin: 0;
-      padding: 0;
-    }
-
-    .nav-menu li {
-      position: relative;
-    }
-
-    .nav-menu li a {
-      color: #f2f2f2;
-      text-decoration: none;
-      font-size: 1rem;
-    }
-
-    .nav-menu li:hover > .dropdown {
-      display: block;
-    }
-
-    .dropdown {
-      display: none;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      background: #1c1c1c;
-      list-style: none;
-      min-width: 180px;
-      padding: 0.5rem 0;
-      z-index: 1000;
-    }
-
-    .dropdown li {
-      padding: 0.5rem 1rem;
-    }
-
-    .dropdown li a {
-      color: #f2f2f2;
-      text-decoration: none;
-      font-size: 0.95rem;
-    }
-
     /* Project Content (Descriptive Text) - using your provided styles */
     .project-content {
       max-width: 900px;
@@ -336,9 +202,10 @@
   </style>
 </head>
 <body>
-  <!-- Navbar -->
-  <header class="navbar">
-    <div class="logo" id="logo">
+
+<!-- Navbar -->
+<nav class="navbar" id="navbar">
+  <div class="logo" id="logo">
     <img src="images/logos.png" alt="Archisign Logo" />
   </div>
   <div class="mobile-right">
@@ -347,45 +214,47 @@
       <img src="images/logos.png" alt="Archisign Logo" />
     </div>
   </div>
-    <ul class="nav-menu">
-      <li><a href="index.html">Home</a></li>
-      <li class="has-dropdown"><a href="#">Our Services <span class="dropdown-arrow">&#9662;</span></a>
-        <ul class="dropdown">
-          <li><a href="residential-spaces.html">Residential Spaces</a></li>
-          <li><a href="commercial-interiors.html">Commercial Interiors</a></li>
-          <li><a href="landscape-architecture.html">Landscape Architecture</a></li>
-          <li><a href="interior-styling.html">Interior Styling</a></li>
-        </ul>
-      </li>
-      <li><a href="#">Pricing</a></li>
-      <li class="has-dropdown"><a href="#">Projects <span class="dropdown-arrow">&#9662;</span></a>
-        <ul class="dropdown">
-          <li><a href="urban-homes.html">Urban Homes</a></li>
-          <li><a href="luxury-villas.html">Luxury Villas</a></li>
-          <li><a href="corporate-spaces.html">Corporate Spaces</a></li>
-        </ul>
-      </li>
-      <li><a href="contact.html">Contact Us</a></li>
-      <li><a href="#about">About</a></li>
-    </ul>
-  </header>
+  <ul class="nav-menu">
+    <li><a href="index.html">Home</a></li>
+    <li>
+      <a href="#">Our Services <span class="arrow">▼</span></a>
+      <ul class="dropdown">
+        <li><a href="residential-spaces.html">Residential</a></li>
+        <li><a href="commercial.html">Commercial</a></li>
+        <li><a href="layout.html">Layout / Floorplan</a></li>
+        <li><a href="interior-design.html">Interior Design</a></li>
+      </ul>
+    </li>
+    <li><a href="pricing.html">Pricing</a></li>
+    <li>
+      <a href="#">Projects <span class="arrow">▼</span></a>
+      <ul class="dropdown">
+        <li><a href="urban-homes.html">Urban Homes</a></li>
+        <li><a href="luxury-villas.html">Luxury Villas</a></li>
+        <li><a href="corporate-spaces.html">Corporate Spaces</a></li>
+      </ul>
+    </li>
+    <li><a href="contact.html">Contact Us</a></li>
+    <li><a href="index.html#about">About</a></li>
+  </ul>
+</nav>
 
-  <!-- Mobile Side Menu -->
+  <!-- Mobile Nav Sidebar -->
   <nav class="side-menu" id="sideMenu" aria-label="Mobile menu">
     <ul>
       <li><a href="index.html">Home</a></li>
-      <li class="has-dropdown">
-        <a href="#" class="mobile-dropdown-toggle">Our Services <span class="dropdown-arrow">&#9662;</span></a>
+      <li>
+        <a href="#">Our Services <span class="arrow">▼</span></a>
         <ul>
-          <li><a href="residential-spaces.html">Residential Spaces</a></li>
-          <li><a href="commercial-interiors.html">Commercial Interiors</a></li>
-          <li><a href="landscape-architecture.html">Landscape Architecture</a></li>
-          <li><a href="interior-styling.html">Interior Styling</a></li>
+          <li><a href="residential-spaces.html">Residential</a></li>
+          <li><a href="commercial.html">Commercial</a></li>
+          <li><a href="layout.html">Layout / Floorplan</a></li>
+          <li><a href="interior-design.html">Interior Design</a></li>
         </ul>
       </li>
-      <li><a href="#">Pricing</a></li>
-      <li class="has-dropdown">
-        <a href="#" class="mobile-dropdown-toggle">Projects <span class="dropdown-arrow">&#9662;</span></a>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li>
+        <a href="#">Projects <span class="arrow">▼</span></a>
         <ul>
           <li><a href="urban-homes.html">Urban Homes</a></li>
           <li><a href="luxury-villas.html">Luxury Villas</a></li>
@@ -396,7 +265,7 @@
       <li><a href="#about">About</a></li>
     </ul>
   </nav>
-
+  
   <div class="side-menu-overlay" id="sideMenuOverlay"></div>
 
   <!-- Main Content Area -->
