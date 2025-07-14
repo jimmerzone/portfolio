@@ -146,20 +146,19 @@
 
     /* Page Title */
     .page-title {
-      max-width: 900px;
-      margin: 120px auto 20px; /* margin-top to offset fixed navbar */
-      text-align: center;
-      color: #f5c518; /* Gold color for title */
-      font-size: 3.5rem; /* Larger font for main title */
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      text-shadow:
-        0 0 10px #f5c518,
-        0 0 20px #f5c518,
-        0 0 20px #f5c518,
-        0 0 20px #ffdd55;
-    }
+  max-width: 900px;
+  margin: 120px auto 20px;
+  text-align: center;
+  color: #fdf6e3; /* Light warm white */
+  font-size: 3.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  text-shadow:
+    0 0 4px #fdf6e3,
+    0 0 8px rgba(253, 246, 227, 0.6),
+    0 0 12px rgba(253, 246, 227, 0.3);
+}
 
     /* Project Gallery (Images) */
     .project-gallery {
@@ -394,10 +393,6 @@
       .logo {
         display: none;
       }
-      .navbar {
-      height: 0;
-      padding: 0;
-    }
     }
   </style>
 </head>
@@ -408,8 +403,7 @@
       <img src="images/logos.png" alt="Archisign Logo" />
     </div>
     <div class="mobile-right">
-      <div class="hamburger">&#9776;</div>
-      <div class="mobile-logo"><a href="index.html"><img src="images/logos.png" alt="Archisign Logo" /></a></div>
+      <div id="hamburger" class="hamburger" aria-label="Toggle menu" role="button" tabindex="0" aria-expanded="false">&#9776;</div>
     </div>
     <ul class="nav-menu">
       <li><a href="index.html">Home</a></li>
