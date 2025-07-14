@@ -220,11 +220,21 @@
     }
 
     @media (max-width: 768px) {
+      /* Ensure navbar is on top */
+      .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+      }
+      
+      /* Also push down hero banner content so it’s below navbar */
       .hero-banner {
-        flex-direction: column;
-        height: 60vh; /* reduced height */
-        padding: 1rem 0;
-        padding-top: 13rem; /* push hero content below navbar */
+        padding-top: 0 !important; /* remove previous large padding */
+        margin-top: 60px; /* same as navbar height */
+        height: auto !important;
+        min-height: 60vh; /* keep some height */
       }
 
       .hero-text {
